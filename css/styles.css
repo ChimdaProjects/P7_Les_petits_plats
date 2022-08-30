@@ -5,6 +5,7 @@
 
 html {
     margin: 2rem auto;
+    font-family: 'Lato', sans-serif;
 }
 
 .hidden {
@@ -33,6 +34,7 @@ html {
     background-color: #E7E7E7;
     font-size: 1.2rem;
     position: relative;
+    border: #E7E7E7;
 }
 
 #search-input::placeholder {
@@ -46,3 +48,43 @@ html {
     right: 15rem;
     
 }
+
+/* BUTTONS DROPDOWN*/
+#dropdown-section {
+    margin-top: 1rem;
+    display: flex;  
+}
+
+.dropbtn {
+    height: 69px;
+    width: 170px;
+    border-radius: 5px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    margin-right: 1rem;
+    color:#FFFFFF;
+    border: none;    
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#btn-ingredients, .ingredients {
+    background-color: #3282F7;
+}
+
+#btn-appareils, .appareils  {
+    background: #68D9A4;
+}
+
+#btn-ustensils, .ustensils {
+    background: #ED6454;
+}
+
+

@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/reset.css" rel="stylesheet" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0e454806ce.js" crossorigin="anonymous"></script>
     <title>Les petits plats</title>
 </head>
 <body>
@@ -18,10 +22,29 @@
             <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette">
             <img src="assets/icons/magnifyingGlass.svg" class="search-img">
         </div>
-        <div>
+        <div id="tag-section">
 
         </div>
-        <div>
+        <div id="dropdown-section">
+            <div class="dropbtn">
+                <button id="btn-ingredients"class="dropbtn btn-container">
+                    Ingrédients
+                    <i class="fa-solid fa-angle-down ingredients"></i>
+                </button>
+            </div>
+            <div  class="dropbtn">
+                <button id="btn-appareils" class="dropbtn btn-container">
+                    Appareils
+                    <i class="fa-solid fa-angle-down appareils"></i>
+                </button> 
+            </div>
+            <div class="dropbtn">
+                <button id="btn-ustensils" class="dropbtn btn-container">
+                    Ustensils
+                    <i class="fa-solid fa-angle-down ustensils" ></i>
+                </button>   
+            </div>
+           
 
         </div>
     </main>
