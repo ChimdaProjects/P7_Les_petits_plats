@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/0e454806ce.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/1d32f00048.js" crossorigin="anonymous"></script>
     <title>Les petits plats</title>
 </head>
 <body>
@@ -20,11 +20,30 @@
         <div id="search-bar">
             <label for="search-input" class="hidden">Search the site:</label>
             <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette">
-            <img src="assets/icons/magnifyingGlass.svg" class="search-img">
+            <i class="fa-solid fa-magnifying-glass search-img"></i>
         </div>
-        <div id="tag-section">
-
-        </div>
+        <div id="tags-section">
+            <div class="tag-container">
+                <button class="tag btn-ingredient">
+                    Coco
+                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">
+                </button>
+            </div>
+            <div class="tag-container">
+                <button class="tag btn-appareil">
+                    Coco    
+                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">
+               
+                </button>
+            </div>   
+            <div class="tag-container">
+                <button class="tag btn-ustensil">
+                    Coco
+                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">   
+                </button>
+            </div>
+        </div>     
+               
         <div id="dropdown-section">
             <div class="dropbtn">
                 <button id="btn-ingredients"class="dropbtn btn-container">
@@ -44,8 +63,8 @@
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
             </div>
-           
-
+        </div>
+        <div id="list-recipes">
         </div>
     </main>
     <footer>
