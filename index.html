@@ -20,11 +20,13 @@
         <img src="assets/images/logo.svg" alt="Logo Les petits plats" id="logo">
     </header>
     <main id="main">
+        <!--SEARCH BAR -->
         <div id="search-bar">
             <label for="search-input" class="hidden">Search the site:</label>
             <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette">
             <i class="fa-solid fa-magnifying-glass search-img"></i>
         </div>
+        <!--TAGS -->
         <div id="tags-section">
             <div class="tag-container">
                 <button class="tag btn-ingredient">
@@ -46,27 +48,31 @@
                 </button>
             </div>
         </div>     
-               
+         <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
             <div class="dropbtn">
-                <button id="btn-ingredients"class="dropbtn btn-container">
+                <button id="btn-ingredients"class="dropbtn btn-container" onclick="openSearchBar()">
                     Ingrédients
                     <i class="fa-solid fa-angle-down ingredients"></i>
                 </button>
+                <input type="text" placeholder="ingredients" id="myInput-ing" class="dropbtn " >
             </div>
             <div  class="dropbtn">
                 <button id="btn-appareils" class="dropbtn btn-container">
                     Appareils
                     <i class="fa-solid fa-angle-down appareils"></i>
                 </button> 
+                <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn ">
             </div>
             <div class="dropbtn">
                 <button id="btn-ustensils" class="dropbtn btn-container">
                     Ustensils
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
+                <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn " >
             </div>
         </div>
+        <!--CARDS OF RECIPES -->
         <div id="list-recipes">
         </div>
     </main>

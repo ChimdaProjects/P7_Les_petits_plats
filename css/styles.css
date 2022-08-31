@@ -114,18 +114,32 @@ i.search-img {
     align-items: center;
 }
 
-#btn-ingredients, .ingredients {
+#btn-ingredients, .ingredients, #myInput-ing {
     background-color: #3282F7;
 }
 
-#btn-appareils, .appareils  {
+#btn-appareils, .appareils, #myInput-app  {
     background: #68D9A4;
 }
 
-#btn-ustensils, .ustensils {
+#btn-ustensils, .ustensils, #myInput-ust  {
     background: #ED6454;
 }
 
+#btn-ingredients, #btn-appareils, #btn-ustensils {
+    position: relative;
+}
+#myInput-ing, #myInput-app, #myInput-ust {
+    position: relative;
+    top: -100%;
+   
+
+}
+
+#myInput-ing::placeholder, #myInput-app::placeholder, #myInput-ust::placeholder {
+    padding-left: 1rem;
+    color:white;
+}
 /* CARD */
 
 #list-recipes {
