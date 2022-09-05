@@ -63,5 +63,20 @@ function recipeFactory (data) {
 
         cardsSection.appendChild(cardContainer);
     }
-    return { getRecipeCardDOM }
+
+    function getListByTags() {
+        const btnIng = document.querySelector("#btn-ingredients");
+        const listIng = document.createElement("div");
+        listIng.setAttribute("class", "list-ingredients");
+        btnIng.appendChild(listIng);
+        let ul = document.createElement("ul");
+        listIng.appendChild(ul);
+        ingredients.forEach((elt)=> {
+           
+            return ul.innerHTML+= `${elt.ingredient} </br>`
+           
+        })
+
+    }
+    return { getRecipeCardDOM, getListByTags }
 }

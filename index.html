@@ -51,29 +51,31 @@
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
             <div class="dropbtn">
-                <button id="btn-ingredients"class="dropbtn btn-container" onclick="openSearchBar()">
+                <button id="btn-ingredients"class="dropbtn btn-container" onclick="openMenu()" ondblclick="openSearchBarByTags()">
                     Ingrédients
                     <i class="fa-solid fa-angle-down ingredients"></i>
                 </button>
-                <input type="text" placeholder="ingredients" id="myInput-ing" class="dropbtn " >
+                <input type="text" placeholder="ingredients" id="myInput-ing" class="dropbtn hidden " >
             </div>
             <div  class="dropbtn">
                 <button id="btn-appareils" class="dropbtn btn-container">
                     Appareils
                     <i class="fa-solid fa-angle-down appareils"></i>
                 </button> 
-                <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn ">
+                <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn hidden">
             </div>
             <div class="dropbtn">
                 <button id="btn-ustensils" class="dropbtn btn-container">
                     Ustensils
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
-                <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn " >
+                <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
             </div>
         </div>
         <!--CARDS OF RECIPES -->
         <div id="list-recipes">
+          <div class="card-recipe"></div>
+          <div class="card-recipe"></div>
         </div>
     </main>
     <footer>
