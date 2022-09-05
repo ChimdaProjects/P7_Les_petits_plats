@@ -1,6 +1,6 @@
 function recipeFactory (data) {
     const {appliance, description, name, ingredients, time} = data;
-    console.log("data", data);
+    //console.log("data", data);
    
  
 
@@ -61,5 +61,12 @@ function recipeFactory (data) {
 
         cardsSection.appendChild(cardContainer);
     }
-    return { getRecipeCardDOM }
+        function getListOfIngredients () {
+            const menuContainer = document.querySelector(".list-ing");
+            const divList = document.createElement("div");
+            menuContainer.appendChild(divList);
+            divList.setAttribute("class", "elt-ing");
+            divList.textContent=data;
+    }
+    return { getRecipeCardDOM, getListOfIngredients }
 }

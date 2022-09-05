@@ -140,6 +140,37 @@ i.search-img {
     padding-left: 1rem;
     color:white;
 }
+
+/* LIST OF TAGS*/
+.list-ing {
+    height: 397px;
+    width: 667px;
+    border-radius: 5px;
+    background-color: #3282F7;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: block;
+
+}
+/* hide scrollbar */
+.list-ing::-webkit-scrollbar { 
+    width: 0 !important 
+}
+
+.elt-ing {
+    background-color: #3282F7;
+    color:white;
+    font-weight:400;
+    font-size: 18px;
+    line-height: 22px;
+    width: 30%;
+    cursor: pointer;
+  
+}
 /* CARD */
 
 #list-recipes {
@@ -147,8 +178,10 @@ i.search-img {
     flex-wrap: wrap;
     justify-content: space-between;
     
+    
 }
 article {
+    z-index: 0;
     border: 1px solid black;
     height: 364px;
     width: 380px;
@@ -225,9 +258,6 @@ article {
     width: 171px;
     overflow: hidden;
     background-color: #E7E7E7;
-    
-
-
 }
 
 .recipe-description-content {
