@@ -12,7 +12,7 @@ async function getRecipes() {
         })
         .then(function(data) {
             recipesArray = data;
-            console.log("recipeArray", recipesArray);
+            //console.log("recipeArray", recipesArray);
             return recipesArray;
         })
         .catch(function (err) {
@@ -21,7 +21,7 @@ async function getRecipes() {
 }
 
 async function displayData(recipeArray) {
-    console.log("display data", recipesArray);
+    //console.log("display data", recipesArray);
     recipesArray.forEach((recipe) => {
         const recipeModel = recipeFactory(recipe);
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
