@@ -25,7 +25,7 @@ async function getRecipes() {
 }
 
 async function displayData(recipeArray) {
-    console.log("display data", recipesArray);
+    //console.log("display data", recipesArray);
     recipesArray.forEach((recipe) => {
         
         recipe.ingredients.forEach((ing)=> {
@@ -47,6 +47,8 @@ async function displayData(recipeArray) {
 
 function displayListIngredients () {
     const menuContainer = document.querySelector(".list-ing");
+    menuContainer.style.display="flex";
+    
     listIngredients = Array.from([...new Set(AllListIngredients)]);
     listIngredients.forEach((ing)=> {
         const listModel = recipeFactory(ing);
@@ -57,6 +59,12 @@ function displayListIngredients () {
 
 }
 
+function closeList() {
+    console.log("jai le focus out !")
+    const menuContainer = document.querySelector(".list-ing");
+    menuContainer.style.display ="";
+
+}
 
 
 
@@ -68,10 +76,6 @@ console.log("list ustensils", listUstensils)
 async function init () {
     await getRecipes();
     displayData(recipesArray);
-    displayListIngredients();
 }
-console.log("The filtered array2 ",listIngredients);
-function openSelect() {
-    console.log("open select");
-}
+
 init();

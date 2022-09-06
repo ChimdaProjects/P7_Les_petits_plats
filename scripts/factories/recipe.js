@@ -7,6 +7,7 @@ function recipeFactory (data) {
     function getRecipeCardDOM () {
         let cardsSection = document.querySelector("#list-recipes");
         const cardContainer = document.createElement("article");
+        cardContainer.setAttribute("class", "card-recipe");
         // elements DOM img
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("class", "recipe-img");
@@ -62,11 +63,14 @@ function recipeFactory (data) {
         cardsSection.appendChild(cardContainer);
     }
         function getListOfIngredients () {
+            
+            
             const menuContainer = document.querySelector(".list-ing");
             const divList = document.createElement("div");
             menuContainer.appendChild(divList);
             divList.setAttribute("class", "elt-ing");
             divList.textContent=data;
+            
     }
     return { getRecipeCardDOM, getListOfIngredients }
 }

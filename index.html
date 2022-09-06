@@ -51,12 +51,18 @@
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
             <div class="dropbtn">
-                <button id="btn-ingredients"class="dropbtn btn-container" onclick="openSelect()">
+                <button id="btn-ingredients"class="dropbtn btn-container" onclick="displayListIngredients ()">
                     Ingrédients
                     <i class="fa-solid fa-angle-down ingredients"></i>
                 </button>
-                <input type="text" placeholder="ingredients" id="myInput-ing" class="dropbtn hidden" >
-                <div class="list-ing">
+                <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing" class="dropbtn hidden" >
+                <div class="list-ing" onfocusout="closeList()">
+                    <div class="cont-input">
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" 
+                        >
+                        <i class="fa-solid fa-angle-up ingredients" onclick="closeList()"></i>
+                    </div>
+                  
                 </div>
             </div>
             <div  class="dropbtn">
@@ -76,6 +82,7 @@
         </div>
         <!--CARDS OF RECIPES -->
         <div id="list-recipes">
+           
         </div>
     </main>
     <footer>
