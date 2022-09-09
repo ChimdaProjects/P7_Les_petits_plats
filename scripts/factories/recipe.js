@@ -1,5 +1,5 @@
 function recipeFactory (data) {
-    const {appliance, description, name, ingredients, time} = data;
+    const {appliance, description, name, ingredients, time, classTag} = data;
     //console.log("data", data);
    
  
@@ -86,6 +86,20 @@ function recipeFactory (data) {
             const eltIng = document.querySelectorAll(".elt-app");
             eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
         }
+
+        function getListOfUstensils() {
+            const menuContainer = document.querySelector(".list-ust");
+            const divList = document.createElement("div");
+            menuContainer.appendChild(divList);
+            divList.setAttribute("class", "elt-ust");
+            divList.value = data;
+            divList.textContent=data;
+            const eltIng = document.querySelectorAll(".elt-ust");
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
+        }
+
+        
+
         function displayTag() {
             const sectionTag = document.querySelector("#tags-section");
             const contTag = document.createElement("div");
@@ -93,6 +107,7 @@ function recipeFactory (data) {
             contTag.setAttribute("value", `${data}`);
             sectionTag.appendChild(contTag);
             let dataReplace = data.replace(/ /g,"");
+           
             contTag.innerHTML= `
            
             <button class="tag btn-ingredient" >
@@ -102,9 +117,12 @@ function recipeFactory (data) {
             <div>
             
             </div>
+           
             `
 
-      
+            
         }
-    return { getRecipeCardDOM, getListOfIngredients, displayTag, getListOfAppliances }
+
+      
+    return { getRecipeCardDOM, getListOfIngredients, displayTag, getListOfAppliances, getListOfUstensils }
 }

@@ -160,7 +160,7 @@ i.search-img {
 .ust {
     background-color: #ED6454;
 }
-#myInput-ing2, #myInput-app2 {
+#myInput-ing2, #myInput-app2, #myInput-ust2 {
   
     width: 100%;
     border: none;
@@ -176,7 +176,7 @@ i.search-img {
     color: #FFFFFF;
 }
 
-#myInput-ing2::placeholder, #myInput-app2::placeholder {
+#myInput-ing2::placeholder, #myInput-app2::placeholder, #myInput-ust2::placeholder {
     color: #FFFFFF;
     
 }
@@ -204,12 +204,16 @@ i.search-img {
 .list-app {
     background-color: #68D9A4;
 }
+
+.list-ust {
+    background-color: #ED6454;
+}
 /* hide scrollbar */
-.list-ing::-webkit-scrollbar, .list-app::-webkit-scrollbar { 
+.list-ing::-webkit-scrollbar, .list-app::-webkit-scrollbar , .list-ust::-webkit-scrollbar { 
     width: 0 !important 
 }
 
-.elt-ing, .elt-app {
+.elt-ing, .elt-app, .elt-ust {
     
     color:white;
     font-weight:400;
@@ -225,6 +229,9 @@ i.search-img {
 
 .elt-app {
     background-color: #68D9A4;
+}
+.elt-ust {
+    background-color: #ED6454;
 }
 /* CARD */
 

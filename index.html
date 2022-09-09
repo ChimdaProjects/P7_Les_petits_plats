@@ -29,19 +29,6 @@
         <!--TAGS -->
         <div id="tags-section">
            
-            <div class="tag-container">
-                <button class="tag btn-appareil">
-                    Coco    
-                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">
-               
-                </button>
-            </div>   
-            <div class="tag-container">
-                <button class="tag btn-ustensil">
-                    Coco
-                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">   
-                </button>
-            </div>
         </div>     
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
@@ -76,16 +63,16 @@
                 </div>
             </div>
             <div class="dropbtn">
-                <button id="btn-ustensils" class="dropbtn btn-container">
+                <button id="btn-ustensils" class="dropbtn btn-container" onclick="displayListUstensils()">
                     Ustensils
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
                 <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
                 <div class="list-ust" onfocusout="closeList()">
-                    <div class="cont-input">
-                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" 
+                    <div class="cont-input ust">
+                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" 
                         >
-                        <i class="fa-solid fa-angle-up ingredients" onclick="closeList()"></i>
+                        <i class="fa-solid fa-angle-up ust" onclick="closeList()"></i>
                     </div>
                   
                 </div>

@@ -83,7 +83,23 @@ function displayListAppliances () {
         const listDOM = listModel.getListOfAppliances();   
     })
 }
-console.log('listAppliance2', listAppliances)
+console.log('listAppliance2', listAppliances);
+
+function displayListUstensils ( ) {
+    const menuContainer = document.querySelector(".list-ust");
+    menuContainer.style.display="flex";
+    
+    listUstensils = Array.from([...new Set(allListUstensils)]);
+    listUstensils.forEach((ust)=> {
+        const listModel = recipeFactory(ust);
+        const listDOM = listModel.getListOfUstensils();  
+       
+    })
+}
+
+
+
+
 /**
  * This function close the list of the ingredients
  */
@@ -95,6 +111,11 @@ function closeList() {
     const menuContainerApp = document.querySelector(".list-app");
     menuContainerApp.style.display ="";
 
+    const menuContainerUst = document.querySelector(".list-ust");
+    menuContainerUst.style.display ="";
+
+    
+
 }
 
 
@@ -105,6 +126,7 @@ function closeList() {
 function displayTagIng (event) {
     
     let value = event.target.value;
+   
     tagsSelected.push(value);
    
     console.log("value tag selectionné", value);
