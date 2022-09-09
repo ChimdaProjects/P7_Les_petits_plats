@@ -1,5 +1,9 @@
 function recipeFactory (data) {
+<<<<<<< HEAD
     const {id,appliance, description, name, ingredients, time} = data;
+=======
+    const {appliance, description, name, ingredients, time, classTag} = data;
+>>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
     //console.log("data", data);
    
  
@@ -8,7 +12,10 @@ function recipeFactory (data) {
         let cardsSection = document.querySelector("#list-recipes");
         const cardContainer = document.createElement("article");
         cardContainer.setAttribute("class", "card-recipe");
+<<<<<<< HEAD
         cardContainer.setAttribute("id",`${id}` )
+=======
+>>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
         // elements DOM img
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("class", "recipe-img");
@@ -63,6 +70,7 @@ function recipeFactory (data) {
 
         cardsSection.appendChild(cardContainer);
     }
+<<<<<<< HEAD
 
     function getListByTags() {
         const btnIng = document.querySelector("#btn-ingredients");
@@ -79,4 +87,69 @@ function recipeFactory (data) {
 
     }
     return { getRecipeCardDOM, getListByTags }
+=======
+        function getListOfIngredients () {
+            
+            
+            const menuContainer = document.querySelector(".list-ing");
+            const divList = document.createElement("div");
+            menuContainer.appendChild(divList);
+            divList.setAttribute("class", "elt-ing");
+            divList.value = data;
+            divList.textContent=data;
+            const eltIng = document.querySelectorAll(".elt-ing");
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
+
+            
+    }
+        function getListOfAppliances () {
+            const menuContainer = document.querySelector(".list-app");
+            const divList = document.createElement("div");
+            menuContainer.appendChild(divList);
+            divList.setAttribute("class", "elt-app");
+            divList.value = data;
+            divList.textContent=data;
+            const eltIng = document.querySelectorAll(".elt-app");
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
+        }
+
+        function getListOfUstensils() {
+            const menuContainer = document.querySelector(".list-ust");
+            const divList = document.createElement("div");
+            menuContainer.appendChild(divList);
+            divList.setAttribute("class", "elt-ust");
+            divList.value = data;
+            divList.textContent=data;
+            const eltIng = document.querySelectorAll(".elt-ust");
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
+        }
+
+        
+
+        function displayTag() {
+            const sectionTag = document.querySelector("#tags-section");
+            const contTag = document.createElement("div");
+            contTag.className = "tag-container";
+            contTag.setAttribute("value", `${data}`);
+            sectionTag.appendChild(contTag);
+            let dataReplace = data.replace(/ /g,"");
+           
+            contTag.innerHTML= `
+           
+            <button class="tag btn-ingredient" >
+                ${data}
+                <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" onclick="deleteTag(event)" >
+            </button>
+            <div>
+            
+            </div>
+           
+            `
+
+            
+        }
+
+      
+    return { getRecipeCardDOM, getListOfIngredients, displayTag, getListOfAppliances, getListOfUstensils }
+>>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
 }

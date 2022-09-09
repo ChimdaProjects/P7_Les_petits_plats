@@ -28,54 +28,78 @@
         </div>
         <!--TAGS -->
         <div id="tags-section">
-            <div class="tag-container">
-                <button class="tag btn-ingredient">
-                    Coco
-                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">
-                </button>
-            </div>
-            <div class="tag-container">
-                <button class="tag btn-appareil">
-                    Coco    
-                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">
-               
-                </button>
-            </div>   
-            <div class="tag-container">
-                <button class="tag btn-ustensil">
-                    Coco
-                    <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon">   
-                </button>
-            </div>
+           
         </div>     
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
             <div class="dropbtn">
+<<<<<<< HEAD
                 <button id="btn-ingredients"class="dropbtn btn-container" onclick="openMenu()" ondblclick="openSearchBarByTags()">
                     Ingrédients
                     <i class="fa-solid fa-angle-down ingredients"></i>
                 </button>
                 <input type="text" placeholder="ingredients" id="myInput-ing" class="dropbtn hidden " >
+=======
+                <button id="btn-ingredients"class="dropbtn btn-container" onclick="displayListIngredients ()">
+                    Ingrédients
+                    <i class="fa-solid fa-angle-down ingredients"></i>
+                </button>
+                <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing" class="dropbtn hidden" >
+                <div class="list-ing" onfocusout="closeList()">
+                    <div class="cont-input ing">
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing"
+                        >
+                        <i class="fa-solid fa-angle-up ingredients" onclick="closeList()"></i>
+                    </div>
+                  
+                </div>
+>>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
             </div>
             <div  class="dropbtn">
-                <button id="btn-appareils" class="dropbtn btn-container">
+                <button id="btn-appareils" class="dropbtn btn-container" onclick="displayListAppliances()">
                     Appareils
                     <i class="fa-solid fa-angle-down appareils"></i>
                 </button> 
                 <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn hidden">
+<<<<<<< HEAD
+=======
+                <div class="list-app" onfocusout="closeList()">
+                    <div class="cont-input app">
+                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app"
+                        >
+                        <i class="fa-solid fa-angle-up app" onclick="closeList()"></i>
+                    </div>
+                  
+                </div>
+>>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
             </div>
             <div class="dropbtn">
-                <button id="btn-ustensils" class="dropbtn btn-container">
+                <button id="btn-ustensils" class="dropbtn btn-container" onclick="displayListUstensils()">
                     Ustensils
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
                 <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
+<<<<<<< HEAD
+=======
+                <div class="list-ust" onfocusout="closeList()">
+                    <div class="cont-input ust">
+                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" 
+                        >
+                        <i class="fa-solid fa-angle-up ust" onclick="closeList()"></i>
+                    </div>
+                  
+                </div>
+>>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
             </div>
         </div>
         <!--CARDS OF RECIPES -->
         <div id="list-recipes">
+<<<<<<< HEAD
           <div class="card-recipe"></div>
           <div class="card-recipe"></div>
+=======
+           
+>>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
         </div>
     </main>
     <footer>
