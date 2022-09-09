@@ -69,8 +69,32 @@ function recipeFactory (data) {
             const divList = document.createElement("div");
             menuContainer.appendChild(divList);
             divList.setAttribute("class", "elt-ing");
+            divList.value = data;
             divList.textContent=data;
+            const eltIng = document.querySelectorAll(".elt-ing");
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
+
             
     }
-    return { getRecipeCardDOM, getListOfIngredients }
+        function displayTag() {
+            const sectionTag = document.querySelector("#tags-section");
+            const contTag = document.createElement("div");
+            contTag.className = "tag-container";
+            contTag.setAttribute("value", `${data}`);
+            sectionTag.appendChild(contTag);
+            let dataReplace = data.replace(/ /g,"");
+            contTag.innerHTML= `
+           
+            <button class="tag btn-ingredient" >
+                ${data}
+                <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" onclick="deleteTag(event)" >
+            </button>
+            <div>
+            
+            </div>
+            `
+
+      
+        }
+    return { getRecipeCardDOM, getListOfIngredients, displayTag }
 }
