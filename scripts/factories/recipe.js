@@ -76,6 +76,16 @@ function recipeFactory (data) {
 
             
     }
+        function getListOfAppliances () {
+            const menuContainer = document.querySelector(".list-app");
+            const divList = document.createElement("div");
+            menuContainer.appendChild(divList);
+            divList.setAttribute("class", "elt-app");
+            divList.value = data;
+            divList.textContent=data;
+            const eltIng = document.querySelectorAll(".elt-app");
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
+        }
         function displayTag() {
             const sectionTag = document.querySelector("#tags-section");
             const contTag = document.createElement("div");
@@ -96,5 +106,5 @@ function recipeFactory (data) {
 
       
         }
-    return { getRecipeCardDOM, getListOfIngredients, displayTag }
+    return { getRecipeCardDOM, getListOfIngredients, displayTag, getListOfAppliances }
 }

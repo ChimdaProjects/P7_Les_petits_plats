@@ -1,9 +1,11 @@
 // Déclaration variables
 let recipesArray = [];
-let AllListIngredients = [];
+let allListIngredients = [];
 let listIngredients = [];
 let listAppliances = [];
+let allListAppliances = [];
 let listUstensils = [];
+let allListUstensils = [];
 let tagsSelected = [];
 
 // Elements DOM
@@ -40,13 +42,13 @@ async function displayData(recipesArr) {
     recipesArr.forEach((recipe) => {
         
         recipe.ingredients.forEach((ing)=> {
-            AllListIngredients.push(ing.ingredient.toLowerCase())    
+            allListIngredients.push(ing.ingredient.toLowerCase())    
         })
        
-        listAppliances.push(recipe.appliance.toLowerCase());
+        allListAppliances.push(recipe.appliance.toLowerCase());
         
         recipe.ustensils.forEach((ust)=> {
-            listUstensils.push(ust.toLowerCase());
+            allListUstensils.push(ust.toLowerCase());
         })
         
 
@@ -64,13 +66,24 @@ function displayListIngredients () {
     const menuContainer = document.querySelector(".list-ing");
     menuContainer.style.display="flex";
     
-    listIngredients = Array.from([...new Set(AllListIngredients)]);
+    listIngredients = Array.from([...new Set(allListIngredients)]);
     listIngredients.forEach((ing)=> {
         const listModel = recipeFactory(ing);
         const listDOM = listModel.getListOfIngredients();   
     })
 }
 
+function displayListAppliances () {
+    const menuContainer = document.querySelector(".list-app");
+    menuContainer.style.display="flex";
+    listAppliances = Array.from([...new Set(allListAppliances)]);
+    console.log('listAppliance', listAppliances)
+    listAppliances.forEach((app)=> {
+        const listModel = recipeFactory(app);
+        const listDOM = listModel.getListOfAppliances();   
+    })
+}
+console.log('listAppliance2', listAppliances)
 /**
  * This function close the list of the ingredients
  */
@@ -78,6 +91,9 @@ function closeList() {
     //console.log("jai le focus out !")
     const menuContainer = document.querySelector(".list-ing");
     menuContainer.style.display ="";
+
+    const menuContainerApp = document.querySelector(".list-app");
+    menuContainerApp.style.display ="";
 
 }
 
@@ -122,9 +138,9 @@ function deleteTag(e) {
 console.log("tags array", tagsSelected)
 
 
-//console.log("list ingredients", AllListIngredients);
-//console.log("list appareils", listAppliances);
-//console.log("list ustensils", listUstensils)
+console.log("list ingredients", allListIngredients);
+//console.log("list appareils", allListAppliances);
+//console.log("list ustensils", allListUstensils)
 
 
 async function init () {
@@ -133,5 +149,5 @@ async function init () {
 }
 
 // Close the list when the user clicks outside
-window.addEventListener("mouseup", closeList)
+//window.addEventListener("mouseup", closeList)
 init();

@@ -52,8 +52,8 @@
                 </button>
                 <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing" class="dropbtn hidden" >
                 <div class="list-ing" onfocusout="closeList()">
-                    <div class="cont-input">
-                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" 
+                    <div class="cont-input ing">
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing"
                         >
                         <i class="fa-solid fa-angle-up ingredients" onclick="closeList()"></i>
                     </div>
@@ -61,11 +61,19 @@
                 </div>
             </div>
             <div  class="dropbtn">
-                <button id="btn-appareils" class="dropbtn btn-container">
+                <button id="btn-appareils" class="dropbtn btn-container" onclick="displayListAppliances()">
                     Appareils
                     <i class="fa-solid fa-angle-down appareils"></i>
                 </button> 
                 <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn hidden">
+                <div class="list-app" onfocusout="closeList()">
+                    <div class="cont-input app">
+                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app"
+                        >
+                        <i class="fa-solid fa-angle-up app" onclick="closeList()"></i>
+                    </div>
+                  
+                </div>
             </div>
             <div class="dropbtn">
                 <button id="btn-ustensils" class="dropbtn btn-container">
@@ -73,6 +81,14 @@
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
                 <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
+                <div class="list-ust" onfocusout="closeList()">
+                    <div class="cont-input">
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" 
+                        >
+                        <i class="fa-solid fa-angle-up ingredients" onclick="closeList()"></i>
+                    </div>
+                  
+                </div>
             </div>
         </div>
         <!--CARDS OF RECIPES -->

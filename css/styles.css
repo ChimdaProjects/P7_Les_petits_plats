@@ -149,13 +149,21 @@ i.search-img {
     justify-content: space-around;
     align-items: center;
     padding: 0 1rem 0 0.5rem;
+   
+}
+.ing {
     background-color: #3282F7;
 }
-#myInput-ing2 {
+.app  {
+    background-color: #68D9A4;
+}
+.ust {
+    background-color: #ED6454;
+}
+#myInput-ing2, #myInput-app2 {
   
     width: 100%;
     border: none;
-    background-color: #3282F7;
     box-sizing: border-box;
     position: static;
     height: 69px;
@@ -168,17 +176,17 @@ i.search-img {
     color: #FFFFFF;
 }
 
-#myInput-ing2::placeholder {
+#myInput-ing2::placeholder, #myInput-app2::placeholder {
     color: #FFFFFF;
     
 }
-.list-ing {
+.list-ing , .list-app, .list-ust{
     position: relative;
     top:-100%;
     height: 397px;
     width: 667px;
     border-radius: 5px;
-    background-color: #3282F7;
+    
     z-index: 10;
     display: none;
     flex-wrap: wrap;
@@ -188,13 +196,21 @@ i.search-img {
     position: block;
 
 }
+
+.list-ing {
+    background-color: #3282F7;
+}
+
+.list-app {
+    background-color: #68D9A4;
+}
 /* hide scrollbar */
-.list-ing::-webkit-scrollbar { 
+.list-ing::-webkit-scrollbar, .list-app::-webkit-scrollbar { 
     width: 0 !important 
 }
 
-.elt-ing {
-    background-color: #3282F7;
+.elt-ing, .elt-app {
+    
     color:white;
     font-weight:400;
     font-size: 18px;
@@ -202,6 +218,13 @@ i.search-img {
     width: 30%;
     cursor: pointer;
   
+}
+.elt-ing {
+    background-color: #3282F7;
+}
+
+.elt-app {
+    background-color: #68D9A4;
 }
 /* CARD */
 
