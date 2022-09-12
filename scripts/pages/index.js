@@ -83,7 +83,7 @@ function displayListAppliances () {
         const listDOM = listModel.getListOfAppliances();   
     })
 }
-console.log('listAppliance2', listAppliances);
+//console.log('listAppliance2', listAppliances);
 
 function displayListUstensils ( ) {
     const menuContainer = document.querySelector(".list-ust");
@@ -129,7 +129,7 @@ function displayTagIng (event) {
    
     tagsSelected.push(value);
    
-    console.log("value tag selectionné", value);
+    //console.log("value tag selectionné", value);
     const tagModel = recipeFactory(value);
     const tagDOM = tagModel.displayTag();
 }
@@ -157,10 +157,10 @@ function deleteTag(e) {
 }
 
 
-console.log("tags array", tagsSelected)
+//console.log("tags array", tagsSelected)
 
 
-console.log("list ingredients", allListIngredients);
+//console.log("list ingredients", allListIngredients);
 //console.log("list appareils", allListAppliances);
 //console.log("list ustensils", allListUstensils)
 
