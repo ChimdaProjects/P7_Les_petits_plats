@@ -33,11 +33,6 @@ async function getRecipes() {
         })
 }
 
-<<<<<<< HEAD
-async function displayData(recipeArray) {
-    //console.log("display data", recipesArray);
-    recipesArray.forEach((recipe) => {
-=======
 /**
  * This function displays the card of each recipe
  * @param {Array} recipeArray array of recipes
@@ -57,7 +52,6 @@ async function displayData(recipesArr) {
         })
         
 
->>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
         const recipeModel = recipeFactory(recipe);
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
         
@@ -68,10 +62,10 @@ async function displayData(recipesArr) {
 /**
  * This function displays the list of ingredients
  */
-function displayListIngredients () {
+function displayListIngredients (arr) {
     const menuContainer = document.querySelector(".list-ing");
     menuContainer.style.display="flex";
-    
+    arr = listIngredients;
     listIngredients = Array.from([...new Set(allListIngredients)]);
     listIngredients.forEach((ing)=> {
         const listModel = recipeFactory(ing);

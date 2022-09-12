@@ -1,21 +1,11 @@
 function recipeFactory (data) {
-<<<<<<< HEAD
-    const {id,appliance, description, name, ingredients, time} = data;
-=======
-    const {appliance, description, name, ingredients, time, classTag} = data;
->>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
+    const {appliance, description, name, ingredients, time} = data;
     //console.log("data", data);
    
- 
-
     function getRecipeCardDOM () {
         let cardsSection = document.querySelector("#list-recipes");
-        const cardContainer = document.createElement("article");
+        const cardContainer = document.createElement("div");
         cardContainer.setAttribute("class", "card-recipe");
-<<<<<<< HEAD
-        cardContainer.setAttribute("id",`${id}` )
-=======
->>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
         // elements DOM img
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("class", "recipe-img");
@@ -27,10 +17,10 @@ function recipeFactory (data) {
         divHeader.setAttribute("class", "card-header");
         cardContainer.appendChild(divHeader);
         divHeader.innerHTML=`
-        <h1 class="recipe-title">${name}</h1>
-        <p class="recipe-time">
-        <i class="fa-solid fa-clock"></i>
-        ${time} min</p>
+            <h1 class="recipe-title">${name}</h1>
+            <p class="recipe-time">
+                <i class="fa-solid fa-clock"></i>
+                ${time} min</p>
         `
         // DOM elements : list of ingredients
         const ingContainer = document.createElement("div");
@@ -40,15 +30,15 @@ function recipeFactory (data) {
         ingContainer.appendChild(ul);
         ingredients.forEach((elt)=> {
             if(!elt.quantity) {
-                return ul.innerHTML+= `${elt.ingredient} </br>`
+                return ul.innerHTML+= `<li class="ingr" value="${elt.ingredient}">${elt.ingredient}</li>`
             }
 
             if (!elt.unit) {
-                return ul.innerHTML+= `${elt.ingredient}: ${elt.quantity}  </br>`
+                return ul.innerHTML+= `<li class="ingr" value="${elt.ingredient}">${elt.ingredient}: ${elt.quantity}</li>`
             }  
 
             if ( elt.ingredient && elt.quantity && elt.unit) {
-                return (ul.innerHTML+= `${elt.ingredient}: ${elt.quantity} ${elt.unit} </br>`)
+                return (ul.innerHTML+= `<li class="ingr" value="${elt.ingredient}">${elt.ingredient}: ${elt.quantity} ${elt.unit}</li>`)
             }
              
         })
@@ -69,28 +59,10 @@ function recipeFactory (data) {
 
 
         cardsSection.appendChild(cardContainer);
+        return cardContainer;
     }
-<<<<<<< HEAD
-
-    function getListByTags() {
-        const btnIng = document.querySelector("#btn-ingredients");
-        const listIng = document.createElement("div");
-        listIng.setAttribute("class", "list-ingredients");
-        btnIng.appendChild(listIng);
-        let ul = document.createElement("ul");
-        listIng.appendChild(ul);
-        ingredients.forEach((elt)=> {
-           
-            return ul.innerHTML+= `${elt.ingredient} </br>`
-           
-        })
-
-    }
-    return { getRecipeCardDOM, getListByTags }
-=======
         function getListOfIngredients () {
-            
-            
+                
             const menuContainer = document.querySelector(".list-ing");
             const divList = document.createElement("div");
             menuContainer.appendChild(divList);
@@ -98,10 +70,9 @@ function recipeFactory (data) {
             divList.value = data;
             divList.textContent=data;
             const eltIng = document.querySelectorAll(".elt-ing");
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng));       
+        }
 
-            
-    }
         function getListOfAppliances () {
             const menuContainer = document.querySelector(".list-app");
             const divList = document.createElement("div");
@@ -124,8 +95,6 @@ function recipeFactory (data) {
             eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
         }
 
-        
-
         function displayTag() {
             const sectionTag = document.querySelector("#tags-section");
             const contTag = document.createElement("div");
@@ -146,10 +115,9 @@ function recipeFactory (data) {
            
             `
 
-            
+            return contTag;
         }
 
       
     return { getRecipeCardDOM, getListOfIngredients, displayTag, getListOfAppliances, getListOfUstensils }
->>>>>>> 2fcd89f5d8fb33dc9e727bcb7cf330e4e6a18942
 }

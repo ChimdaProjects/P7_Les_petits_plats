@@ -1,15 +1,18 @@
 /* MAIN SEARCH BAR */
 // variables
-/*let recipesResult=[];
-
+let recipesResult=[];
+let ingredientResult=[];
+let applianceResult=[];
+let ustensilsResult=[];
 
 // DOM elements
 const searchBar = document.querySelector("#search-input");
 const cardCont = document.querySelector("#list-recipes");
-//console.log("cardCont", cardCont);
-let recipeCard = cardCont.querySelectorAll(".card-recipe");
+console.log("cardCont", cardCont);
 
-console.log("recipeCard1", recipeCard);
+let recipeCard = document.getElementsByClassName("card-recipe");
+
+console.log("recipeCard arr", recipeCard);
 
 // EVENTS
 searchBar.addEventListener("keyup", recipesFiltered);
@@ -18,67 +21,67 @@ searchBar.addEventListener("keyup", recipesFiltered);
  * Display card of recipes filtered after typing into the search bar
  * @param {Event} event 
  */
-/*function recipesFiltered(event) {
+function recipesFiltered(event) {
     
     const valueSearched = event.target.value;
     console.log("value input", valueSearched);
     let numberOfChar = valueSearched.length;
-
+    card = recipeCard;
+    
     if (numberOfChar > 2 ) {
-       
-        mainResearch(valueSearched, recipeCard);
-        console.log("array", recipeCard);
+  
+        mainResearch(valueSearched, card);
+        //console.log("array", recipeCard);
         
     }  
 }
 
 function mainResearch(valueSearched, recipeCard) {
     recipesResult=[];
+    ingredientResult=[];
+    //console.log("recipeCard", recipeCard)
         for (let i=0; i < recipeCard.length; i++) {
-            if ( recipeCard[i].textContent.toLocaleLowerCase().includes(valueSearched)) {
-                console.log("recipeCard ds for", recipeCard[i].name);
+            if ( recipeCard[i].textContent.toLowerCase().includes(valueSearched)) {
                 recipeCard[i].style.display = "block"; 
                 recipesResult.push(recipeCard[i]);
-               console.log("element trouvé");
-             
+                // liste ingrédients
+                let ingr= recipeCard[i].getElementsByClassName("ingr");
+                for(let i=0; i < ingr.length; i++) {
+                    let tt = ingr[i].textContexent;
+                    let textModified = text.split(" ");
+                    let ingredient = textModified[0].replace(":", "").toLowerCase();
+                    ingredientResult.push(ingredient);
+                }
+                //liste appareils
+                let app = recipeCard[i].getElementsByClassName
             } else {
                 recipeCard[i].style.display = "none";
-            }   
-        console.log("result array", recipesResult);
-        } 
-}
-
-/*function displayIngredients(valueSearched, recipesResult) {
-    for (let i=0 ; i < recipesResult.length; i++) {
-        if(recipesResult[i].toLocaleLowerCase().includes(valueSearched)) {
-
+            } 
         }
-
-    }
-    openMenu(recipesResult);
+        displayIngredients(ingredientResult);
+        //console.log("result ingredient XXX", ingredientResult);
+       
 }
 
-function displayAppliances (valueSearched, recipesResult) {
 
-}
-
-function displayUstensils(valueSearched, recipesResult) {
-
-}
-
-function openMenu(recipesResult) {
-    recipesResult.forEach((recipe) => {
-        const recipeModel = recipeFactory(recipe);
-        const recipeByTag = recipeModel.getListByTags();
-        
+function displayIngredients(arr) {
+    console.log("arr", arr);
+    const menuContainer = document.querySelector(".list-ing");
+    menuContainer.style.display="flex";
+   
+    listIngredients = Array.from([...new Set(arr)]);
+    console.log("listIngre", listIngredients);
+    listIngredients.forEach((ing)=> {
+        const listModel = recipeFactory(ing);
+        const listDOM = listModel.getListOfIngredients();   
     })
+   
+}
 
-  
+function displayAppliances() {
 
 }
 
-function openSearchBarByTags(e) {
-    const inputIngredient = document.querySelector("#myInput-ing");
-    inputIngredient.classList.toggle("hidden");
-}*/
-//console.log("recipeCard2", recipeCard);
+function displayUstensils() {
+
+}
