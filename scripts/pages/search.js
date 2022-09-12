@@ -39,6 +39,8 @@ function recipesFiltered(event) {
 function mainResearch(valueSearched, recipeCard) {
     recipesResult=[];
     ingredientResult=[];
+    applianceResult=[];
+    ustensilsResult=[];
     //console.log("recipeCard", recipeCard)
         for (let i=0; i < recipeCard.length; i++) {
             if ( recipeCard[i].textContent.toLowerCase().includes(valueSearched)) {
@@ -46,20 +48,40 @@ function mainResearch(valueSearched, recipeCard) {
                 recipesResult.push(recipeCard[i]);
                 // liste ingrédients
                 let ingr= recipeCard[i].getElementsByClassName("ingr");
+                console.log("ingr", ingr);
                 for(let i=0; i < ingr.length; i++) {
-                    let tt = ingr[i].textContexent;
+                    let text = ingr[i].textContent;
+                    console.log("text", text);
                     let textModified = text.split(" ");
                     let ingredient = textModified[0].replace(":", "").toLowerCase();
                     ingredientResult.push(ingredient);
                 }
                 //liste appareils
-                let app = recipeCard[i].getElementsByClassName
+                let appl = recipeCard[i].dataset.appliance.toLowerCase();
+                console.log("appl id", appl);
+                applianceResult.push(appl);
+
+                // liste ustensils
+                let ust = recipeCard[i].dataset.ustensils.toLowerCase();
+                let ustModified = ust.split(",");
+                for (let i =0; i < ustModified.length; i ++) {
+                    let ustensil = ustModified[i].toLowerCase();
+                    ustensilsResult.push(ustensil);
+                }
+                //console.log("uust", ustModified);
+                
+
+
             } else {
                 recipeCard[i].style.display = "none";
             } 
         }
-        displayIngredients(ingredientResult);
+        displayListIngredients(ingredientResult);
+        displayAppliances(applianceResult);
+        displayUstensils(ustensilsResult);
         //console.log("result ingredient XXX", ingredientResult);
+        console.log("result appareil XXX", applianceResult);
+        console.log("result aust XXX", ustensilsResult);
        
 }
 
@@ -70,7 +92,7 @@ function displayIngredients(arr) {
     menuContainer.style.display="flex";
    
     listIngredients = Array.from([...new Set(arr)]);
-    console.log("listIngre", listIngredients);
+    console.log("listIngredients", listIngredients);
     listIngredients.forEach((ing)=> {
         const listModel = recipeFactory(ing);
         const listDOM = listModel.getListOfIngredients();   
@@ -78,10 +100,25 @@ function displayIngredients(arr) {
    
 }
 
-function displayAppliances() {
-
+function displayAppliances(arr) {
+    const menuContainer = document.querySelector(".list-app");
+    menuContainer.style.display="flex";
+    listAppliances = Array.from([...new Set(arr)]);
+    console.log('listAppliance', listAppliances)
+    listAppliances.forEach((app)=> {
+        const listModel = recipeFactory(app);
+        const listDOM = listModel.getListOfAppliances();   
+    })
 }
 
-function displayUstensils() {
-
+function displayUstensils(arr) {
+    const menuContainer = document.querySelector(".list-ust");
+    menuContainer.style.display="flex";
+    
+    listUstensils = Array.from([...new Set(arr)]);
+    listUstensils.forEach((ust)=> {
+        const listModel = recipeFactory(ust);
+        const listDOM = listModel.getListOfUstensils();  
+       
+    })
 }

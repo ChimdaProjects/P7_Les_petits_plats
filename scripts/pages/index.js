@@ -56,6 +56,7 @@ async function displayData(recipesArr) {
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
         
     })
+    
 }
 
 
@@ -65,8 +66,8 @@ async function displayData(recipesArr) {
 function displayListIngredients (arr) {
     const menuContainer = document.querySelector(".list-ing");
     menuContainer.style.display="flex";
-    arr = listIngredients;
-    listIngredients = Array.from([...new Set(allListIngredients)]);
+   
+    listIngredients = Array.from([...new Set(arr)]);
     listIngredients.forEach((ing)=> {
         const listModel = recipeFactory(ing);
         const listDOM = listModel.getListOfIngredients();   
