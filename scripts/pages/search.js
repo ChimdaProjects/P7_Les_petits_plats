@@ -1,14 +1,15 @@
 let searchBarInput = document.getElementById("search-input");
-console.log("value input", searchBarInput);
+//console.log("value input", searchBarInput);
 let valueSearched;
 let filteredArr;
-searchBarInput.addEventListener("input", searchBar);
+searchBarInput.addEventListener("keyup", searchBar);
 
 function searchBar(e) {
     valueSearched = (e.target.value).toLowerCase();
     console.log("value", valueSearched);
     if (valueSearched.length > 2) {
         mainSearch(valueSearched, recipesArray);
+       
     } 
     
 }
@@ -26,15 +27,17 @@ function mainSearch(value, arr) {
         });  
         return valueFiltered;
     });
-    console.log("tab filtré", filteredArr);
+    //console.log("tab filtré", filteredArr);
+   
+    let cardsSection = document.querySelector("#list-recipes");
+    cardsSection.innerHTML="";
+
     displayDataCard(filteredArr);
-    
-    
-    
-    
+
 }
 
 function displayDataCard(arr) {
+
     allListAppliances= [];
     allListIngredients=[];
     allListUstensils=[];
@@ -73,7 +76,7 @@ function displayDataCard(arr) {
     menuContainer.style.display="flex";
     
     let listIngredients = Array.from([...new Set(arr)]);
-    console.log('listIngredients', listIngredients);
+    //console.log('listIngredients', listIngredients);
     listIngredients.forEach((ing)=> {
         const listModel = recipeFactory(ing);
         const listDOM = listModel.getListOfIngredients();   
@@ -84,7 +87,7 @@ function displayListAppliancesBis (arr) {
     const menuContainer = document.querySelector(".list-app");
     menuContainer.style.display="flex";
     let listAppliances = Array.from([...new Set(arr)]);
-    console.log('listAppliance', listAppliances)
+    //console.log('listAppliance', listAppliances)
     listAppliances.forEach((app)=> {
         const listModel = recipeFactory(app);
         const listDOM = listModel.getListOfAppliances();   
@@ -96,7 +99,7 @@ function displayListUstensilsBis (arr) {
     menuContainer.style.display="flex";
     
     let listUstensils = Array.from([...new Set(arr)]);
-    console.log("listUstensils", listUstensils);
+    //console.log("listUstensils", listUstensils);
     listUstensils.forEach((ust)=> {
         const listModel = recipeFactory(ust);
         const listDOM = listModel.getListOfUstensils();  
