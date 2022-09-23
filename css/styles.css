@@ -24,6 +24,7 @@ html {
 #search-bar {
     display: flex;
     align-items: center;
+    justify-content: center;
     
 }
 #search-input {
@@ -31,26 +32,37 @@ html {
     width: 100%;
     left: 0px;
     top: 0px;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
     background-color: #E7E7E7;
     font-size: 1.2rem;
     position: relative;
     border: #E7E7E7;
+    padding-left: 1rem;
+    
 }
 
 #search-input::placeholder {
-    padding-left: 1rem;
+    padding-left: 0rem;
     color: #000000;
     opacity: 0.25;
 }
 
-i.search-img {
-    position: absolute;
-    right: 8rem;
+.search-img {
+    
     font-size: 30px;
-    background-color: #E7E7E7 ;
+    background-color: #E7E7E7;
+    height: 69px;
+    border-radius:  0 5px 5px 0;
+    
+    
     
 }
+
+i.fa-magnifying-glass {
+    display: flex;
+   align-items: center;
+}
+
 /* TAGS/*/
 #tags-section {
     display: flex;
@@ -221,17 +233,29 @@ i.search-img {
     line-height: 22px;
     width: 30%;
     cursor: pointer;
+    
   
 }
 .elt-ing {
     background-color: #3282F7;
 }
+.elt-ing::first-letter {
+    text-transform: capitalize;
+}
 
 .elt-app {
     background-color: #68D9A4;
 }
+
+.elt-app::first-letter {
+    text-transform: capitalize;
+}
 .elt-ust {
     background-color: #ED6454;
+}
+
+.elt-ust::first-letter {
+    text-transform: capitalize;
 }
 /* CARD */
 

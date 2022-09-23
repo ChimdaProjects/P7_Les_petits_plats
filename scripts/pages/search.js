@@ -31,7 +31,7 @@ function mainSearch(value, arr) {
    
     let cardsSection = document.querySelector("#list-recipes");
     cardsSection.innerHTML="";
-
+    
     displayDataCard(filteredArr);
 
 }
@@ -58,22 +58,29 @@ function displayDataCard(arr) {
         console.log("recipe", recipe);
         const recipeModel = recipeFactory(recipe);
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
-        
+        // on vide le DOM pour à chaque modification
+        let listIng = document.querySelector(".list-ing");
+        listIng.innerHTML="";
+        let listApp = document.querySelector(".list-app");
+        listApp.innerHTML="";
+        let listUst= document.querySelector(".list-ust");
+        listUst.innerHTML="";
         //update lists of ingredients, appliances and ustensils
-        displayListIngredientsBis(allListIngredients);
-        displayListAppliancesBis(allListAppliances);
-        displayListUstensilsBis(allListUstensils);
+        updateListIngredients(allListIngredients);
+        updateListAppliances(allListAppliances);
+        updateListUstensils(allListUstensils);
 
     })
 
     
 }
 /**
- * This function displays the list of ingredients
+ * This function update the list of ingredients
+ * @param {Array} arr - Array of ingredients
  */
- function displayListIngredientsBis (arr) {
+ function updateListIngredients (arr) {
     const menuContainer = document.querySelector(".list-ing");
-    menuContainer.style.display="flex";
+    menuContainer.style.display="none";
     
     let listIngredients = Array.from([...new Set(arr)]);
     //console.log('listIngredients', listIngredients);
@@ -82,10 +89,13 @@ function displayDataCard(arr) {
         const listDOM = listModel.getListOfIngredients();   
     })
 }
-
-function displayListAppliancesBis (arr) {
+/**
+ * This function updates list of appliances
+ * @param {Array} arr - Array of appliances
+ */
+function updateListAppliances (arr) {
     const menuContainer = document.querySelector(".list-app");
-    menuContainer.style.display="flex";
+    menuContainer.style.display="none";
     let listAppliances = Array.from([...new Set(arr)]);
     //console.log('listAppliance', listAppliances)
     listAppliances.forEach((app)=> {
@@ -94,9 +104,13 @@ function displayListAppliancesBis (arr) {
     })
 }
 
-function displayListUstensilsBis (arr) {
+/**
+ * This function updates list of ustensils
+ * @param {Array} arr - array of ustensils 
+ */
+function updateListUstensils (arr) {
     const menuContainer = document.querySelector(".list-ust");
-    menuContainer.style.display="flex";
+    menuContainer.style.display="none";
     
     let listUstensils = Array.from([...new Set(arr)]);
     //console.log("listUstensils", listUstensils);
