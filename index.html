@@ -33,18 +33,16 @@
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
             <div class="dropbtn">
-                <button id="btn-ingredients"class="dropbtn btn-container" onclick="displayListIngredients ()">
+                <button id="btn-ingredients"class="dropbtn btn-container" onclick="displayListIngredients()">
                     Ingrédients
                     <i class="fa-solid fa-angle-down ingredients"></i>
                 </button>
                 <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing" class="dropbtn hidden" >
-                <div class="list-ing hidden" onfocusout="closeList()">
+                <div class="list-ing" onfocusout="closeList()">
                     <div class="cont-input ing">
-                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing"
-                        >
-                        <i class="fa-solid fa-angle-up ingredients" onclick="closeList()"></i>
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing">
+                        <i class="fa-solid fa-angle-up ing" onclick="closeList()"></i>
                     </div>
-                  
                 </div>
             </div>
             <div  class="dropbtn">

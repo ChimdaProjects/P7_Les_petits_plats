@@ -38,6 +38,9 @@ async function getRecipes() {
  * @param {Array} recipeArray array of recipes
  */
 async function displayData(recipesArr) {
+    allListAppliances= [];
+    allListIngredients=[];
+    allListUstensils=[];
     //console.log("display data", recipeArray);
     recipesArr.forEach((recipe) => {
         
@@ -56,27 +59,36 @@ async function displayData(recipesArr) {
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
         
     })
+        console.log(
+            "--- liste ingredient dans display data ---", allListIngredients);
+
+        updateListIngredients(allListIngredients);
+        updateListAppliances(allListAppliances);
+        updateListUstensils(allListUstensils);
 }
 
 
 /**
  * This function displays the list of ingredients
  */
-function displayListIngredients () {
+function updateListIngredients (arr) {
     const menuContainer = document.querySelector(".list-ing");
-    menuContainer.style.display="flex";
-    
-    listIngredients = Array.from([...new Set(allListIngredients)]);
+    menuContainer.style.display="none";
+    console.log("je suis dans update list ing")
+   
+    // create a new array without duplicates
+    let listIngredients = Array.from([...new Set(arr)]).sort();
+    console.log('listIngredients', listIngredients);
     listIngredients.forEach((ing)=> {
         const listModel = recipeFactory(ing);
         const listDOM = listModel.getListOfIngredients();   
     })
 }
 
-function displayListAppliances () {
+function updateListAppliances (arr) {
     const menuContainer = document.querySelector(".list-app");
-    menuContainer.style.display="flex";
-    listAppliances = Array.from([...new Set(allListAppliances)]);
+    menuContainer.style.display="none";
+    listAppliances = Array.from([...new Set(arr)]).sort();
     console.log('listAppliance', listAppliances)
     listAppliances.forEach((app)=> {
         const listModel = recipeFactory(app);
@@ -85,11 +97,11 @@ function displayListAppliances () {
 }
 //console.log('listAppliance2', listAppliances);
 
-function displayListUstensils ( ) {
+function updateListUstensils (arr) {
     const menuContainer = document.querySelector(".list-ust");
-    menuContainer.style.display="flex";
+    menuContainer.style.display="none";
     
-    listUstensils = Array.from([...new Set(allListUstensils)]);
+    listUstensils = Array.from([...new Set(arr)]).sort();
     listUstensils.forEach((ust)=> {
         const listModel = recipeFactory(ust);
         const listDOM = listModel.getListOfUstensils();  
@@ -97,6 +109,20 @@ function displayListUstensils ( ) {
     })
 }
 
+function displayListIngredients() {
+    const menuContainer = document.querySelector(".list-ing");
+    menuContainer.style.display="flex";
+}
+
+function displayListAppliances() {
+    const menuContainer = document.querySelector(".list-app");
+    menuContainer.style.display="flex";
+}
+
+function displayListUstensils() {
+    const menuContainer = document.querySelector(".list-ust");
+    menuContainer.style.display="flex";
+}
 
 
 

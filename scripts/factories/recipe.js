@@ -58,19 +58,21 @@ function recipeFactory (data) {
         divContent.appendChild(ingContainer);
         divContent.appendChild(descriptionContainer);
        
-
-
         cardsSection.appendChild(cardContainer);
     }
+    
         function getListOfIngredients () {
-            
-            
+            // create element DOM
             const menuContainer = document.querySelector(".list-ing");
             const divList = document.createElement("div");
             menuContainer.appendChild(divList);
             divList.setAttribute("class", "elt-ing");
+
+            // attribute value = data 
             divList.value = data;
-            divList.textContent=data;
+            divList.textContent = data;
+
+            // add event "click" on each ingredient 
             const eltIng = document.querySelectorAll(".elt-ing");
             eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
 

@@ -242,6 +242,10 @@ i.fa-magnifying-glass {
 .elt-ing::first-letter {
     text-transform: capitalize;
 }
+.elt-ing:hover, .elt-app:hover, .elt-ust:hover {
+    transform: scale(1.1);
+    color: black
+}
 
 .elt-app {
     background-color: #68D9A4;
