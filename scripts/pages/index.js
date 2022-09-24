@@ -62,16 +62,34 @@ async function displayData(recipesArr) {
         console.log(
             "--- liste ingredient dans display data ---", allListIngredients);
 
-        updateListIngredients(allListIngredients);
-        updateListAppliances(allListAppliances);
-        updateListUstensils(allListUstensils);
+        updateList(allListIngredients, "ing");
+        updateList(allListAppliances, "app");
+        updateList(allListUstensils, "ust");
 }
 
+/**
+ * 
+ * @param {Array} arr Array of ingredients, appliances or ustensils of json's file or after research
+ * @param {String} element - name of the category (ing, app, ust)
+ */
+function updateList(arr, element) {
+    const menuContainer = document.querySelector(`.list-${element}`);
+    menuContainer.style.display="none";
+    console.log("je suis dans update list ing")
+    // create a new array without duplicates
+    let listElts = Array.from([...new Set(arr)]).sort();
+    console.log('list des éléments', listElts);
+    listElts.forEach((elt)=> {
+        const listModel = recipeFactory(elt, element);
+        const listDOM = listModel.getList();   
+    })
+}
 
 /**
  * This function displays the list of ingredients
  * @param {Array} arr - Array of ingredients of json's file or after research
  */
+/*
 function updateListIngredients (arr) {
     const menuContainer = document.querySelector(".list-ing");
     menuContainer.style.display="none";
@@ -90,6 +108,7 @@ function updateListIngredients (arr) {
  * This function updates list of appliances
  * @param {Array} arr - array of appliances of json's file or after research
  */
+/*
 function updateListAppliances (arr) {
     const menuContainer = document.querySelector(".list-app");
     menuContainer.style.display="none";
@@ -108,6 +127,7 @@ function updateListAppliances (arr) {
  * This function updates list of ustensils
  * @param {Array} arr - array of ustensils of json's file or after research
  */
+/*
 function updateListUstensils (arr) {
     const menuContainer = document.querySelector(".list-ust");
     menuContainer.style.display="none";
@@ -160,8 +180,6 @@ function closeList() {
     const menuContainerUst = document.querySelector(".list-ust");
     menuContainerUst.style.display ="";
 
-    
-
 }
 
 
@@ -201,15 +219,6 @@ function deleteTag(e) {
    let section = document.querySelector("#tags-section");
    section.removeChild(parent2);
 }
-
-
-//console.log("tags array", tagsSelected)
-
-
-//console.log("list ingredients", allListIngredients);
-//console.log("list appareils", allListAppliances);
-//console.log("list ustensils", allListUstensils)
-
 
 async function init () {
     await getRecipes();
