@@ -33,9 +33,9 @@
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
             <div class="dropbtn">
-                <button id="btn-ingredients"class="dropbtn btn-container" onclick="displayListIngredients()">
+                <button id="btn-ingredients"class="dropbtn btn-container" value="btn-ing" onclick="displayList(event)">
                     Ingrédients
-                    <i class="fa-solid fa-angle-down ingredients"></i>
+                    <i class="fa-solid fa-angle-down ingredients" value="btn-ing" onclick="displayList(event)"></i>
                 </button>
                 <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing" class="dropbtn hidden" >
                 <div class="list-ing" onfocusout="closeList()">
@@ -46,9 +46,9 @@
                 </div>
             </div>
             <div  class="dropbtn">
-                <button id="btn-appareils" class="dropbtn btn-container" onclick="displayListAppliances()">
+                <button id="btn-appareils" class="dropbtn btn-container" value="btn-app" onclick="displayList(event)">
                     Appareils
-                    <i class="fa-solid fa-angle-down appareils"></i>
+                    <i class="fa-solid fa-angle-down appareils" value="btn-app" onclick="displayList(event)"></i>
                 </button> 
                 <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn hidden">
                 <div class="list-app" onfocusout="closeList()">
@@ -61,9 +61,9 @@
                 </div>
             </div>
             <div class="dropbtn">
-                <button id="btn-ustensils" class="dropbtn btn-container" onclick="displayListUstensils()">
+                <button id="btn-ustensils" class="dropbtn btn-container" value="btn-ust"onclick="displayList(event)">
                     Ustensils
-                    <i class="fa-solid fa-angle-down ustensils" ></i>
+                    <i class="fa-solid fa-angle-down ustensils" value="btn-ust" onclick="displayList(event)"></i>
                 </button>   
                 <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
                 <div class="list-ust" onfocusout="closeList()">

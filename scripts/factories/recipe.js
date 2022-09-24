@@ -1,5 +1,6 @@
-function recipeFactory (data) {
+function recipeFactory (data, element) {
     const {appliance, description, name, ingredients, time, classTag} = data;
+    const elt = element;
     //console.log("data", data);
    
  
@@ -60,7 +61,25 @@ function recipeFactory (data) {
        
         cardsSection.appendChild(cardContainer);
     }
-    
+        /**
+         * This function creates each element of the list of ingredients, appliances or ustensils
+         */
+        function getList() {
+            // create element DOM
+            const menuContainer = document.querySelector(`.list-${elt}`);
+            const divList = document.createElement("div");
+            menuContainer.appendChild(divList);
+            divList.setAttribute("class", `elt-${elt}`);
+
+            // attribute value = data 
+            divList.value = data;
+            divList.textContent = data;
+
+            // add event "click" on each ingredient 
+            const eltIng = document.querySelectorAll(`elt-${elt}`);
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng));
+        }
+        /*
         function getListOfIngredients () {
             // create element DOM
             const menuContainer = document.querySelector(".list-ing");
@@ -99,7 +118,7 @@ function recipeFactory (data) {
             const eltIng = document.querySelectorAll(".elt-ust");
             eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
         }
-
+        */
         
 
         function displayTag() {
@@ -126,5 +145,5 @@ function recipeFactory (data) {
         }
 
       
-    return { getRecipeCardDOM, getListOfIngredients, displayTag, getListOfAppliances, getListOfUstensils }
+    return { getRecipeCardDOM, displayTag, getList }
 }

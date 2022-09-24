@@ -70,60 +70,80 @@ async function displayData(recipesArr) {
 
 /**
  * This function displays the list of ingredients
+ * @param {Array} arr - Array of ingredients of json's file or after research
  */
 function updateListIngredients (arr) {
     const menuContainer = document.querySelector(".list-ing");
     menuContainer.style.display="none";
     console.log("je suis dans update list ing")
-   
+    let elt = "ing";
     // create a new array without duplicates
     let listIngredients = Array.from([...new Set(arr)]).sort();
     console.log('listIngredients', listIngredients);
-    listIngredients.forEach((ing)=> {
-        const listModel = recipeFactory(ing);
-        const listDOM = listModel.getListOfIngredients();   
+    listIngredients.forEach((ingr)=> {
+        const listModel = recipeFactory(ingr, elt);
+        const listDOM = listModel.getList();   
     })
 }
 
+/**
+ * This function updates list of appliances
+ * @param {Array} arr - array of appliances of json's file or after research
+ */
 function updateListAppliances (arr) {
     const menuContainer = document.querySelector(".list-app");
     menuContainer.style.display="none";
     listAppliances = Array.from([...new Set(arr)]).sort();
-    console.log('listAppliance', listAppliances)
-    listAppliances.forEach((app)=> {
-        const listModel = recipeFactory(app);
-        const listDOM = listModel.getListOfAppliances();   
+    console.log('listAppliance', listAppliances);
+    let elt = "app";
+    listAppliances.forEach((appl)=> {
+        const listModel = recipeFactory(appl, elt);
+        
+        const listDOM = listModel.getList();   
     })
 }
 //console.log('listAppliance2', listAppliances);
 
+/**
+ * This function updates list of ustensils
+ * @param {Array} arr - array of ustensils of json's file or after research
+ */
 function updateListUstensils (arr) {
     const menuContainer = document.querySelector(".list-ust");
     menuContainer.style.display="none";
-    
+    let elt = "ust";
     listUstensils = Array.from([...new Set(arr)]).sort();
-    listUstensils.forEach((ust)=> {
-        const listModel = recipeFactory(ust);
-        const listDOM = listModel.getListOfUstensils();  
+    listUstensils.forEach((uste)=> {
+        const listModel = recipeFactory(uste, elt);
+        const listDOM = listModel.getList();  
        
     })
 }
 
-function displayListIngredients() {
-    const menuContainer = document.querySelector(".list-ing");
-    menuContainer.style.display="flex";
+/**
+ * This function displays the list of ingredients, appliances or ustensils
+ * @param {Event} event 
+ */
+function displayList(event) {
+    let value = event.target.value;
+    //console.log('value', value);
+    switch (value) {
+        case "btn-ing" :
+            const menuContainerIng = document.querySelector(".list-ing");
+            menuContainerIng.style.display="flex";
+            break;
+        case "btn-app" :
+            const menuContainerApp = document.querySelector(".list-app");
+            menuContainerApp.style.display="flex";
+            break;
+        case "btn-ust" :
+            const menuContainerUst = document.querySelector(".list-ust");
+            menuContainerUst.style.display="flex";
+            break;
+        default: 
+            console.log(`Sorry, we are out of ${value}.`);
+    }
 }
-
-function displayListAppliances() {
-    const menuContainer = document.querySelector(".list-app");
-    menuContainer.style.display="flex";
-}
-
-function displayListUstensils() {
-    const menuContainer = document.querySelector(".list-ust");
-    menuContainer.style.display="flex";
-}
-
 
 
 /**
