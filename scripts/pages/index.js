@@ -78,13 +78,13 @@ function updateList(arr, element) {
     console.log("je suis dans update list ing")
     // create a new array without duplicates
     let listElts = Array.from([...new Set(arr)]).sort();
-    console.log('list des éléments', listElts);
+    console.log(`list des éléments ${element}`, listElts);
     listElts.forEach((elt)=> {
         const listModel = recipeFactory(elt, element);
         const listDOM = listModel.getList();   
     })
 }
-
+/*
 /**
  * This function displays the list of ingredients
  * @param {Array} arr - Array of ingredients of json's file or after research
@@ -139,6 +139,7 @@ function updateListUstensils (arr) {
        
     })
 }
+*/
 
 /**
  * This function displays the list of ingredients, appliances or ustensils

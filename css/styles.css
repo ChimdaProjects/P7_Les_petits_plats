@@ -60,7 +60,9 @@ html {
 
 i.fa-magnifying-glass {
     display: flex;
-   align-items: center;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
 }
 
 /* TAGS/*/

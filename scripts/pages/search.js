@@ -1,19 +1,30 @@
-let searchBarInput = document.getElementById("search-input");
-//console.log("value input", searchBarInput);
+// Globals variables
 let valueSearched;
 let filteredArr;
+
+// DOM elements
+let searchBarInput = document.getElementById("search-input");
+//console.log("value input", searchBarInput);
+
+// Events
 searchBarInput.addEventListener("keyup", searchBar);
 
+/**
+ * This function 
+ * @param {Event} e - event of input
+ */
 function searchBar(e) {
     valueSearched = (e.target.value).toLowerCase();
-    console.log("value", valueSearched);
+    //console.log("value", valueSearched);
     if (valueSearched.length > 2) {
         mainSearch(valueSearched, recipesArray);
        
     } else if (valueSearched.length < 1) {
-        displayData(recipesArray)
+        let cardsSection = document.querySelector("#list-recipes");
+        cardsSection.innerHTML="";
+        displayData(recipesArray);
+        
     }
-    
 }
 
 function mainSearch(value, arr) {
@@ -30,108 +41,24 @@ function mainSearch(value, arr) {
         return valueFiltered;
     });
     
-   
+   // on vide le DOM pour chaque modification
     let cardsSection = document.querySelector("#list-recipes");
     cardsSection.innerHTML="";
-     // on vide le DOM pour chaque modification
-     let listIng = document.querySelector(".list-ing");
-     listIng.innerHTML="";
-     let listApp = document.querySelector(".list-app");
-     listApp.innerHTML="";
-     let listUst= document.querySelector(".list-ust");
-     listUst.innerHTML="";
-     //console.log("tab filtré", filteredArr);
-    displayData(filteredArr);
-
-}
-/*
-function displayDataCard(arr) {
-
-    allListAppliances= [];
-    allListIngredients=[];
-    allListUstensils=[];
-    //console.log("array display card", arr);
-    arr.forEach((recipe) => {
-        //console.log("recipe", recipe)
-        //console.log("recipe ing", recipe.ingredients)
-        recipe.ingredients.forEach((ing)=> {
-            allListIngredients.push(ing.ingredient.toLowerCase())    
-        })
-       
-        allListAppliances.push(recipe.appliance.toLowerCase());
-        
-        recipe.ustensils.forEach((ust)=> {
-            allListUstensils.push(ust.toLowerCase());
-        })
-        
-        console.log("recipe", recipe);
-        const recipeModel = recipeFactory(recipe);
-        const recipeCardDOM = recipeModel.getRecipeCardDOM();
-       
-        //update lists of ingredients, appliances and ustensils
-        updateListIngredients(allListIngredients);
-        updateListAppliances(allListAppliances);
-        updateListUstensils(allListUstensils);
-
-    })
-
-    
-}
-
-
-/**
- * This function update the list of ingredients
- * @param {Array} arr - Array of ingredients
- */
-/*
- function updateListIngredients (arr) {
-    console.log("je suis dans update list ing")
     let listIng = document.querySelector(".list-ing");
     listIng.innerHTML="";
-    const menuContainer = document.querySelector(".list-ing");
-    menuContainer.style.display="none";
-    // create a new array without duplicates
-    let listIngredients = Array.from([...new Set(arr)]).sort();
-    console.log('listIngredients', listIngredients);
-    listIngredients.forEach((ing)=> {
-        const listModel = recipeFactory(ing);
-        const listDOM = listModel.getListOfIngredients();   
-    })
-}
-/**
- * This function updates list of appliances
- * @param {Array} arr - Array of appliances
- */
-/*
-function updateListAppliances (arr) {
-    const menuContainer = document.querySelector(".list-app");
-    menuContainer.style.display="none";
-    let listAppliances = Array.from([...new Set(arr)]).sort();
-    console.log('listAppliance', listAppliances)
-    listAppliances.forEach((app)=> {
-        const listModel = recipeFactory(app);
-        const listDOM = listModel.getListOfAppliances();  
-
-    })
-}
-
-/**
- * This function updates list of ustensils
- * @param {Array} arr - array of ustensils 
- */
-/*
-function updateListUstensils (arr) {
-    const menuContainer = document.querySelector(".list-ust");
-    menuContainer.style.display="none";
+    let listApp = document.querySelector(".list-app");
+    listApp.innerHTML="";
+    let listUst= document.querySelector(".list-ust");
+    listUst.innerHTML="";
+     //console.log("tab filtré", filteredArr);
+    // si le tableau est vide alors on affiche le msg d'erreur
+    if (filteredArr.length == 0) {
+        cardsSection.innerHTML = 
+        `Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes",
+        "poisson", etc...`
+    //sinon on affiche le resultat obtenu dans le tableau filteredArr
+    } else {
+        displayData(filteredArr);
+    }
     
-    let listUstensils = Array.from([...new Set(arr)]).sort();
-    console.log("listUstensils", listUstensils);
-    listUstensils.forEach((ust)=> {
-        const listModel = recipeFactory(ust);
-        const listDOM = listModel.getListOfUstensils();  
-       
-    })
 }
-
-
-*/
