@@ -16,14 +16,19 @@ searchBarInput.addEventListener("keyup", searchBar);
 function searchBar(e) {
     valueSearched = (e.target.value).toLowerCase();
     //console.log("value", valueSearched);
+    console.log("length value", valueSearched.length)
     if (valueSearched.length > 2) {
         mainSearch(valueSearched, recipesArray);
        
-    } else if (valueSearched.length < 1) {
+    } //else if (valueSearched.length <= 2 || valueSearched.length > 1 ) {
+        
+        //let contInput = document.querySelector("#search-bar");
+        //contInput.setAttribute("data-error-visible", "true");
+
+     else if (valueSearched.length < 1) {
         let cardsSection = document.querySelector("#list-recipes");
         cardsSection.innerHTML="";
         displayData(recipesArray);
-        
     }
 }
 
@@ -61,4 +66,5 @@ function mainSearch(value, arr) {
         displayData(filteredArr);
     }
     
+
 }

@@ -12,6 +12,17 @@ html {
     display: none;
 }
 
+/*Colors */
+.ing {
+    background-color: #3282F7;
+}
+.app  {
+    background-color: #68D9A4;
+}
+.ust {
+    background-color: #ED6454;
+}
+
 
 /*LOGO*/
 #header {
@@ -85,19 +96,20 @@ i.fa-magnifying-glass {
     margin-right: 1rem;
 }
 
-.btn-ingredient img, .btn-appareil img, .btn-ustensil img {
+.btn-ing img, .btn-app img, .btn-ust img {
     width: 20px;
    
 }
-.btn-ingredient, .btn-ingredient img {
+
+.btn-ing, .btn-ing img {
     background: #3282F7;
 }
 
-.btn-appareil, .btn-appareil img {
+.btn-app, .btn-app img {
     background: #68D9A4;
 }
 
-.btn-ustensil, .btn-ustensil img {
+.btn-ust, .btn-ust img {
     background: #ED6454;
 }
 
@@ -163,17 +175,9 @@ i.fa-magnifying-glass {
     justify-content: space-around;
     align-items: center;
     padding: 0 1rem 0 0.5rem;
-   
+    height: 69px;
 }
-.ing {
-    background-color: #3282F7;
-}
-.app  {
-    background-color: #68D9A4;
-}
-.ust {
-    background-color: #ED6454;
-}
+
 #myInput-ing2, #myInput-app2, #myInput-ust2 {
   
     width: 100%;
@@ -211,17 +215,18 @@ i.fa-magnifying-glass {
 
 }
 
+/*
 .list-ing {
     background-color: #3282F7;
 }
-
 .list-app {
     background-color: #68D9A4;
 }
 
 .list-ust {
     background-color: #ED6454;
-}
+}*/
+
 /* hide scrollbar */
 .list-ing::-webkit-scrollbar, .list-app::-webkit-scrollbar , .list-ust::-webkit-scrollbar { 
     width: 0 !important 
@@ -232,9 +237,10 @@ i.fa-magnifying-glass {
     color:white;
     font-weight:400;
     font-size: 18px;
-    line-height: 22px;
+   /* line-height: 22px;*/
     width: 30%;
     cursor: pointer;
+    height: 22px;
     
   
 }
@@ -358,5 +364,32 @@ i.fa-magnifying-glass {
 }
 .recipe-content {
     display: flex;
+    background-color: #E7E7E7;
 
 }
+
+/* ERROR INPUT < 3 characters */
+.inputData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: #e54858;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .inputData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+  .inputData[data-error-visible="true"] {
+    border: 2px solid #e54858;
+  }
+  
+  input[data-error]::after {
+      content: attr(data-error);
+      font-size: 0.4em;
+      color: red;
+  } 

@@ -17,13 +17,16 @@
 </head>
 <body>
     <header id="header">
-        <img src="assets/images/logo.svg" alt="Logo Les petits plats" id="logo">
+        <a href="index.html">
+            <img src="assets/images/logo.svg" alt="Logo Les petits plats" id="logo">
+        </a>
+       
     </header>
     <main id="main">
         <!--SEARCH BAR -->
-        <div id="search-bar">
+        <div id="search-bar" class="inputData" data-error="Votre recherche doit contenir au moins 3 caractères">
             <label for="search-input" class="hidden">Search the site:</label>
-            <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette">
+            <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette (3 caractères minimum)">
             <i class="fa-solid fa-magnifying-glass search-img"></i>
         </div>
         <!--TAGS -->
@@ -38,7 +41,7 @@
                     <i class="fa-solid fa-angle-down ingredients" value="btn-ing" onclick="displayList(event)"></i>
                 </button>
                 <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing" class="dropbtn hidden" >
-                <div class="list-ing" onfocusout="closeList()">
+                <div class="list-ing ing" onfocusout="closeList()">
                     <div class="cont-input ing">
                         <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing">
                         <i class="fa-solid fa-angle-up ing" onclick="closeList()"></i>
@@ -51,7 +54,7 @@
                     <i class="fa-solid fa-angle-down appareils" value="btn-app" onclick="displayList(event)"></i>
                 </button> 
                 <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn hidden">
-                <div class="list-app" onfocusout="closeList()">
+                <div class="list-app app" onfocusout="closeList()">
                     <div class="cont-input app">
                         <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app"
                         >
@@ -66,7 +69,7 @@
                     <i class="fa-solid fa-angle-down ustensils" value="btn-ust" onclick="displayList(event)"></i>
                 </button>   
                 <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
-                <div class="list-ust" onfocusout="closeList()">
+                <div class="list-ust ust" onfocusout="closeList()">
                     <div class="cont-input ust">
                         <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" 
                         >
