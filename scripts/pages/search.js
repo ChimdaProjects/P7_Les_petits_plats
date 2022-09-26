@@ -45,15 +45,15 @@ function mainSearch(value, arr) {
         });  
         return valueFiltered;
     });
-    
+    console.log("filteredArr", filteredArr);
    // on vide le DOM pour chaque modification
     let cardsSection = document.querySelector("#list-recipes");
     cardsSection.innerHTML="";
     let listIng = document.querySelector(".list-ing");
     listIng.innerHTML="";
-    let listApp = document.querySelector(".list-app");
+    let listApp = document.querySelector(".elt-app");
     listApp.innerHTML="";
-    let listUst= document.querySelector(".list-ust");
+    let listUst= document.querySelector(".elt-ust");
     listUst.innerHTML="";
      //console.log("tab filtré", filteredArr);
     // si le tableau est vide alors on affiche le msg d'erreur
@@ -68,3 +68,4 @@ function mainSearch(value, arr) {
     
 
 }
+

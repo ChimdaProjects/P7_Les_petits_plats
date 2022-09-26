@@ -143,6 +143,7 @@ i.fa-magnifying-glass {
 
 #btn-ingredients, .ingredients, #myInput-ing {
     background-color: #3282F7;
+    position: relative;
 }
 
 #btn-appareils, .appareils, #myInput-app  {
@@ -163,6 +164,7 @@ i.fa-magnifying-glass {
 
 }
 
+
 #myInput-ing::placeholder, #myInput-app::placeholder, #myInput-ust::placeholder {
     padding-left: 1rem;
     color:white;
@@ -170,16 +172,6 @@ i.fa-magnifying-glass {
 
 /* LIST OF TAGS*/
 .cont-input {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 1rem 0 0.5rem;
-    height: 69px;
-}
-
-#myInput-ing2, #myInput-app2, #myInput-ust2 {
-  
     width: 100%;
     border: none;
     box-sizing: border-box;
@@ -192,27 +184,73 @@ i.fa-magnifying-glass {
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    
+}
+.icon-up {
+    display: flex;
+    width: 100%;
+}
+i.fa-angle-up {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+   justify-content: right;
+    align-items: center;
+}
+#myInput-ing2, #myInput-app2, #myInput-ust2 {
+  
+    width: 90%;
+    border: none;
+    box-sizing: border-box;
+    /*position: static;*/
+    height: 69px;
+    border-radius: 5px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    position:absolute;
+    display: flex;
+    
+   
 }
 
 #myInput-ing2::placeholder, #myInput-app2::placeholder, #myInput-ust2::placeholder {
     color: #FFFFFF;
     
 }
-.list-ing , .list-app, .list-ust{
+.list-ingr , .list-appl, .list-uste {
     position: relative;
     top:-100%;
     height: 397px;
     width: 667px;
     border-radius: 5px;
-    
-    z-index: 10;
-    display: none;
-    flex-wrap: wrap;
-    justify-content: space-around;
     overflow: hidden;
     overflow-y: scroll;
     position: block;
+    z-index: 10;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+    
+ 
+   
+}
 
+.list-ing, .list-app, .list-ust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+
+ 
+    
 }
 
 /*
@@ -228,7 +266,7 @@ i.fa-magnifying-glass {
 }*/
 
 /* hide scrollbar */
-.list-ing::-webkit-scrollbar, .list-app::-webkit-scrollbar , .list-ust::-webkit-scrollbar { 
+.list-ingr::-webkit-scrollbar, .list-appl::-webkit-scrollbar , .list-uste::-webkit-scrollbar { 
     width: 0 !important 
 }
 

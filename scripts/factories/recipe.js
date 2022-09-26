@@ -65,9 +65,12 @@ function recipeFactory (data, element) {
          */
         function getList() {
             // create element DOM
-            const menuContainer = document.querySelector(`.list-${elt}`);
+          
+            const listContainer = document.querySelector(`.list-${elt}`);
+            //console.log("menu container", menuContainer);
             const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
+         
+            listContainer.appendChild(divList);
             divList.setAttribute("class", `elt-${elt}`);
             divList.setAttribute("data-category", `${elt}`);
 
@@ -78,7 +81,7 @@ function recipeFactory (data, element) {
             // add event "onclick" on each element 
             const eltIng = document.querySelectorAll(`.elt-${elt}`);
             //console.log("eltIng", eltIng)
-            eltIng.forEach(elt => elt.addEventListener("click", displayTag));
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng));
             
         }
 

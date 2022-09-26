@@ -59,7 +59,8 @@ async function displayData(recipesArr) {
         
     })
         //console.log( "--- liste ingredient dans display data ---", allListIngredients);
-
+        //console.log( "--- liste ingredient dans display data ---", allListAppliances);
+        //console.log( "--- liste ingredient dans display data ---", allListUstensils);
         updateList(allListIngredients, "ing");
         updateList(allListAppliances, "app");
         updateList(allListUstensils, "ust");
@@ -71,17 +72,18 @@ async function displayData(recipesArr) {
  * @param {String} element - name of the category (ing, app, ust)
  */
 function updateList(arr, element) {
-    const menuContainer = document.querySelector(`.list-${element}`);
-    menuContainer.style.display="none";
-    //console.log(`je suis dans update list ${element}`)
+
+    const listContainer = document.querySelector(`.list-${element}`);
+    listContainer.innerHTML="";
+
     // create a new array without duplicates
     let listElts = Array.from([...new Set(arr)]).sort();
     console.log(`list des éléments ${element}`, listElts);
     listElts.forEach((elt)=> {
         const listModel = recipeFactory(elt, element);
-        const listDOM= listModel.getList(); 
-     
+        const listDOM= listModel.getList();    
     });
+   
 }
 
 /**
@@ -90,21 +92,24 @@ function updateList(arr, element) {
  */
 function displayList(event) {
     let value = event.target.value;
-    //console.log('value', value);
+    console.log('value', value);
     switch (value) {
         case "btn-ing" :
-            const menuContainerIng = document.querySelector(".list-ing");
-            menuContainerIng.style.display="flex";
+            const menuContainerIng = document.querySelector(".list-ingr");
+            menuContainerIng.style.display="block";
+       
             break;
 
         case "btn-app" :
-            const menuContainerApp = document.querySelector(".list-app");
-            menuContainerApp.style.display="flex";
+            const menuContainerApp = document.querySelector(".list-appl");
+            menuContainerApp.style.display="block";
+          
             break;
 
         case "btn-ust" :
-            const menuContainerUst = document.querySelector(".list-ust");
-            menuContainerUst.style.display="flex";
+            const menuContainerUst = document.querySelector(".list-uste");
+            menuContainerUst.style.display="block";
+          
             break;
 
         default: 
@@ -117,13 +122,13 @@ function displayList(event) {
  */
 function closeList() {
     //console.log("jai le focus out !")
-    const menuContainer = document.querySelector(".list-ing");
+    const menuContainer = document.querySelector(".list-ingr");
     menuContainer.style.display ="";
 
-    const menuContainerApp = document.querySelector(".list-app");
+    const menuContainerApp = document.querySelector(".list-appl");
     menuContainerApp.style.display ="";
 
-    const menuContainerUst = document.querySelector(".list-ust");
+    const menuContainerUst = document.querySelector(".list-uste");
     menuContainerUst.style.display ="";
 
 }
@@ -132,10 +137,10 @@ function closeList() {
  * This function displays tag selected by the user for the research
  * @param {Event} event 
  */
-function displayTag (event, cat) {
+function displayTagIng (event, cat) {
     
     let valueTarget = event.target;
-    let value = event.target.value;
+    let value = event.target.value.toLowerCase();
     cat = valueTarget.dataset.category;
     //console.log("cat", cat)
     //console.log("value", value);
@@ -144,7 +149,14 @@ function displayTag (event, cat) {
     //console.log("value tag selectionné", value);
     const tagModel = recipeFactory(value, cat);
     const tagDOM = tagModel.displayTag();
+
+    // launch the search by tag(s)
+    
+    searchByTag(filteredArr, value);
+
 }
+
+
 
 /**
  * This function delete the tag when the user clicks on the X 
@@ -178,59 +190,3 @@ async function init () {
 init();
 
 
-/*
-/**
- * This function displays the list of ingredients
- * @param {Array} arr - Array of ingredients of json's file or after research
- */
-/*
-function updateListIngredients (arr) {
-    const menuContainer = document.querySelector(".list-ing");
-    menuContainer.style.display="none";
-    console.log("je suis dans update list ing")
-    let elt = "ing";
-    // create a new array without duplicates
-    let listIngredients = Array.from([...new Set(arr)]).sort();
-    console.log('listIngredients', listIngredients);
-    listIngredients.forEach((ingr)=> {
-        const listModel = recipeFactory(ingr, elt);
-        const listDOM = listModel.getList();   
-    })
-}
-
-/**
- * This function updates list of appliances
- * @param {Array} arr - array of appliances of json's file or after research
- */
-/*
-function updateListAppliances (arr) {
-    const menuContainer = document.querySelector(".list-app");
-    menuContainer.style.display="none";
-    listAppliances = Array.from([...new Set(arr)]).sort();
-    console.log('listAppliance', listAppliances);
-    let elt = "app";
-    listAppliances.forEach((appl)=> {
-        const listModel = recipeFactory(appl, elt);
-        
-        const listDOM = listModel.getList();   
-    })
-}
-//console.log('listAppliance2', listAppliances);
-
-/**
- * This function updates list of ustensils
- * @param {Array} arr - array of ustensils of json's file or after research
- */
-/*
-function updateListUstensils (arr) {
-    const menuContainer = document.querySelector(".list-ust");
-    menuContainer.style.display="none";
-    let elt = "ust";
-    listUstensils = Array.from([...new Set(arr)]).sort();
-    listUstensils.forEach((uste)=> {
-        const listModel = recipeFactory(uste, elt);
-        const listDOM = listModel.getList();  
-       
-    })
-}
-*/
