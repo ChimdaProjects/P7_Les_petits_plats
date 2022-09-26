@@ -138,25 +138,28 @@ function closeList() {
  * @param {Event} event 
  */
 function displayTagIng (event, cat) {
-    
-    let valueTarget = event.target;
-    let value = event.target.value.toLowerCase();
-    cat = valueTarget.dataset.category;
-    //console.log("cat", cat)
-    //console.log("value", value);
-    tagsSelected.push(value);
    
-    //console.log("value tag selectionné", value);
-    const tagModel = recipeFactory(value, cat);
-    const tagDOM = tagModel.displayTag();
-
-    // launch the search by tag(s)
+    const inputMain = document.querySelector("#search-input").value;
+    if(!inputMain.length) {
+        alert("Veuillez saisir une première recherche!")
+    } else {
+        let valueTarget = event.target;
+        let value = event.target.value.toLowerCase();
+        cat = valueTarget.dataset.category;
+        
+        //insert the value in the array tagSelected
+        tagsSelected.push(value);
     
-    searchByTag(filteredArr, value);
+        const tagModel = recipeFactory(value, cat);
+        const tagDOM = tagModel.displayTag();
+        console.log("filteredArr tag", filteredArr);
+        searchByTag(filteredArr, tagsSelected);
+    }
+    
 
 }
 
-
+console.log("tableau tags selected", tagsSelected);
 
 /**
  * This function delete the tag when the user clicks on the X 
@@ -188,5 +191,7 @@ async function init () {
 // Close the list when the user clicks outside
 //window.addEventListener("mouseup", closeList)
 init();
+
+
 
 

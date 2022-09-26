@@ -1,20 +1,27 @@
-// faire une recherche sur le tableau filteredArr
-// utiliser le tableau tagSelected
 
 
+let arrFilteredByTag;
 // recherche par tag quand on clique sur un tag
-function searchByTag(arr, tagElt) {
-   let arrFilteredByTag =
-   arr.filter((el)=> {
-    // filtre sur le nom de la recette, description ou ingredients
-    let valueFiltered = 
-        el.name.toLowerCase().includes(tagElt) || 
-        el.description.toLowerCase().includes(tagElt) || 
-        el.ingredients.forEach(element => {
-        let ingr = element.ingredient.toLowerCase().includes(tagElt);
-        //console.log("ingr", ingr);
-    });  
-    return valueFiltered;
+/**
+ * Research with tag(s) selected
+ * @param {Array} arr Array filtered of main research
+ * @param {Array} tagArr Array of tags selected
+ */
+function searchByTag(arr, tagArr) {
+    tagArr.forEach((tag)=> {
+        arrFilteredByTag =
+            arr.filter((el)=> {
+            // filtre sur le nom de la recette, description ou ingredients
+                let valueFiltered = 
+                el.name.toLowerCase().includes(tag) || 
+                el.description.toLowerCase().includes(tag) || 
+                el.ingredients.forEach(element => {
+                let ingr = element.ingredient.toLowerCase().includes(tag);
+             //console.log("ingr", ingr);
+         });  
+         return valueFiltered;
+    })
+    console.log("array recipes by tag", arrFilteredByTag);
 });
 
 // on vide le DOM pour chaque modification

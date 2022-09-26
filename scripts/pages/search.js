@@ -1,6 +1,6 @@
 // Globals variables
 let valueSearched;
-let filteredArr;
+var filteredArr;
 
 // DOM elements
 let searchBarInput = document.getElementById("search-input");
@@ -33,18 +33,20 @@ function searchBar(e) {
 }
 
 function mainSearch(value, arr) {
-    
+
     filteredArr = arr.filter((el)=> {
-        // filtre sur le nom de la recette, description ou ingredients
-        let valueFiltered = 
-            el.name.toLowerCase().includes(value) || 
-            el.description.toLowerCase().includes(value) || 
-            el.ingredients.forEach(element => {
-            let ingr = element.ingredient.toLowerCase().includes(value);
-            //console.log("ingr", ingr);
-        });  
-        return valueFiltered;
-    });
+            // filtre sur le nom de la recette, description ou ingredients
+            let valueFiltered = 
+                el.name.toLowerCase().includes(value) ||
+                el.description.toLowerCase().includes(value) || 
+                el.ingredients.forEach(element => {
+                let ingr = element.ingredient.toLowerCase().includes(value);
+                //console.log("ingr", ingr);
+            });  
+            return valueFiltered;
+        });
+    
+   
     console.log("filteredArr", filteredArr);
    // on vide le DOM pour chaque modification
     let cardsSection = document.querySelector("#list-recipes");
@@ -68,4 +70,5 @@ function mainSearch(value, arr) {
     
 
 }
+
 
