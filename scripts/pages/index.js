@@ -58,9 +58,7 @@ async function displayData(recipesArr) {
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
         
     })
-        //console.log( "--- liste ingredient dans display data ---", allListIngredients);
-        //console.log( "--- liste ingredient dans display data ---", allListAppliances);
-        //console.log( "--- liste ingredient dans display data ---", allListUstensils);
+        
         updateList(allListIngredients, "ing");
         updateList(allListAppliances, "app");
         updateList(allListUstensils, "ust");
@@ -83,7 +81,6 @@ function updateList(arr, element) {
         const listModel = recipeFactory(elt, element);
         const listDOM= listModel.getList();    
     });
-   
 }
 
 /**
@@ -97,19 +94,16 @@ function displayList(event) {
         case "btn-ing" :
             const menuContainerIng = document.querySelector(".list-ingr");
             menuContainerIng.style.display="block";
-       
             break;
 
         case "btn-app" :
             const menuContainerApp = document.querySelector(".list-appl");
             menuContainerApp.style.display="block";
-          
             break;
 
         case "btn-ust" :
             const menuContainerUst = document.querySelector(".list-uste");
             menuContainerUst.style.display="block";
-          
             break;
 
         default: 
@@ -150,15 +144,12 @@ function displayTagIng (event, cat) {
         //insert the value in the array tagSelected
         tagsSelected.push(value);
             
-    
         const tagModel = recipeFactory(value, cat);
         const tagDOM = tagModel.displayTag();
         console.log(`filteredArr au click du tag: ${value}`, filteredArr);
         searchByTag(filteredArr, tagsSelected, cat);
         closeList();
     }
-    
-
 }
 
 console.log("tableau tags selected", tagsSelected);
