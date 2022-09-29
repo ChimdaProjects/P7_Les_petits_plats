@@ -25,7 +25,7 @@ async function getRecipes() {
         })
         .then(function(data) {
             recipesArray = data;
-            console.log("recipeArray", recipesArray);
+            //console.log("recipeArray", recipesArray);
             return recipesArray;
         })
         .catch(function (err) {
@@ -78,7 +78,7 @@ function updateList(arr, element) {
 
     // create a new array without duplicates
     let listElts = Array.from([...new Set(arr)]).sort();
-    console.log(`list des éléments ${element}`, listElts);
+    //console.log(`list des éléments ${element}`, listElts);
     listElts.forEach((elt)=> {
         const listModel = recipeFactory(elt, element);
         const listDOM= listModel.getList();    
@@ -92,7 +92,7 @@ function updateList(arr, element) {
  */
 function displayList(event) {
     let value = event.target.value;
-    console.log('value', value);
+    //console.log('value', value);
     switch (value) {
         case "btn-ing" :
             const menuContainerIng = document.querySelector(".list-ingr");
@@ -149,11 +149,13 @@ function displayTagIng (event, cat) {
         
         //insert the value in the array tagSelected
         tagsSelected.push(value);
+            
     
         const tagModel = recipeFactory(value, cat);
         const tagDOM = tagModel.displayTag();
-        console.log("filteredArr tag", filteredArr);
-        searchByTag(filteredArr, tagsSelected);
+        console.log(`filteredArr au click du tag: ${value}`, filteredArr);
+        searchByTag(filteredArr, tagsSelected, cat);
+        closeList();
     }
     
 
@@ -165,9 +167,12 @@ console.log("tableau tags selected", tagsSelected);
  * This function delete the tag when the user clicks on the X 
  * @param {Event} e -event
  */
-function deleteTag(e) {
-   let tagDelete = e.target.id;
+function deleteTag(e, cat) {
+    
+    let tagDelete = e.target.id;
+    cat =  e.target.dataset.category;
    //console.log("tagDelete", tagDelete);
+   //console.log("cat", cat);
    let parent = e.target.parentElement;
    let parent2 = parent.parentNode;
    //console.log("parent", parent);
@@ -181,6 +186,9 @@ function deleteTag(e) {
     // delete tag selected
    let section = document.querySelector("#tags-section");
    section.removeChild(parent2);
+
+   searchByTagAfterRemove(filteredArr, tagsSelected, cat);
+  
 }
 
 async function init () {

@@ -1,6 +1,7 @@
 // Globals variables
 let valueSearched;
-var filteredArr;
+let filteredArr;
+
 
 // DOM elements
 let searchBarInput = document.getElementById("search-input");
@@ -16,7 +17,7 @@ searchBarInput.addEventListener("keyup", searchBar);
 function searchBar(e) {
     valueSearched = (e.target.value).toLowerCase();
     //console.log("value", valueSearched);
-    console.log("length value", valueSearched.length)
+    //console.log("length value", valueSearched.length)
     if (valueSearched.length > 2) {
         mainSearch(valueSearched, recipesArray);
        
@@ -43,11 +44,11 @@ function mainSearch(value, arr) {
                 let ingr = element.ingredient.toLowerCase().includes(value);
                 //console.log("ingr", ingr);
             });  
+            //console.log(`valueFiltered mainSearch`, valueFiltered)
             return valueFiltered;
         });
-    
    
-    console.log("filteredArr", filteredArr);
+    console.log(`resultat filtré avec la value: ${value}`, filteredArr);
    // on vide le DOM pour chaque modification
     let cardsSection = document.querySelector("#list-recipes");
     cardsSection.innerHTML="";
@@ -70,5 +71,6 @@ function mainSearch(value, arr) {
     
 
 }
+
 
 
