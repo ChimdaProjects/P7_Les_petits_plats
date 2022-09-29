@@ -44,7 +44,7 @@
                
                 <div class="list-ingr ing" >
                     <div class="cont-input ing">
-                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing" onclick="searchInputCat(event)">
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)">
                         <div class="icon-up">
                             <i class="fa-solid fa-angle-up ing" onclick="closeList()"></i>
                         </div>
@@ -64,7 +64,7 @@
                 <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn hidden">
                 <div class="list-appl app" onfocusout="closeList()">
                     <div class="cont-input app">
-                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app"
+                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)"
                         >
                         <i class="fa-solid fa-angle-up app" onclick="closeList()"></i>
                     </div>
@@ -82,7 +82,7 @@
                 <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
                 <div class="list-uste ust" onfocusout="closeList()">
                     <div class="cont-input ust">
-                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" 
+                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" onkeyup="searchInputSelect(event)"
                         >
                         <i class="fa-solid fa-angle-up ust" onclick="closeList()"></i>
                     </div>

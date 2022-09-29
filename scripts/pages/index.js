@@ -14,8 +14,7 @@ const menuContainerIng = document.querySelector(".list-ingr");
 const menuContainerApp = document.querySelector(".list-appl");
 const menuContainerUst = document.querySelector(".list-uste");
 
-const inputMain = document.querySelector("#search-input").value.length;
-console.log("input length", inputMain);
+const inputMain = document.querySelector("#search-input").value;
 
 const listIng = document.querySelector(".list-ing");
 const listApp = document.querySelector(".list-app");
@@ -159,10 +158,6 @@ function closeList() {
  */
 function displayTagIng (event, cat) {
    
-  
-    //if(!inputMain.length) {
-      //  alert("Veuillez saisir une première recherche!")
-    //} else {
         let valueTarget = event.target;
         let value = event.target.value.toLowerCase();
         cat = valueTarget.dataset.category;
@@ -180,8 +175,6 @@ function displayTagIng (event, cat) {
             searchByTag(filteredArr, tagsSelected, cat);
         }
         
-
-       
         closeList();
     //}
 }
@@ -208,16 +201,14 @@ function deleteTag(e, cat) {
    let section = document.querySelector("#tags-section");
    section.removeChild(parent2);
 
-   if(tagsSelected.length== 0) {
-        // on vide le dom
-        //let cardsSection = document.querySelector("#list-recipes");
+   if ( tagsSelected.length == 0 ) {
+        // on vide le dom car le tableau est vide
         recipeSection.innerHTML="";
+        // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
         displayData(filteredArr);
-    } else if( tagsSelected.length == 1) {
+    } else if ( tagsSelected.length >= 1 ) {
         searchByTag(filteredArr, tagsSelected, cat)
-    } else if( tagsSelected.length > 1) {
-        searchByTag(recipesByTag, tagsSelected, cat)
-    }  
+    }
 }
 
 async function init () {
