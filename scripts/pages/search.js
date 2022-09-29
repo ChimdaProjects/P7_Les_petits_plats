@@ -50,18 +50,15 @@ function mainSearch(value, arr) {
    
     console.log(`resultat filtré avec la value: ${value}`, filteredArr);
    // on vide le DOM pour chaque modification
-    let cardsSection = document.querySelector("#list-recipes");
-    cardsSection.innerHTML="";
-    let listIng = document.querySelector(".list-ing");
+   // let cardsSection = document.querySelector("#list-recipes");
+    recipeSection.innerHTML="";
     listIng.innerHTML="";
-    let listApp = document.querySelector(".elt-app");
     listApp.innerHTML="";
-    let listUst= document.querySelector(".elt-ust");
     listUst.innerHTML="";
      //console.log("tab filtré", filteredArr);
     // si le tableau est vide alors on affiche le msg d'erreur
     if (filteredArr.length == 0) {
-        cardsSection.innerHTML = 
+        recipeSection.innerHTML = 
         `Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes",
         "poisson", etc...`
     //sinon on affiche le resultat obtenu dans le tableau filteredArr

@@ -14,9 +14,12 @@ const menuContainerIng = document.querySelector(".list-ingr");
 const menuContainerApp = document.querySelector(".list-appl");
 const menuContainerUst = document.querySelector(".list-uste");
 
-let listIng = document.querySelector(".list-ing");
-let listApp = document.querySelector(".list-app");
-let listUst= document.querySelector(".list-ust");
+const inputMain = document.querySelector("#search-input").value.length;
+console.log("input length", inputMain);
+
+const listIng = document.querySelector(".list-ing");
+const listApp = document.querySelector(".list-app");
+const listUst= document.querySelector(".list-ust");
 /**
  * This function fetch all recipes from json's file
  */
@@ -87,7 +90,9 @@ function updateList(arr, element) {
         const listModel = recipeFactory(elt, element);
         const listDOM= listModel.getList();    
     });
+
 }
+
 
 /**
  * This function displays the list of ingredients, appliances or ustensils
@@ -98,21 +103,42 @@ function displayList(event) {
   
     switch (value) {
         case "btn-ing" :
-            menuContainerIng.style.display="block";
+            
+            if(!valueSearched || valueSearched.length < 3) {
+                menuContainerIng.style.display="";
+                alert("Merci de saisir une première recherche !");
+                
+            } else {
+                menuContainerIng.style.display="block";
+            }
             break;
 
         case "btn-app" :
+            
+            if(!valueSearched || valueSearched.length < 3) {
+                menuContainerApp.style.display="";
+                alert("Merci de saisir une première recherche !");
+                
+            } else {
             menuContainerApp.style.display="block";
+            }
             break;
 
         case "btn-ust" :
+            if(!valueSearched || valueSearched.length < 3) {
+                menuContainerUst.style.display="";
+                alert("Merci de saisir une première recherche !");
+                
+            } else {
             menuContainerUst.style.display="block";
+            }
             break;
 
         default: 
             console.log(`Sorry, we are out of ${value}.`);
     }
 }
+
 
 /**
  * This function close the list of the ingredients
@@ -122,6 +148,8 @@ function closeList() {
     menuContainerIng.style.display ="";
     menuContainerApp.style.display ="";
     menuContainerUst.style.display ="";
+    inputSelectIng.value="";
+
 
 }
 
@@ -131,10 +159,10 @@ function closeList() {
  */
 function displayTagIng (event, cat) {
    
-    const inputMain = document.querySelector("#search-input").value;
-    if(!inputMain.length) {
-        alert("Veuillez saisir une première recherche!")
-    } else {
+  
+    //if(!inputMain.length) {
+      //  alert("Veuillez saisir une première recherche!")
+    //} else {
         let valueTarget = event.target;
         let value = event.target.value.toLowerCase();
         cat = valueTarget.dataset.category;
@@ -145,9 +173,17 @@ function displayTagIng (event, cat) {
         const tagModel = recipeFactory(value, cat);
         const tagDOM = tagModel.displayTag();
         console.log(`filteredArr au click du tag: ${value}`, filteredArr);
-        searchByTag(filteredArr, tagsSelected, cat);
+
+        if ( tagsSelected.length > 1) {
+            searchByTag(recipesByTag, tagsSelected, cat);
+        } else {
+            searchByTag(filteredArr, tagsSelected, cat);
+        }
+        
+
+       
         closeList();
-    }
+    //}
 }
 console.log("tableau tags selected", tagsSelected);
 
@@ -177,9 +213,11 @@ function deleteTag(e, cat) {
         //let cardsSection = document.querySelector("#list-recipes");
         recipeSection.innerHTML="";
         displayData(filteredArr);
-    } else {
+    } else if( tagsSelected.length == 1) {
         searchByTag(filteredArr, tagsSelected, cat)
-    }    
+    } else if( tagsSelected.length > 1) {
+        searchByTag(recipesByTag, tagsSelected, cat)
+    }  
 }
 
 async function init () {
