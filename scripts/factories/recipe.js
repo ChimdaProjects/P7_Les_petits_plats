@@ -81,7 +81,7 @@ function recipeFactory (data, element) {
             // add event "onclick" on each element 
             const eltIng = document.querySelectorAll(`.elt-${elt}`);
             //console.log("eltIng", eltIng)
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng));
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagElt));
             
         }
 
@@ -103,48 +103,5 @@ function recipeFactory (data, element) {
             </div>
             `  
         }
-
-      
     return { getRecipeCardDOM, displayTag, getList }
 }
-
-        /*
-        function getListOfIngredients () {
-            // create element DOM
-            const menuContainer = document.querySelector(".list-ing");
-            const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
-            divList.setAttribute("class", "elt-ing");
-
-            // attribute value = data 
-            divList.value = data;
-            divList.textContent = data;
-
-            // add event "click" on each ingredient 
-            const eltIng = document.querySelectorAll(".elt-ing");
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
-
-            
-    }
-        function getListOfAppliances () {
-            const menuContainer = document.querySelector(".list-app");
-            const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
-            divList.setAttribute("class", "elt-app");
-            divList.value = data;
-            divList.textContent=data;
-            const eltIng = document.querySelectorAll(".elt-app");
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
-        }
-
-        function getListOfUstensils() {
-            const menuContainer = document.querySelector(".list-ust");
-            const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
-            divList.setAttribute("class", "elt-ust");
-            divList.value = data;
-            divList.textContent=data;
-            const eltIng = document.querySelectorAll(".elt-ust");
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
-        }
-        */

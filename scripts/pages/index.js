@@ -148,6 +148,8 @@ function closeList() {
     menuContainerApp.style.display ="";
     menuContainerUst.style.display ="";
     inputSelectIng.value="";
+    inputSelectApp.value="";
+    inputSelectUst.value="";
 
 
 }
@@ -156,7 +158,7 @@ function closeList() {
  * This function displays tag selected by the user for the research
  * @param {Event} event 
  */
-function displayTagIng (event, cat) {
+function displayTagElt (event, cat) {
    
         let valueTarget = event.target;
         let value = event.target.value.toLowerCase();
@@ -180,6 +182,8 @@ function displayTagIng (event, cat) {
 }
 console.log("tableau tags selected", tagsSelected);
 
+// TODO: pb si plusieurs tags de différentes catégories quand
+// on delete, on ne trouve plus de recettes
 /**
  * This function delete the tag when the user clicks on the X 
  * @param {Event} e -event
