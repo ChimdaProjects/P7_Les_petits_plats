@@ -10,7 +10,13 @@ let tagsSelected = [];
 
 // Elements DOM
 const recipeSection = document.querySelector("#list-recipes");
+const menuContainerIng = document.querySelector(".list-ingr");
+const menuContainerApp = document.querySelector(".list-appl");
+const menuContainerUst = document.querySelector(".list-uste");
 
+let listIng = document.querySelector(".list-ing");
+let listApp = document.querySelector(".list-app");
+let listUst= document.querySelector(".list-ust");
 /**
  * This function fetch all recipes from json's file
  */
@@ -76,7 +82,7 @@ function updateList(arr, element) {
 
     // create a new array without duplicates
     let listElts = Array.from([...new Set(arr)]).sort();
-    //console.log(`list des éléments ${element}`, listElts);
+   
     listElts.forEach((elt)=> {
         const listModel = recipeFactory(elt, element);
         const listDOM= listModel.getList();    
@@ -89,20 +95,17 @@ function updateList(arr, element) {
  */
 function displayList(event) {
     let value = event.target.value;
-    //console.log('value', value);
+  
     switch (value) {
         case "btn-ing" :
-            const menuContainerIng = document.querySelector(".list-ingr");
             menuContainerIng.style.display="block";
             break;
 
         case "btn-app" :
-            const menuContainerApp = document.querySelector(".list-appl");
             menuContainerApp.style.display="block";
             break;
 
         case "btn-ust" :
-            const menuContainerUst = document.querySelector(".list-uste");
             menuContainerUst.style.display="block";
             break;
 
@@ -115,14 +118,9 @@ function displayList(event) {
  * This function close the list of the ingredients
  */
 function closeList() {
-    //console.log("jai le focus out !")
-    const menuContainer = document.querySelector(".list-ingr");
-    menuContainer.style.display ="";
 
-    const menuContainerApp = document.querySelector(".list-appl");
+    menuContainerIng.style.display ="";
     menuContainerApp.style.display ="";
-
-    const menuContainerUst = document.querySelector(".list-uste");
     menuContainerUst.style.display ="";
 
 }
@@ -151,7 +149,6 @@ function displayTagIng (event, cat) {
         closeList();
     }
 }
-
 console.log("tableau tags selected", tagsSelected);
 
 /**
@@ -162,13 +159,10 @@ function deleteTag(e, cat) {
     
     let tagDelete = e.target.id;
     cat =  e.target.dataset.category;
-   //console.log("tagDelete", tagDelete);
-   //console.log("cat", cat);
+
    let parent = e.target.parentElement;
    let parent2 = parent.parentNode;
-   //console.log("parent", parent);
-   //console.log("parent2", parent2);
-    
+
    let tagSelected = tagsSelected.find(elt => 
     { console.log("elt", elt)
         elt.replace(/ /g,"") == tagDelete
@@ -178,8 +172,14 @@ function deleteTag(e, cat) {
    let section = document.querySelector("#tags-section");
    section.removeChild(parent2);
 
-   searchByTagAfterRemove(filteredArr, tagsSelected, cat);
-  
+   if(tagsSelected.length== 0) {
+        // on vide le dom
+        //let cardsSection = document.querySelector("#list-recipes");
+        recipeSection.innerHTML="";
+        displayData(filteredArr);
+    } else {
+        searchByTag(filteredArr, tagsSelected, cat)
+    }    
 }
 
 async function init () {

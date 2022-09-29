@@ -87,13 +87,10 @@ function searchByTag(arrFiltered, tagArr, cat) {
             console.log("recipeByTag", recipesByTag);
 
 // on vide le DOM pour chaque modification
-let cardsSection = document.querySelector("#list-recipes");
-cardsSection.innerHTML="";
-let listIng = document.querySelector(".list-ing");
+
+recipeSection.innerHTML="";
 listIng.innerHTML="";
-let listApp = document.querySelector(".list-app");
 listApp.innerHTML="";
-let listUst= document.querySelector(".list-ust");
 listUst.innerHTML="";
 
 // suppression doublon
@@ -109,15 +106,4 @@ if (arrByTags.length == 0) {
 } else {
     displayData(arrByTags);
 }
-}
-
-function searchByTagAfterRemove (arr, tags, cat) {
-    if(tags.length== 0) {
-        // on vide le dom
-        let cardsSection = document.querySelector("#list-recipes");
-        cardsSection.innerHTML="";
-        displayData(arr);
-    } else {
-        searchByTag(arr, tags, cat)
-    }
 }
