@@ -42,10 +42,12 @@ function mainResearch(valueSearched, recipeCard) {
     applianceResult=[];
     ustensilsResult=[];
     //console.log("recipeCard", recipeCard)
+        console.time('main loop');
         for (let i=0; i < recipeCard.length; i++) {
             if ( recipeCard[i].textContent.toLowerCase().includes(valueSearched)) {
                 recipeCard[i].style.display = "block"; 
                 recipesResult.push(recipeCard[i]);
+
                 // liste ingrédients
                 let ingr= recipeCard[i].getElementsByClassName("ingr");
                 console.log("ingr", ingr);
@@ -72,9 +74,11 @@ function mainResearch(valueSearched, recipeCard) {
                 
 
 
-            } else {
+            } 
+            else {
                 recipeCard[i].style.display = "none";
             } 
+            console.timeEnd('main loop') 
         }
         displayListIngredients(ingredientResult);
         displayAppliances(applianceResult);
