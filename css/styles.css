@@ -325,7 +325,12 @@ i.fa-angle-up {
     background-color: #E7E7E7;
     margin: 1rem 0;
     border:none;
+    cursor: pointer;
 }   
+.card-recipe:hover {
+    transform: scale(1.05);
+    opacity: 0.7;
+}
 
 .recipe-img {
     height: 178px;
@@ -361,12 +366,16 @@ i.fa-angle-up {
 
 }
 
-.recipe-time {
+.recipe-time, .icon-time {
     font-size: 18px;
     line-height: 22px;
     background-color: #E7E7E7;
-    
 }
+
+.icon-time {
+    height: 15px;
+}
+
 
 .card-header, .recipe-ingr, .recipe-description{
     padding: 0 18px;

@@ -20,7 +20,7 @@ function recipeFactory (data, element) {
         divHeader.innerHTML=`
         <h1 class="recipe-title">${name}</h1>
         <p class="recipe-time">
-            <i class="fa-solid fa-clock"></i>
+            <img class="icon-time" src="../../assets/icons/time.svg">
             ${time} min
         </p>
         `

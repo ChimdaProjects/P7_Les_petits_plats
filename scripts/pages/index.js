@@ -167,7 +167,6 @@ function displayTagElt (event, cat) {
             }
         }
         
-       
 
         closeList();
     //}

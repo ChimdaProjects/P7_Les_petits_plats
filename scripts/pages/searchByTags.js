@@ -133,6 +133,7 @@ function searchInputSelect (event, arr, cat) {
             arr = recipesByTag
             console.log("arr = recipesByTag")
         }
+
     }
    
     cat = event.target.id;
