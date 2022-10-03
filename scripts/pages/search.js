@@ -33,7 +33,7 @@ function searchBar(e) {
 }
 
 function mainSearch(value, arr) {
-    
+    console.time("main function");
     filteredArr = arr.filter((el)=> {
         // filtre sur le nom de la recette, description ou ingredients
         let valueFiltered = 
@@ -43,9 +43,10 @@ function mainSearch(value, arr) {
             let ingr = element.ingredient.toLowerCase().includes(value);
             //console.log("ingr", ingr);
         });  
+        
         return valueFiltered;
     });
-    
+    console.timeEnd("main function")
    // on vide le DOM pour chaque modification
     let cardsSection = document.querySelector("#list-recipes");
     cardsSection.innerHTML="";
