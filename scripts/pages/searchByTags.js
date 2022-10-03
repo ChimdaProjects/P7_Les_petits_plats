@@ -13,79 +13,85 @@ function searchByTag(arrFiltered, tagArr, cat) {
     let arrFilteredByTag; // nouveau tableau filtré par tag
     let valueFiltered; // la valeur en cours filtrée
     console.log("********arrfiltered*************", arrFiltered);
-    tagArr.forEach((tag)=> { // pour chaque tag from array tagArr
-        arrFilteredByTag =
-        recipesByTag = [];
-            // on filtre sur les résultats (array arrFiltered) de la première recherche
-            arrFiltered.filter(( recipe ) => 
-            {   
-                tagSelected = tag.toLowerCase();
-                console.log("tagselected", tagSelected);
-                
 
-                switch ( cat ) {
-                    case "ing" :
-                        recipe.ingredients 
-                        .forEach(element =>  
-                            {
-                                valueFiltered = 
-                                    element.ingredient
-                                    .toLowerCase()
-                                    .includes(tagSelected);
-
-                                console.log(` 
-                                -----
-                                valuefiltered ing: recipe: ${recipe.name} - value tested: ${element.ingredient} 
-                                -----`, valueFiltered);
-                                
-                                if( valueFiltered ) {
-                                    recipesByTag.push(recipe);
-                                }
-                                console.log("--- recipesByTag array: ---- ", recipesByTag);
-                            });    
-                        break;
+    if (tagArr.length != 0 ) {
+        tagArr.forEach((tag)=> { // pour chaque tag from array tagArr
+            arrFilteredByTag =
+            recipesByTag = [];
+                // on filtre sur les résultats (array arrFiltered) de la première recherche
+                arrFiltered.filter(( recipe ) => 
+                {   
+                    tagSelected = tag.toLowerCase();
+                    console.log("tagselected", tagSelected);
                     
-                    case "app" :
-                        valueFiltered =  
-                        recipe.appliance.toLowerCase().includes(tagSelected);
-                        console.log(` 
-                        -----
-                        valuefiltered app: recipe: ${recipe.name} - value tested: ${recipe.appliance} 
-                        -----`, valueFiltered);
+    
+                    switch ( cat ) {
+                        case "ing" :
+                            recipe.ingredients 
+                            .forEach(element =>  
+                                {
+                                    valueFiltered = 
+                                        element.ingredient
+                                        .toLowerCase()
+                                        .includes(tagSelected);
+    
+                                    console.log(` 
+                                    -----
+                                    valuefiltered ing: recipe: ${recipe.name} - value tested: ${element.ingredient} 
+                                    -----`, valueFiltered);
+                                    
+                                    if( valueFiltered ) {
+                                        recipesByTag.push(recipe);
+                                    }
+                                    console.log("--- recipesByTag array: ---- ", recipesByTag);
+                                });    
+                            break;
                         
-                        if( valueFiltered ) {
-                            recipesByTag.push(recipe);
-                        }
-                        console.log("--- recipesByTag array: ---- ", recipesByTag);
-                        break;
-                    
-                    case "ust" :
-                        recipe.ustensils
-                        .forEach(element =>  
-                            {
-                                valueFiltered = 
-                                    element
-                                    .toLowerCase()
-                                    .includes(tagSelected);
-
-                                console.log(` 
-                                -----
-                                valuefiltered ing: recipe: ${recipe.name} - value tested: ${element} 
-                                -----`, valueFiltered);
-                                
-                                if( valueFiltered ) {
-                                    recipesByTag.push(recipe);
-                                }
-                                console.log("--- recipesByTag array: ---- ", recipesByTag);
-                            });    
-                        break;
-
-                    default:
-                        console.log(`Sorry, we are out of ${tag.category}.`);
-               }
-            //return arrFilteredByTag;    
+                        case "app" :
+                            valueFiltered =  
+                            recipe.appliance.toLowerCase().includes(tagSelected);
+                            console.log(` 
+                            -----
+                            valuefiltered app: recipe: ${recipe.name} - value tested: ${recipe.appliance} 
+                            -----`, valueFiltered);
+                            
+                            if( valueFiltered ) {
+                                recipesByTag.push(recipe);
+                            }
+                            console.log("--- recipesByTag array: ---- ", recipesByTag);
+                            break;
+                        
+                        case "ust" :
+                            recipe.ustensils
+                            .forEach(element =>  
+                                {
+                                    valueFiltered = 
+                                        element
+                                        .toLowerCase()
+                                        .includes(tagSelected);
+    
+                                    console.log(` 
+                                    -----
+                                    valuefiltered ing: recipe: ${recipe.name} - value tested: ${element} 
+                                    -----`, valueFiltered);
+                                    
+                                    if( valueFiltered ) {
+                                        recipesByTag.push(recipe);
+                                    }
+                                    console.log("--- recipesByTag array: ---- ", recipesByTag);
+                                });    
+                            break;
+    
+                        default:
+                            console.log(`Sorry, we are out of ${tag.category}.`);
+                   }
+                //return arrFilteredByTag;    
+                });
             });
-        });
+    } else {
+        recipesByTag = recipesArray;
+    }
+   
             console.log("recipeByTag", recipesByTag);
 
 // on vide le DOM pour chaque modification
