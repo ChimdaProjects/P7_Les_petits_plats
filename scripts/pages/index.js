@@ -102,35 +102,15 @@ function displayList(event) {
   
     switch (value) {
         case "btn-ing" :
-            
-            if(!valueSearched || valueSearched.length < 3) {
-                menuContainerIng.style.display="";
-                alert("Merci de saisir une première recherche !");
-                
-            } else {
-                menuContainerIng.style.display="block";
-            }
+            menuContainerIng.style.display="block";
             break;
 
         case "btn-app" :
-            
-            if(!valueSearched || valueSearched.length < 3) {
-                menuContainerApp.style.display="";
-                alert("Merci de saisir une première recherche !");
-                
-            } else {
             menuContainerApp.style.display="block";
-            }
             break;
 
         case "btn-ust" :
-            if(!valueSearched || valueSearched.length < 3) {
-                menuContainerUst.style.display="";
-                alert("Merci de saisir une première recherche !");
-                
-            } else {
             menuContainerUst.style.display="block";
-            }
             break;
 
         default: 
@@ -170,13 +150,25 @@ function displayTagElt (event, cat) {
         const tagModel = recipeFactory(value, cat);
         const tagDOM = tagModel.displayTag();
         console.log(`filteredArr au click du tag: ${value}`, filteredArr);
+        if (!valueSearched) {
+            if (tagsSelected.length == 1) {
+                searchByTag(recipesArray, tagsSelected, cat)
+            } else {
+                searchByTag(recipesByTag, tagsSelected, cat);
 
-        if ( tagsSelected.length > 1) {
-            searchByTag(recipesByTag, tagsSelected, cat);
-        } else {
-            searchByTag(filteredArr, tagsSelected, cat);
+            }
+                
+            
+        } else if (valueSearched) {
+            if (tagsSelected.length > 1) {
+                searchByTag(recipesByTag, tagsSelected, cat);
+            } else {
+                searchByTag(filteredArr, tagsSelected, cat);
+            }
         }
         
+       
+
         closeList();
     //}
 }
@@ -204,8 +196,14 @@ function deleteTag(e, cat) {
     // delete tag selected
    let section = document.querySelector("#tags-section");
    section.removeChild(parent2);
-
-   if ( tagsSelected.length == 0 ) {
+    if ( !valueSearched) {
+        // Condition if array of tag is empty
+        if (tagsSelected.length == 0) {
+            recipeSection.innerHTML="";
+            displayData(recipesArray);
+        }
+    } else if (tagsSelected.length == 0 )
+    {
         // on vide le dom car le tableau est vide
         recipeSection.innerHTML="";
         // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
