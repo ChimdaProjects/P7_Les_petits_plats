@@ -118,13 +118,23 @@ const inputSelectApp = document.querySelector("#myInput-app2");
 const inputSelectUst = document.querySelector("#myInput-ust2");
 
 function searchInputSelect (event, arr, cat) {
-    if (tagsSelected.length == 0) {
-        arr = filteredArr;
-        console.log("arr = filteredArr")
-    } else {
-        arr = recipesByTag
-        console.log("arr = recipesByTag")
+    
+    if( !valueSearched ) {
+        if (tagsSelected. length == 0) {
+            arr = recipesArray;
+        } else {
+            arr = recipesByTag
+        }
+    } else if ( valueSearched) {
+        if (tagsSelected.length == 0) {
+            arr = filteredArr;
+            console.log("arr = filteredArr")
+        } else {
+            arr = recipesByTag
+            console.log("arr = recipesByTag")
+        }
     }
+   
     cat = event.target.id;
     let newArrayTags = [];
     let valueInput;
