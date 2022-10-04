@@ -16,17 +16,18 @@ searchBarInput.addEventListener("keyup", searchBar);
  */
 function searchBar(e) {
     valueSearched = (e.target.value).toLowerCase();
+    let nbCharValue = valueSearched.length;
     //console.log("value", valueSearched);
     //console.log("length value", valueSearched.length)
-    if (valueSearched.length > 2) {
+    if (nbCharValue > 2) {
         mainSearch(valueSearched, recipesArray);
+        searchBarInput.setAttribute("data-error-visible", "false");
        
-    } //else if (valueSearched.length <= 2 || valueSearched.length > 1 ) {
+    } else if (nbCharValue > 1 && nbCharValue <= 2 ) {
         
-        //let contInput = document.querySelector("#search-bar");
-        //contInput.setAttribute("data-error-visible", "true");
+        searchBarInput.setAttribute("data-error-visible", "true");
 
-     else if (valueSearched.length < 1) {
+    } else if (nbCharValue < 1) {
         let cardsSection = document.querySelector("#list-recipes");
         cardsSection.innerHTML="";
         displayData(recipesArray);
