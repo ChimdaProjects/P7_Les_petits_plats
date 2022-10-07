@@ -72,6 +72,7 @@ function recipeFactory (data, element) {
          
             listContainer.appendChild(divList);
             divList.setAttribute("class", `elt-${elt}`);
+            divList.classList.add("size1");
             divList.setAttribute("data-category", `${elt}`);
 
             // attribute value = data 

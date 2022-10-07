@@ -224,7 +224,6 @@ input:focus {
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
-    position: block;
     z-index: 1;
     display: none;
     padding-bottom: 20px;
@@ -282,13 +281,17 @@ input:focus {
     color:white;
     font-weight:400;
     font-size: 18px;
-   line-height: 22px;
-    /*width: 30%;*/
-    width: 30%;
+    line-height: 22px;
     cursor: pointer;
     height: 22px;
+    
 }
-.size { 
+.size1 {
+    width: 30%;
+}
+
+.size2 {
+ 
     width: 100%;
 }
 

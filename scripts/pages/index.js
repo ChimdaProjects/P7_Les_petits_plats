@@ -107,23 +107,30 @@ function displayList(event) {
             menuContainerIng.style.display="flex";
             btnAppliance.style.margin = "0 500px";
             btnUstensil.style.margin = "0 500px";
+            inputSelectIng.focus()
             break;
 
         case "btn-app" :
             menuContainerApp.style.display="block";
             btnUstensil.style.margin = "0 500px";
+            inputSelectApp.focus();
             break;
 
         case "btn-ust" :
             menuContainerUst.style.display="block";
+            inputSelectUst.focus();
             break;
 
         default: 
             console.log(`Sorry, we are out of ${value}.`);
     }
 }
-const eltIng = document.querySelector(".elt-ing");
 
+
+/**
+ * This function allows the user to search from the input
+ * @param {Event} event 
+ */
 function displayInputSearch(event) {
     let value = event.target.value;
     switch (value) {
@@ -144,25 +151,36 @@ function displayInputSearch(event) {
             btnAppliance.style.margin = "0 50px";
             btnUstensil.style.margin = "0 50px";
             break;
+
         case "btn-app" :
             menuContainerApp.style.display="block";
+            menuContainerApp.classList.remove("format-1");
+            menuContainerApp.classList.add("format-2");
             listApp.style.display="none";
             inputSelectIng.focus();
             inputSelectApp.addEventListener("keyup",() => {
-                listIng.style.display="block"
+                listApp.style.display="block"
+                listApp.classList.remove("list-format-1");
+                listApp.classList.add("list-format-2");
             });
             menuContainerApp.style.display="block";
             btnUstensil.style.margin = "0 50px";
             break;
+
         case "btn-ust" :
             menuContainerUst.style.display="block";
-            listIng.style.display="none";
+            menuContainerUst.classList.remove("format-1");
+            menuContainerUst.classList.add("format-2");
+    
             inputSelectUst.focus();
             inputSelectUst.addEventListener("keyup",() => {
-                listIng.style.display="block"
+                listUst.style.display="block";
+                listUst.classList.remove("list-format-1");
+                listUst.classList.add("list-format-2");
             });
             menuContainerUst.style.display="block";
             break;
+
         default:
             console.log("une erreur s'est produite.")
 
@@ -172,15 +190,58 @@ function displayInputSearch(event) {
 /**
  * This function close the list of the ingredients
  */
-function closeList() {
+function closeList(event) {
     menuContainerIng.style.display ="";
     menuContainerApp.style.display ="";
     menuContainerUst.style.display ="";
+    //on vide la valeur de l'input
     inputSelectIng.value="";
     inputSelectApp.value="";
     inputSelectUst.value="";
     btnAppliance.style.margin="";
     btnUstensil.style.margin="";
+   backInitialDisplay();
+}
+
+/**
+ * This function resets the applied style to the initial
+ */
+function backInitialDisplay() {
+    // ingredients
+    menuContainerIng.classList.remove("format-2");
+    menuContainerIng.classList.add("format-1");
+    listIng.classList.remove("list-format-2");
+    listIng.classList.add("list-format-1");
+    const eltIng = document.getElementsByClassName("elt-ing");
+    console.log("elt ing", eltIng);
+    for( item of eltIng) {
+        item.classList.remove("size2");
+        item.classList.add("size1");
+    }
+
+    // appliances
+    menuContainerApp.classList.remove("format-2");
+    menuContainerApp.classList.add("format-1");
+    listApp.classList.remove("list-format-2");
+    listApp.classList.add("list-format-1");
+    const eltApp = document.getElementsByClassName("elt-app");
+
+    for( item of eltApp) {
+        item.classList.remove("size2");
+        item.classList.add("size1");
+    }
+    //ustensils
+    menuContainerUst.classList.remove("format-2");
+    menuContainerUst.classList.add("format-1");
+    listUst.classList.remove("list-format-2");
+    listUst.classList.add("list-format-1");
+    const eltUst = document.getElementsByClassName("elt-ust");
+
+    for( item of eltUst){
+        item.classList.remove("size2");
+        item.classList.add("size1");
+    }
+
 }
 
 /**
@@ -265,8 +326,7 @@ async function init () {
     displayData(recipesArray);
 }
 
-// Close the list when the user clicks outside
-//window.addEventListener("mouseup", closeList)
+
 init();
 
 

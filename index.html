@@ -42,8 +42,8 @@
                 </button>
                 <div class="list-ingr format-1  ing" >
                     <div class="cont-input ing">
-                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)" >
-                        <div class="icon-up ing" onclick="closeList()">
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)" >
+                        <div class="icon-up ing"  onclick="closeList()">
                             <i class="fa-solid fa-angle-up ing" ></i>
                         </div>
                     </div>
@@ -59,10 +59,10 @@
                 </button> 
                 <div class="list-appl format-1 app" onfocusout="closeList()">
                     <div class="cont-input app">
-                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)"
+                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
                         >
-                        <div class="icon-up app">
-                        <i class="fa-solid fa-angle-up app" onclick="closeList()"></i>
+                        <div class="icon-up app"  onclick="closeList(event)">
+                        <i class="fa-solid fa-angle-up app" ></i>
                         </div>
                     </div>
                     <div class="list-app list-format-1 app">
@@ -77,10 +77,10 @@
                 </button>   
                 <div class="list-uste format-1 ust" onfocusout="closeList()">
                     <div class="cont-input ust">
-                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" onkeyup="searchInputSelect(event)"
+                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
                         >
-                        <div class="icon-up ust">
-                        <i class="fa-solid fa-angle-up ust" onclick="closeList()"></i>
+                        <div class="icon-up ust" onclick="closeList(event)">
+                        <i class="fa-solid fa-angle-up ust" ></i>
                         </div>
                     </div>
                     <div class="list-ust list-format-1 ust">
