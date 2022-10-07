@@ -36,10 +36,10 @@ html {
     font-size: 1.2rem;
     position: relative;
     border: #E7E7E7;
+    padding-left: 10px;
 }
 
 #search-input::placeholder {
-    padding-left: 1rem;
     color: #000000;
     opacity: 0.25;
 }

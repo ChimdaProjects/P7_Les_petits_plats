@@ -54,6 +54,9 @@ async function displayData(recipesArr) {
 
         const recipeModel = recipeFactory(recipe);
         const recipeCardDOM = recipeModel.getRecipeCardDOM();
+        updateListIngredients(allListIngredients);
+        updateListAppliances(allListAppliances);
+        updateListUstensils(allListUstensils)
         
     })
     
@@ -61,11 +64,10 @@ async function displayData(recipesArr) {
 
 
 /**
- * This function displays the list of ingredients
+ * This function updates the list of ingredients on the select
+ * @param {Array} arr array of ingredients
  */
-function displayListIngredients (arr) {
-    const menuContainer = document.querySelector(".list-ing");
-    menuContainer.style.display="flex";
+function updateListIngredients (arr) {
    
     listIngredients = Array.from([...new Set(arr)]);
     listIngredients.forEach((ing)=> {
@@ -74,33 +76,56 @@ function displayListIngredients (arr) {
     })
 }
 
-function displayListAppliances () {
-    const menuContainer = document.querySelector(".list-app");
-    menuContainer.style.display="flex";
-    listAppliances = Array.from([...new Set(allListAppliances)]);
-    console.log('listAppliance', listAppliances)
+/**
+ * This function updates the list of appliances on the select
+ * @param {Array} arr array of appliances
+ */
+function updateListAppliances (arr) {
+    
+    listAppliances = Array.from([...new Set(arr)]);
     listAppliances.forEach((app)=> {
         const listModel = recipeFactory(app);
         const listDOM = listModel.getListOfAppliances();   
     })
 }
-console.log('listAppliance2', listAppliances);
-
-function displayListUstensils ( ) {
-    const menuContainer = document.querySelector(".list-ust");
-    menuContainer.style.display="flex";
+/**
+ * This function updates the list of ustensils on the select
+ * @param {Array} arr array of ustensils
+ */
+function updateListUstensils ( arr) {
     
-    listUstensils = Array.from([...new Set(allListUstensils)]);
+    listUstensils = Array.from([...new Set(arr)]);
     listUstensils.forEach((ust)=> {
         const listModel = recipeFactory(ust);
-        const listDOM = listModel.getListOfUstensils();  
-       
+        const listDOM = listModel.getListOfUstensils();   
     })
 }
 
+/**
+ * This function open the list from select
+ */
+function displayListIng () {
+    const menuContainer = document.querySelector(".list-ing");
+    menuContainer.style.display="flex";
+}
 
+/**
+ * This function open the list from select
+ */
+function displayListApp () {
+    const menuContainer = document.querySelector(".list-app");
+    menuContainer.style.display="flex";
+}
 
-
+/**
+ * This function open the list from select
+ */
+function displayListUst () {
+    const menuContainer = document.querySelector(".list-ust");
+    menuContainer.style.display="flex";
+    
+}
+ 
 /**
  * This function close the list of the ingredients
  */

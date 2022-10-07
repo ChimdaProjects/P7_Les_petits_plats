@@ -23,16 +23,14 @@ searchBar.addEventListener("keyup", recipesFiltered);
  */
 function recipesFiltered(event) {
     
-    const valueSearched = event.target.value;
+    const valueSearched = event.target.value.toLowerCase();
     console.log("value input", valueSearched);
     let numberOfChar = valueSearched.length;
     card = recipeCard;
     
     if (numberOfChar > 2 ) {
   
-        mainResearch(valueSearched, card);
-        //console.log("array", recipeCard);
-        
+        mainResearch(valueSearched, card); 
     }  
 }
 
@@ -41,7 +39,7 @@ function mainResearch(valueSearched, recipeCard) {
     ingredientResult=[];
     applianceResult=[];
     ustensilsResult=[];
-    //console.log("recipeCard", recipeCard)
+  
         console.time('main loop');
         for (let i=0; i < recipeCard.length; i++) {
             if ( recipeCard[i].textContent.toLowerCase().includes(valueSearched)) {
@@ -60,7 +58,6 @@ function mainResearch(valueSearched, recipeCard) {
                 }
                 //liste appareils
                 let appl = recipeCard[i].dataset.appliance.toLowerCase();
-                console.log("appl id", appl);
                 applianceResult.push(appl);
 
                 // liste ustensils
@@ -70,26 +67,19 @@ function mainResearch(valueSearched, recipeCard) {
                     let ustensil = ustModified[i].toLowerCase();
                     ustensilsResult.push(ustensil);
                 }
-                //console.log("uust", ustModified);
-                
-
-
             } 
             else {
                 recipeCard[i].style.display = "none";
             } 
             console.timeEnd('main loop') 
         }
-        displayListIngredients(ingredientResult);
-        displayAppliances(applianceResult);
-        displayUstensils(ustensilsResult);
-        //console.log("result ingredient XXX", ingredientResult);
-        console.log("result appareil XXX", applianceResult);
-        console.log("result aust XXX", ustensilsResult);
+        updateListIngredients(ingredientResult);
+        updateListAppliances(applianceResult);
+        updateListUstensils(ustensilsResult);
        
 }
 
-
+/*
 function displayIngredients(arr) {
     console.log("arr", arr);
     const menuContainer = document.querySelector(".list-ing");
@@ -124,5 +114,5 @@ function displayUstensils(arr) {
         const listModel = recipeFactory(ust);
         const listDOM = listModel.getListOfUstensils();  
        
-    })
-}
+    }update
+}*/
