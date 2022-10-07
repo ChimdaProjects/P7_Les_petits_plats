@@ -19,6 +19,7 @@ const inputMain = document.querySelector("#search-input").value;
 const listIng = document.querySelector(".list-ing");
 const listApp = document.querySelector(".list-app");
 const listUst= document.querySelector(".list-ust");
+
 /**
  * This function fetch all recipes from json's file
  */
@@ -33,7 +34,6 @@ async function getRecipes() {
         })
         .then(function(data) {
             recipesArray = data;
-            //console.log("recipeArray", recipesArray);
             return recipesArray;
         })
         .catch(function (err) {
@@ -49,7 +49,7 @@ async function displayData(recipesArr) {
     allListAppliances= [];
     allListIngredients=[];
     allListUstensils=[];
-    //console.log("display data", recipeArray);
+  
     recipesArr.forEach((recipe) => {
         
         recipe.ingredients.forEach((ing)=> {
@@ -89,10 +89,9 @@ function updateList(arr, element) {
         const listModel = recipeFactory(elt, element);
         const listDOM= listModel.getList();    
     });
-
 }
-
-
+const btnAppliance = document.querySelector("#btn-appareils");
+const btnUstensil = document.querySelector("#btn-ustensils");
 /**
  * This function displays the list of ingredients, appliances or ustensils
  * @param {Event} event 
@@ -103,10 +102,13 @@ function displayList(event) {
     switch (value) {
         case "btn-ing" :
             menuContainerIng.style.display="block";
+            btnAppliance.style.margin = "0 50px";
+            btnUstensil.style.margin = "0 50px";
             break;
 
         case "btn-app" :
             menuContainerApp.style.display="block";
+            btnUstensil.style.margin = "0 50px";
             break;
 
         case "btn-ust" :
@@ -118,25 +120,24 @@ function displayList(event) {
     }
 }
 
-
 /**
  * This function close the list of the ingredients
  */
 function closeList() {
-
     menuContainerIng.style.display ="";
     menuContainerApp.style.display ="";
     menuContainerUst.style.display ="";
     inputSelectIng.value="";
     inputSelectApp.value="";
     inputSelectUst.value="";
-
-
+    btnAppliance.style.margin="";
+    btnUstensil.style.margin="";
 }
 
 /**
  * This function displays tag selected by the user for the research
  * @param {Event} event 
+ * @param {String} cat - category of the tag (ing, app, ust)
  */
 function displayTagElt (event, cat) {
    
@@ -155,10 +156,7 @@ function displayTagElt (event, cat) {
                 searchByTag(recipesArray, tagsSelected, cat)
             } else {
                 searchByTag(recipesByTag, tagsSelected, cat);
-
-            }
-                
-            
+            }        
         } else if (valueSearched) {
             if (tagsSelected.length > 1) {
                 searchByTag(recipesByTag, tagsSelected, cat);
@@ -166,19 +164,16 @@ function displayTagElt (event, cat) {
                 searchByTag(filteredArr, tagsSelected, cat);
             }
         }
-        
-
         closeList();
-    //}
 }
 console.log("tableau tags selected", tagsSelected);
 
-// TODO: pb si plusieurs tags de différentes catégories quand
-// on delete, on ne trouve plus de recettes
 /**
- * This function delete the tag when the user clicks on the X 
+ * This function delete the tag when the user clicks on the icon X 
  * @param {Event} e -event
+ * @param {String} cat - category of the tag (ing, app, ust)
  */
+
 function deleteTag(e, cat) {
     
     let tagDelete = e.target.id;
@@ -195,20 +190,24 @@ function deleteTag(e, cat) {
     // delete tag selected
    let section = document.querySelector("#tags-section");
    section.removeChild(parent2);
+
     if ( !valueSearched) {
         // Condition if array of tag is empty
         if (tagsSelected.length == 0) {
             recipeSection.innerHTML="";
-            displayData(recipesArray);
+            displayData(recipesArray);   
+        } else {
+            searchByTag(recipesArray, tagsSelected, cat);
+        } 
+    } else {
+        if ( tagsSelected.length == 0 ) {
+             // on vide le dom car le tableau est vide
+            recipeSection.innerHTML="";
+            // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
+            displayData(filteredArr);
+        } else {
+            searchByTag(filteredArr, tagsSelected, cat)
         }
-    } else if (tagsSelected.length == 0 )
-    {
-        // on vide le dom car le tableau est vide
-        recipeSection.innerHTML="";
-        // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
-        displayData(filteredArr);
-    } else if ( tagsSelected.length >= 1 ) {
-        searchByTag(filteredArr, tagsSelected, cat)
     }
 }
 

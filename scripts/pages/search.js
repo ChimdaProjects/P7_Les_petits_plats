@@ -11,53 +11,48 @@ let searchBarInput = document.getElementById("search-input");
 searchBarInput.addEventListener("keyup", searchBar);
 
 /**
- * This function 
+ * This function checks if there is 3 characters in the input to launch the search
  * @param {Event} e - event of input
  */
 function searchBar(e) {
     valueSearched = (e.target.value).toLowerCase();
     let nbCharValue = valueSearched.length;
-    //console.log("value", valueSearched);
-    //console.log("length value", valueSearched.length)
+  
     if (nbCharValue > 2) {
         mainSearch(valueSearched, recipesArray);
-        searchBarInput.setAttribute("data-error-visible", "false");
-       
-    } else if (nbCharValue > 1 && nbCharValue <= 2 ) {
-        
-        searchBarInput.setAttribute("data-error-visible", "true");
 
     } else if (nbCharValue < 1) {
         let cardsSection = document.querySelector("#list-recipes");
         cardsSection.innerHTML="";
         displayData(recipesArray);
-    }
+    } 
 }
 
+/**
+ * This function executes the main search when the user writes sthg in the input
+ * @param {String} value - value from the input
+ * @param {Array} arr - array of recipes
+ */
 function mainSearch(value, arr) {
 
     filteredArr = arr.filter((el)=> {
-            // filtre sur le nom de la recette, description ou ingredients
-            let valueFiltered = 
-                el.name.toLowerCase().includes(value) ||
-                el.description.toLowerCase().includes(value) || 
-                el.ingredients.forEach(element => {
-                let ingr = element.ingredient.toLowerCase().includes(value);
-                //console.log("ingr", ingr);
+        // filtre sur le nom de la recette, description ou ingredients
+        let valueFiltered = 
+            el.name.toLowerCase().includes(value) ||
+            el.description.toLowerCase().includes(value) || 
+            el.ingredients.forEach(element => {
+            let ingr = element.ingredient.toLowerCase().includes(value);
             });  
-            //console.log(`valueFiltered mainSearch`, valueFiltered)
-            return valueFiltered;
-        });
-   
-    console.log(`resultat filtré avec la value: ${value}`, filteredArr);
+        return valueFiltered;
+    });
+
    // on vide le DOM pour chaque modification
-   // let cardsSection = document.querySelector("#list-recipes");
     recipeSection.innerHTML="";
     listIng.innerHTML="";
     listApp.innerHTML="";
     listUst.innerHTML="";
-     //console.log("tab filtré", filteredArr);
-    // si le tableau est vide alors on affiche le msg d'erreur
+ 
+    // si le tableau filtré est vide alors on affiche le msg d'erreur
     if (filteredArr.length == 0) {
         recipeSection.innerHTML = 
         `Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes",
@@ -66,8 +61,6 @@ function mainSearch(value, arr) {
     } else {
         displayData(filteredArr);
     }
-    
-
 }
 
 

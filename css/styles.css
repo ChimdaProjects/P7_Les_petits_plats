@@ -63,10 +63,7 @@ html {
     font-size: 30px;
     background-color: #E7E7E7;
     height: 69px;
-    border-radius:  0 5px 5px 0;
-    
-    
-    
+    border-radius:  0 5px 5px 0;   
 }
 
 i.fa-magnifying-glass {
@@ -157,18 +154,7 @@ i.fa-magnifying-glass {
 #btn-ingredients, #btn-appareils, #btn-ustensils {
     position: relative;
 }
-#myInput-ing, #myInput-app, #myInput-ust {
-    position: relative;
-    top: -100%;
-   
 
-}
-
-
-#myInput-ing::placeholder, #myInput-app::placeholder, #myInput-ust::placeholder {
-    padding-left: 1rem;
-    color:white;
-}
 
 /* LIST OF TAGS*/
 .cont-input {
@@ -188,10 +174,13 @@ i.fa-magnifying-glass {
     justify-content: space-between;
     margin: 1rem 0;
     
+    
 }
 .icon-up {
     display: flex;
     width: 100%;
+    padding-right: 20px;
+    
 }
 i.fa-angle-up {
     width: 100%;
@@ -202,7 +191,7 @@ i.fa-angle-up {
 }
 #myInput-ing2, #myInput-app2, #myInput-ust2 {
   
-    width: 90%;
+    width: 70%;
     border: none;
     box-sizing: border-box;
     /*position: static;*/
@@ -216,54 +205,50 @@ i.fa-angle-up {
     color: #FFFFFF;
     position:absolute;
     display: flex;
-    
-   
+    padding-left: 20px; 
 }
 
 #myInput-ing2::placeholder, #myInput-app2::placeholder, #myInput-ust2::placeholder {
     color: #FFFFFF;
-    
 }
+
+input:focus {
+    outline: none;
+}
+
 .list-ingr , .list-appl, .list-uste {
     position: relative;
     top:-100%;
-    height: 397px;
-    width: 667px;
+    max-height: 397px;
+    /*max-width: 667px;*/
+    width: 223px;
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
     position: block;
-    z-index: 10;
+    z-index: 1;
     display: none;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 1rem;
-    
+    padding-bottom: 20px;
  
-   
 }
 
 .list-ing, .list-app, .list-ust {
+    /*max-width: 667px;*/
+    width: 223px;
     display: flex;
+    flex-direction: column;
+    /* display : flex; */
     flex-wrap: wrap;
     justify-content: space-between;
-    
-
- 
+    padding: 0 20px;
     
 }
-
-/*
-.list-ing {
-    background-color: #3282F7;
+.list-select {
+    max-width: 667px;
+    display: block;
 }
-.list-app {
-    background-color: #68D9A4;
-}
-
-.list-ust {
-    background-color: #ED6454;
-}*/
 
 /* hide scrollbar */
 .list-ingr::-webkit-scrollbar, .list-appl::-webkit-scrollbar , .list-uste::-webkit-scrollbar { 
@@ -276,12 +261,12 @@ i.fa-angle-up {
     font-weight:400;
     font-size: 18px;
    /* line-height: 22px;*/
-    width: 30%;
+    /*width: 30%;*/
+    width: 100%;
     cursor: pointer;
     height: 22px;
-    
-  
 }
+
 .elt-ing {
     background-color: #3282F7;
 }
@@ -289,8 +274,8 @@ i.fa-angle-up {
     text-transform: capitalize;
 }
 .elt-ing:hover, .elt-app:hover, .elt-ust:hover {
-    transform: scale(1.1);
-    color: black
+    background-color: white;
+    color: black;
 }
 
 .elt-app {
@@ -307,15 +292,15 @@ i.fa-angle-up {
 .elt-ust::first-letter {
     text-transform: capitalize;
 }
+
 /* CARD */
 
 #list-recipes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    
-    
+    justify-content: space-between;    
 }
+
 .card-recipe {
     z-index: 0;
     border: 1px solid black;
@@ -326,7 +311,8 @@ i.fa-angle-up {
     margin: 1rem 0;
     border:none;
     cursor: pointer;
-}   
+} 
+
 .card-recipe:hover {
     transform: scale(1.05);
     opacity: 0.7;
@@ -344,10 +330,7 @@ i.fa-angle-up {
     justify-content: space-between;
     align-items: center;
     margin: 20px 0;
-    
-
 }
-
 
 .recipe-title {
     font-family: Lato;
@@ -357,13 +340,12 @@ i.fa-angle-up {
     letter-spacing: 0em;
     text-align: left;
     background-color: #E7E7E7;
-
 }
+
 .fa-clock {
     height: 20px;
     width: 20px;
     background-color: #E7E7E7;
-
 }
 
 .recipe-time, .icon-time {
@@ -412,7 +394,6 @@ i.fa-angle-up {
 .recipe-content {
     display: flex;
     background-color: #E7E7E7;
-
 }
 
 /* ERROR INPUT < 3 characters */
