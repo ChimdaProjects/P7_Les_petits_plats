@@ -107,7 +107,7 @@ function searchInputSelect (event, arr, cat) {
         } else {
             arr = recipesByTag
         }
-    } else if ( valueSearched) {
+    } else if ( valueSearched ) {
         if (tagsSelected.length == 0) {
             arr = filteredArr;
             console.log("arr = filteredArr")
@@ -132,7 +132,8 @@ function searchInputSelect (event, arr, cat) {
                         newArrayTags.push(item.ingredient);
                     }      
                 })
-                    updateList(newArrayTags, "ing");
+                newArrayTagsFiltered = Array.from([...new Set(newArrayTags)]).sort();
+                    updateList(newArrayTagsFiltered, "ing");
                 });
                 if (newArrayTags.length == 0) {
                     listIng.textContent = "Aucun ingrédient trouvé" 

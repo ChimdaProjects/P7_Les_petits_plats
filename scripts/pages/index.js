@@ -92,23 +92,26 @@ function updateList(arr, element) {
 }
 const btnAppliance = document.querySelector("#btn-appareils");
 const btnUstensil = document.querySelector("#btn-ustensils");
+const iconDownCont = document.querySelector(".icon-down");
 /**
  * This function displays the list of ingredients, appliances or ustensils
  * @param {Event} event 
  */
 function displayList(event) {
+    
     let value = event.target.value;
-  
+    console.log('value', value)
     switch (value) {
-        case "btn-ing" :
-            menuContainerIng.style.display="block";
-            btnAppliance.style.margin = "0 50px";
-            btnUstensil.style.margin = "0 50px";
+        case "btn-ing":
+            
+            menuContainerIng.style.display="flex";
+            btnAppliance.style.margin = "0 500px";
+            btnUstensil.style.margin = "0 500px";
             break;
 
         case "btn-app" :
             menuContainerApp.style.display="block";
-            btnUstensil.style.margin = "0 50px";
+            btnUstensil.style.margin = "0 500px";
             break;
 
         case "btn-ust" :
@@ -119,7 +122,53 @@ function displayList(event) {
             console.log(`Sorry, we are out of ${value}.`);
     }
 }
+const eltIng = document.querySelector(".elt-ing");
 
+function displayInputSearch(event) {
+    let value = event.target.value;
+    switch (value) {
+        case "btn-ing" :
+            
+            menuContainerIng.style.display="block";
+            menuContainerIng.classList.remove("format-1");
+            menuContainerIng.classList.add("format-2");
+            listIng.style.display="none";
+            inputSelectIng.focus();
+            inputSelectIng.addEventListener("keyup",() => {
+                listIng.style.display="block"
+                listIng.classList.remove("list-format-1");
+                listIng.classList.add("list-format-2");
+                
+            });
+            menuContainerIng.style.display="block";
+            btnAppliance.style.margin = "0 50px";
+            btnUstensil.style.margin = "0 50px";
+            break;
+        case "btn-app" :
+            menuContainerApp.style.display="block";
+            listApp.style.display="none";
+            inputSelectIng.focus();
+            inputSelectApp.addEventListener("keyup",() => {
+                listIng.style.display="block"
+            });
+            menuContainerApp.style.display="block";
+            btnUstensil.style.margin = "0 50px";
+            break;
+        case "btn-ust" :
+            menuContainerUst.style.display="block";
+            listIng.style.display="none";
+            inputSelectUst.focus();
+            inputSelectUst.addEventListener("keyup",() => {
+                listIng.style.display="block"
+            });
+            menuContainerUst.style.display="block";
+            break;
+        default:
+            console.log("une erreur s'est produite.")
+
+    }
+   
+}
 /**
  * This function close the list of the ingredients
  */
