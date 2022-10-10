@@ -106,10 +106,10 @@ function searchInputSelect (event, arr, cat) {
     } else if ( valueSearched ) {
         if (tagsSelected.length == 0) {
             arr = filteredArr;
-            console.log("arr = filteredArr")
+            
         } else {
             arr = recipesByTag
-            console.log("arr = recipesByTag")
+            
         }
     }
    
@@ -138,7 +138,7 @@ function searchInputSelect (event, arr, cat) {
 
         case "myInput-app2" :
             valueInput = inputSelectApp.value;
-            console.log("arr.appliance", arr.appliance);
+           
             arr.forEach((recipe) => {
                 let resultFiltered =  
                 recipe.appliance.toLowerCase().includes(valueInput.toLowerCase()); 
@@ -175,7 +175,10 @@ function searchInputSelect (event, arr, cat) {
       
 } 
 
-
+/**
+ * This function changes the layout of the list  
+ * @param {Event} event 
+ */
 function changeDisplay(event) {
  let inputTarget = event.target.id;
 
@@ -186,7 +189,7 @@ function changeDisplay(event) {
         listIng.classList.remove("list-format-1");
         listIng.classList.add("list-format-2");
         const eltIng = document.getElementsByClassName("elt-ing");
-        console.log("elt ing", eltIng);
+        
         for( item of eltIng) {
             item.classList.remove("size1");
             item.classList.add("size2");

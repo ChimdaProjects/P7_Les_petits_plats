@@ -5,7 +5,6 @@ let filteredArr;
 
 // DOM elements
 let searchBarInput = document.getElementById("search-input");
-//console.log("value input", searchBarInput);
 
 // Events
 searchBarInput.addEventListener("keyup", searchBar);
@@ -21,7 +20,7 @@ function searchBar(e) {
     if (nbCharValue > 2) {
         mainSearch(valueSearched, recipesArray);
 
-    } else if (nbCharValue < 1) {
+    } else if (nbCharValue < 3) {
         let cardsSection = document.querySelector("#list-recipes");
         cardsSection.innerHTML="";
         displayData(recipesArray);

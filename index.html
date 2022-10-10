@@ -27,7 +27,10 @@
         <div id="search-bar" class="inputData" data-error="Votre recherche doit contenir au moins 3 caractères">
             <label for="search-input" class="hidden">Search the site:</label>
             <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette (3 caractères minimum)">
-            <i class="fa-solid fa-magnifying-glass search-img"></i>
+            <div class=" search-img">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            
         </div>
         <!--TAGS -->
         <div id="tags-section">
@@ -57,7 +60,7 @@
                     Appareils
                     <i class="fa-solid fa-angle-down appareils" ></i>
                 </button> 
-                <div class="list-appl format-1 app" onfocusout="closeList()">
+                <div class="list-appl format-1 app" >
                     <div class="cont-input app">
                         <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
                         >
@@ -75,7 +78,7 @@
                     Ustensils
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
-                <div class="list-uste format-1 ust" onfocusout="closeList()">
+                <div class="list-uste format-1 ust">
                     <div class="cont-input ust">
                         <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
                         >

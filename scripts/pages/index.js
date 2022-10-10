@@ -125,6 +125,83 @@ function displayList(event) {
     }
 }
 
+/**
+ * This function displays tag selected by the user for the research
+ * @param {Event} event 
+ * @param {String} cat - category of the tag (ing, app, ust)
+ */
+ function displayTagElt (event, cat) {
+   
+    let valueTarget = event.target;
+    let value = event.target.value.toLowerCase();
+    cat = valueTarget.dataset.category;
+    console.log("value target", value)
+    
+    //insert the value in the array tagSelected
+    tagsSelected.push(value);
+        
+    const tagModel = recipeFactory(value, cat);
+    const tagDOM = tagModel.displayTag();
+   
+    if (!valueSearched) {
+        if (tagsSelected.length == 1) {
+            searchByTag(recipesArray, tagsSelected, cat)
+        } else {
+            searchByTag(recipesByTag, tagsSelected, cat);
+        }        
+    } else if (valueSearched) {
+        if (tagsSelected.length > 1) {
+            searchByTag(recipesByTag, tagsSelected, cat);
+        } else {
+            searchByTag(filteredArr, tagsSelected, cat);
+        }
+    }
+    closeList();
+}
+
+/**
+* This function delete the tag when the user clicks on the icon X 
+* @param {Event} e -event
+* @param {String} cat - category of the tag (ing, app, ust)
+*/
+
+function deleteTag(e, cat) {
+
+let tagDelete = e.target.id;
+cat =  e.target.dataset.category;
+
+let parent = e.target.parentElement;
+let parent2 = parent.parentNode;
+
+let tagSelected = tagsSelected.find(elt => 
+{ 
+    elt.replace(/ /g,"") == tagDelete
+});
+tagsSelected.pop(tagSelected); 
+// delete tag selected
+let section = document.querySelector("#tags-section");
+section.removeChild(parent2);
+
+if ( !valueSearched) {
+    // Condition if array of tag is empty
+    if (tagsSelected.length == 0) {
+        recipeSection.innerHTML="";
+        displayData(recipesArray);   
+    } else {
+        searchByTag(recipesArray, tagsSelected, cat);
+    } 
+} else {
+    if ( tagsSelected.length == 0 ) {
+         // on vide le dom car le tableau est vide
+        recipeSection.innerHTML="";
+        // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
+        displayData(filteredArr);
+    } else {
+        searchByTag(filteredArr, tagsSelected, cat)
+    }
+}
+}
+
 
 /**
  * This function allows the user to search from the input
@@ -243,83 +320,6 @@ function backInitialDisplay() {
 
 }
 
-/**
- * This function displays tag selected by the user for the research
- * @param {Event} event 
- * @param {String} cat - category of the tag (ing, app, ust)
- */
-function displayTagElt (event, cat) {
-   
-        let valueTarget = event.target;
-        let value = event.target.value.toLowerCase();
-        cat = valueTarget.dataset.category;
-        console.log("value target", value)
-        
-        //insert the value in the array tagSelected
-        tagsSelected.push(value);
-            
-        const tagModel = recipeFactory(value, cat);
-        const tagDOM = tagModel.displayTag();
-       
-        if (!valueSearched) {
-            if (tagsSelected.length == 1) {
-                searchByTag(recipesArray, tagsSelected, cat)
-            } else {
-                searchByTag(recipesByTag, tagsSelected, cat);
-            }        
-        } else if (valueSearched) {
-            if (tagsSelected.length > 1) {
-                searchByTag(recipesByTag, tagsSelected, cat);
-            } else {
-                searchByTag(filteredArr, tagsSelected, cat);
-            }
-        }
-        closeList();
-}
-console.log("tableau tags selected", tagsSelected);
-
-/**
- * This function delete the tag when the user clicks on the icon X 
- * @param {Event} e -event
- * @param {String} cat - category of the tag (ing, app, ust)
- */
-
-function deleteTag(e, cat) {
-    
-    let tagDelete = e.target.id;
-    cat =  e.target.dataset.category;
-
-   let parent = e.target.parentElement;
-   let parent2 = parent.parentNode;
-
-   let tagSelected = tagsSelected.find(elt => 
-    { console.log("elt", elt)
-        elt.replace(/ /g,"") == tagDelete
-    });
-    tagsSelected.pop(tagSelected); 
-    // delete tag selected
-   let section = document.querySelector("#tags-section");
-   section.removeChild(parent2);
-
-    if ( !valueSearched) {
-        // Condition if array of tag is empty
-        if (tagsSelected.length == 0) {
-            recipeSection.innerHTML="";
-            displayData(recipesArray);   
-        } else {
-            searchByTag(recipesArray, tagsSelected, cat);
-        } 
-    } else {
-        if ( tagsSelected.length == 0 ) {
-             // on vide le dom car le tableau est vide
-            recipeSection.innerHTML="";
-            // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
-            displayData(filteredArr);
-        } else {
-            searchByTag(filteredArr, tagsSelected, cat)
-        }
-    }
-}
 
 async function init () {
     await getRecipes();

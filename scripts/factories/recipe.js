@@ -1,7 +1,6 @@
 function recipeFactory (data, element) {
     const {appliance, description, name, ingredients, time} = data;
     const elt = element;
-    //console.log("data", data);
    
     function getRecipeCardDOM () {
         let cardsSection = document.querySelector("#list-recipes");
@@ -67,7 +66,6 @@ function recipeFactory (data, element) {
             // create element DOM
           
             const listContainer = document.querySelector(`.list-${elt}`);
-            //console.log("menu container", menuContainer);
             const divList = document.createElement("div");
          
             listContainer.appendChild(divList);
