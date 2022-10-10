@@ -81,9 +81,7 @@ function recipeFactory (data, element) {
 
             // add event "onclick" on each element 
             const eltIng = document.querySelectorAll(`.elt-${elt}`);
-            //console.log("eltIng", eltIng)
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagElt));
-            
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagElt)); 
         }
 
         function displayTag() {

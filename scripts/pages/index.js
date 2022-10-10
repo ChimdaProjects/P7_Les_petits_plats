@@ -100,7 +100,6 @@ const iconDownCont = document.querySelector(".icon-down");
 function displayList(event) {
     
     let value = event.target.value;
-    console.log('value', value)
     switch (value) {
         case "btn-ing":
             
@@ -190,7 +189,7 @@ function displayInputSearch(event) {
 /**
  * This function close the list of the ingredients
  */
-function closeList(event) {
+function closeList() {
     menuContainerIng.style.display ="";
     menuContainerApp.style.display ="";
     menuContainerUst.style.display ="";
@@ -213,7 +212,7 @@ function backInitialDisplay() {
     listIng.classList.remove("list-format-2");
     listIng.classList.add("list-format-1");
     const eltIng = document.getElementsByClassName("elt-ing");
-    console.log("elt ing", eltIng);
+    
     for( item of eltIng) {
         item.classList.remove("size2");
         item.classList.add("size1");
@@ -254,13 +253,14 @@ function displayTagElt (event, cat) {
         let valueTarget = event.target;
         let value = event.target.value.toLowerCase();
         cat = valueTarget.dataset.category;
+        console.log("value target", value)
         
         //insert the value in the array tagSelected
         tagsSelected.push(value);
             
         const tagModel = recipeFactory(value, cat);
         const tagDOM = tagModel.displayTag();
-        console.log(`filteredArr au click du tag: ${value}`, filteredArr);
+       
         if (!valueSearched) {
             if (tagsSelected.length == 1) {
                 searchByTag(recipesArray, tagsSelected, cat)
