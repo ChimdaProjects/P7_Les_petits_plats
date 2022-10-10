@@ -356,6 +356,10 @@ input:focus {
     border-radius: 5px 5px 0px 0px;
     background-color: #C7BEBE;
 }
+.ingr, span {
+    background-color:#E7E7E7; ;
+}
+
 
 .card-header {
     display: flex;

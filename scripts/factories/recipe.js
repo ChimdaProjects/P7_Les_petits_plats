@@ -65,23 +65,25 @@ function recipeFactory (data, element) {
          * This function creates each element of the list of ingredients, appliances or ustensils
          */
         function getList() {
-            // create element DOM
+
+           // create element DOM
           
-            const listContainer = document.querySelector(`.list-${elt}`);
-            const divList = document.createElement("div");
-         
-            listContainer.appendChild(divList);
-            divList.setAttribute("class", `elt-${elt}`);
-            divList.classList.add("size1");
-            divList.setAttribute("data-category", `${elt}`);
+           const listContainer = document.querySelector(`.list-${elt}`);
+           const divList = document.createElement("div");
+        
+           listContainer.appendChild(divList);
+           divList.setAttribute("class", `elt-${elt}`);
+           divList.classList.add("size1");
+           divList.setAttribute("data-category", `${elt}`);
 
-            // attribute value = data 
-            divList.value = data;
-            divList.textContent = data;
+           // attribute value = data 
+           divList.value = data;
+           divList.textContent = data;
 
-            // add event "onclick" on each element 
-            const eltIng = document.querySelectorAll(`.elt-${elt}`);
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagElt)); 
+           // add event "onclick" on each element 
+           const eltIng = document.querySelectorAll(`.elt-${elt}`);
+           eltIng.forEach(elt => elt.addEventListener("click", displayTagElt)); 
+        
         }
 
         function displayTag() {
