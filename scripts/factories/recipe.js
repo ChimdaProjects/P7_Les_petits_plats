@@ -94,7 +94,7 @@ function recipeFactory (data, element) {
            
             <button class="tag btn-${elt}" >
                 ${data}
-                <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" data-category="${elt}" onclick="deleteTag(event)" >
+                <img src="assets/icons/close.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" data-category="${elt}" onclick="deleteTag(event)" >
             </button>
             <div>
             </div>
