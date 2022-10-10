@@ -6,6 +6,7 @@
 html {
     margin: 2rem 100px;
     font-family: 'Lato', sans-serif;
+    margin: 2rem auto;
 }
 
 .hidden {
