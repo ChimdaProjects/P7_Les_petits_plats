@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" >
+    <link href="css/styles.css" rel="stylesheet" type="text/css" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -17,62 +17,77 @@
 </head>
 <body>
     <header id="header">
-        <img src="assets/images/logo.svg" alt="Logo Les petits plats" id="logo">
+        <a href="index.html">
+            <img src="assets/images/logo.svg" alt="Logo Les petits plats" id="logo">
+        </a>
     </header>
+
     <main id="main">
         <!--SEARCH BAR -->
-        <div id="search-bar">
+        <div id="search-bar" class="inputData" data-error="Votre recherche doit contenir au moins 3 caractères">
             <label for="search-input" class="hidden">Search the site:</label>
-            <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette">
-            <i class="fa-solid fa-magnifying-glass search-img"></i>
+            <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette (3 caractères minimum)">
+            <div class=" search-img">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            
         </div>
         <!--TAGS -->
         <div id="tags-section">
-           
         </div>     
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
+            <!--Select ingredients-->
             <div class="dropbtn">
-                <button id="btn-ingredients"class="dropbtn btn-container" onclick="displayListIng ()">
+                <button id="btn-ingredients" class="dropbtn btn-container" value="btn-ing"  onclick="displayList(event)" ondblclick="displayInputSearch(event)">
                     Ingrédients
-                    <i class="fa-solid fa-angle-down ingredients"></i>
+                        <i class="fa-solid fa-angle-down ingredients" onclick="displayList(event)"></i>
                 </button>
-                <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing" class="dropbtn hidden" >
-                <div class="list-ing" onfocusout="closeList()">
+                <div class="list-ingr format-1  ing" >
                     <div class="cont-input ing">
-                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing"
-                        >
-                        <i class="fa-solid fa-angle-up ingredients" onclick="closeList()"></i>
+                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)" >
+                        <div class="icon-up ing"  onclick="closeList()">
+                            <i class="fa-solid fa-angle-up ing" ></i>
+                        </div>
                     </div>
-                  
+                    <div class="list-ing list-format-1 ing" > 
+                    </div> 
                 </div>
             </div>
+            <!--Select appliances-->
             <div  class="dropbtn">
-                <button id="btn-appareils" class="dropbtn btn-container" onclick="displayListApp()">
+                <button id="btn-appareils" class="dropbtn btn-container" value="btn-app" onclick="displayList(event)" ondblclick="displayInputSearch(event)">
                     Appareils
-                    <i class="fa-solid fa-angle-down appareils"></i>
+                    <i class="fa-solid fa-angle-down appareils" ></i>
                 </button> 
-                <input type="text" placeholder="appareils" id="myInput-app" class="dropbtn hidden">
-                <div class="list-app" onfocusout="closeList()">
+                <div class="list-appl format-1 app" >
                     <div class="cont-input app">
-                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app"
+                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
                         >
-                        <i class="fa-solid fa-angle-up app" onclick="closeList()"></i>
+                        <div class="icon-up app"  onclick="closeList(event)">
+                            <i class="fa-solid fa-angle-up app" ></i>
+                        </div>
                     </div>
-                  
+                    <div class="list-app list-format-1 app">
+                    </div>
                 </div>
             </div>
+            <!--Select ustensils-->
             <div class="dropbtn">
-                <button id="btn-ustensils" class="dropbtn btn-container" onclick="displayListUst()">
+                <button id="btn-ustensils" class="dropbtn btn-container" value="btn-ust" onclick="displayList(event)" ondblclick="displayInputSearch(event)">
                     Ustensils
                     <i class="fa-solid fa-angle-down ustensils" ></i>
                 </button>   
-                <input type="text" placeholder="ustensils" id="myInput-ust" class="dropbtn hidden" >
-                <div class="list-ust" onfocusout="closeList()">
+                <div class="list-uste format-1 ust">
                     <div class="cont-input ust">
-                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" 
+                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
                         >
-                        <i class="fa-solid fa-angle-up ust" onclick="closeList()"></i>
+                        <div class="icon-up ust" onclick="closeList(event)">
+                            <i class="fa-solid fa-angle-up ust" ></i>
+                        </div>
+                    </div>
+                    <div class="list-ust list-format-1 ust">
+
                     </div>
                   
                 </div>
@@ -80,15 +95,14 @@
         </div>
         <!--CARDS OF RECIPES -->
         <div id="list-recipes">
-        
         </div>
     </main>
-    <footer>
 
+    <footer>
     </footer>
-      
-    <script src="scripts/factories/recipe.js"></script>
-    <script src="scripts/pages/index.js"></script>  
-    <script src="scripts/pages/search.js"></script>
+<script src="scripts/factories/recipe.js"></script>
+<script src="scripts/pages/index.js"></script>    
+<script src="scripts/pages/search.js"></script>
+<script src="scripts/pages/searchByTags.js"></script>
 </body>
 </html>
