@@ -7,7 +7,9 @@ let allListAppliances = [];
 let listUstensils = [];
 let allListUstensils = [];
 let tagsSelected = [];
-
+let openedListIng = false ;
+let openedListApp = false  ;
+let openedListUst = false  ;
 // Elements DOM
 const recipeSection = document.querySelector("#list-recipes");
 const menuContainerIng = document.querySelector(".list-ingr");
@@ -93,6 +95,7 @@ function updateList(arr, element) {
 const btnAppliance = document.querySelector("#btn-appareils");
 const btnUstensil = document.querySelector("#btn-ustensils");
 const iconDownCont = document.querySelector(".icon-down");
+
 /**
  * This function displays the list of ingredients, appliances or ustensils
  * @param {Event} event 
@@ -100,30 +103,65 @@ const iconDownCont = document.querySelector(".icon-down");
 function displayList(event) {
     
     let value = event.target.value;
+
     switch (value) {
         case "btn-ing":
-            
-            menuContainerIng.style.display="flex";
-            btnAppliance.style.margin = "0 500px";
-            btnUstensil.style.margin = "0 500px";
-            inputSelectIng.focus()
+            inputSelectIng.focus();
+            openedListIng = true;
+            openedListApp = false;
+            openedListUst = false;
+
+            if (openedListIng) {
+                menuContainerIng.style.display="block";
+                btnAppliance.style.margin = "0 500px";
+                btnUstensil.style.margin = "0 500px";
+                menuContainerApp.style.display="none";
+                menuContainerUst.style.display="none"; 
+            } 
+             
             break;
 
         case "btn-app" :
-            menuContainerApp.style.display="block";
-            btnUstensil.style.margin = "0 500px";
+     
             inputSelectApp.focus();
+            openedListApp = true;
+            openedListIng = false;
+            openedListUst = false;
+         
+            if (openedListApp) {
+                menuContainerApp.style.display="block"
+                btnUstensil.style.margin = "0 500px";
+                menuContainerIng.style.display="none";
+                menuContainerUst.style.display="none"
+            }
             break;
 
         case "btn-ust" :
-            menuContainerUst.style.display="block";
             inputSelectUst.focus();
+            btnAppliance.style.margin = "";
+            openedListIng = false;
+            openedListApp = false;
+            openedListUst = true;
+
+            if (openedListUst) {
+                menuContainerUst.style.display="block";
+                menuContainerIng.style.display="none";
+                menuContainerApp.style.display="none";
+             } 
+           
             break;
 
         default: 
             console.log(`Sorry, we are out of ${value}.`);
     }
+   
+    
+    
 }
+
+console.log("openListIng", openedListIng)
+console.log("openListApp", openedListApp)
+console.log("openListUst",openedListUst)
 
 /**
  * This function displays tag selected by the user for the research
@@ -135,7 +173,6 @@ function displayList(event) {
     let valueTarget = event.target;
     let value = event.target.value.toLowerCase();
     cat = valueTarget.dataset.category;
-    console.log("value target", value)
     
     //insert the value in the array tagSelected
     tagsSelected.push(value);
@@ -167,39 +204,38 @@ function displayList(event) {
 
 function deleteTag(e, cat) {
 
-let tagDelete = e.target.id;
-cat =  e.target.dataset.category;
+    let tagDelete = e.target.id;
+    cat =  e.target.dataset.category;
 
-let parent = e.target.parentElement;
-let parent2 = parent.parentNode;
+    let parent = e.target.parentElement;
+    let parent2 = parent.parentNode;
 
-let tagSelected = tagsSelected.find(elt => 
-{ 
-    elt.replace(/ /g,"") == tagDelete
-});
-tagsSelected.pop(tagSelected); 
-// delete tag selected
-let section = document.querySelector("#tags-section");
-section.removeChild(parent2);
+    let tagSelected = tagsSelected.find(elt => 
+    { 
+        elt.replace(/ /g,"") == tagDelete
+    });
+    tagsSelected.pop(tagSelected); 
+    let section = document.querySelector("#tags-section");
+    section.removeChild(parent2);
 
-if ( !valueSearched) {
-    // Condition if array of tag is empty
-    if (tagsSelected.length == 0) {
-        recipeSection.innerHTML="";
-        displayData(recipesArray);   
+    if ( !valueSearched) {
+  
+        if (tagsSelected.length == 0) {
+            recipeSection.innerHTML="";
+            displayData(recipesArray);   
+        } else {
+            searchByTag(recipesArray, tagsSelected, cat);
+        } 
     } else {
-        searchByTag(recipesArray, tagsSelected, cat);
-    } 
-} else {
-    if ( tagsSelected.length == 0 ) {
-         // on vide le dom car le tableau est vide
-        recipeSection.innerHTML="";
-        // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
-        displayData(filteredArr);
-    } else {
-        searchByTag(filteredArr, tagsSelected, cat)
+        if ( tagsSelected.length == 0 ) {
+            // on vide le dom car le tableau est vide
+            recipeSection.innerHTML="";
+            // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
+            displayData(filteredArr);
+        } else {
+            searchByTag(filteredArr, tagsSelected, cat)
+        }
     }
-}
 }
 
 
