@@ -30,7 +30,7 @@ function recipesFiltered(event) {
     card = recipeCard;
     
     if (numberOfChar > 2 ) {
-  
+        console.log("je rentre ds la bonne condition")
         mainResearch(valueSearched, card); 
     }  else {
         displayData(recipesArray)
@@ -38,35 +38,38 @@ function recipesFiltered(event) {
 }
 
 function mainResearch(valueSearched, recipeCard) {
-    let recipesResult=[];
-    let ingredientResult=[];
-    let applianceResult=[];
-    let ustensilsResult=[];
+    console.log("jarrive ici")
+    let recipesResults=[];
+    console.log("recipes result 1", recipesResults)
+    let allListIngredients=[];
+    let allListAppliances=[];
+    let allListUstensils=[];
     
         //console.time('main loop');
         for (let i=0; i < recipeCard.length; i++) {
             
             if ( recipeCard[i].textContent.toLowerCase().includes(valueSearched)) {
                 recipeCard[i].style.display = "block"; 
-                recipesResult.push(recipeCard[i]);
-                console.log("recipeResult", recipesResult)
-                /*
+                console.log(recipeCard[i])
+                recipesResults.push(recipeCard[i]);
+                console.log("recipeResult2", recipesResults)
+                
                 // liste ingrédients
                 let ingr= recipeCard[i].getElementsByClassName("ingr");
-                console.log("ingr", ingr);
+                //console.log("ingr", ingr);
                 for(let i=0; i < ingr.length; i++) {
                     let text = ingr[i].textContent.toLowerCase();
-                    console.log("text", text);
+                    //console.log("text", text);
                     
                     let textModified = text.split(":")[0];
-                    console.log("textmodified", textModified)
+                    //console.log("textmodified", textModified)
                     allListIngredients.push(textModified);
-                    console.log("ingredientResult", allListIngredients)
+                    //console.log("ingredientResult", allListIngredients)
                 }
                 //liste appareils
                 let appl = recipeCard[i].dataset.appliance.toLowerCase();
                 allListAppliances.push(appl);
-                console.log("app result", allListAppliances);
+                //console.log("app result", allListAppliances);
                 // liste ustensils 
                 
                 let ust = recipeCard[i].dataset.ustensils.toLowerCase();
@@ -74,15 +77,16 @@ function mainResearch(valueSearched, recipeCard) {
                 for (let i =0; i < ustModified.length; i ++) {
                     let ustensil = ustModified[i].toLowerCase();
                     allListUstensils.push(ustensil);
-                    console.log("result ustensils", allListUstensils)
+                    //console.log("result ustensils", allListUstensils)
                 }
-                */
+                
             } 
             else {
                 recipeCard[i].style.display = "none";
             } 
             //console.timeEnd('main loop') 
         }
+        console.log("recipes result ext 3", recipesResults)
         
         updateList(allListIngredients, "ing");
         updateList(allListAppliances, "app");
