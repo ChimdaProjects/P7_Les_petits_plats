@@ -104,7 +104,7 @@ function searchInputSelect (event, arr, cat) {
         }
     } else if ( valueSearched ) {
         if (tagsSelected.length == 0) {
-            arr = filteredArr;
+            arr = recipesCardFiltered;
             
         } else {
             arr = recipesByTag
@@ -119,6 +119,7 @@ function searchInputSelect (event, arr, cat) {
     switch (cat) {
         case "myInput-ing2" :
             valueInput = inputSelectIng.value;
+            
             arr.forEach((recipe) => {
                 recipe.ingredients.forEach(item => {
                     let resultFiltered = item.ingredient.toLowerCase().includes(valueInput.toLowerCase());
@@ -128,7 +129,10 @@ function searchInputSelect (event, arr, cat) {
                     }      
                 })
                 newArrayTagsFiltered = Array.from([...new Set(newArrayTags)]).sort();
+                
+                
                     updateList(newArrayTagsFiltered, "ing");
+
                 });
                 if (newArrayTags.length == 0) {
                     listIng.textContent = "Aucun ingrédient trouvé" 
