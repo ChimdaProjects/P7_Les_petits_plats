@@ -1,5 +1,5 @@
 function recipeFactory (data, element) {
-    const {appliance,ustensils, description, name, ingredients, time} = data;
+    const {id, appliance,ustensils, description, name, ingredients, time} = data;
     const elt = element;
    
     function getRecipeCardDOM () {
@@ -7,7 +7,8 @@ function recipeFactory (data, element) {
         const cardContainer = document.createElement("article");
         cardContainer.setAttribute("class", "card-recipe");
         cardContainer.setAttribute("data-appliance", `${appliance}`);
-        cardContainer.setAttribute("data-ustensils", `${ustensils}`)
+        cardContainer.setAttribute("data-ustensils", `${ustensils}`);
+        cardContainer.setAttribute("data-id",`${id}`);
         // elements DOM img
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("class", "recipe-img");

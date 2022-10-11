@@ -183,7 +183,7 @@ function displayList(event) {
         if (tagsSelected.length > 1) {
             searchByTag(recipesByTag, tagsSelected, cat);
         } else {
-            searchByTag(filteredArr, tagsSelected, cat);
+            searchByTag(recipesCardFiltered, tagsSelected, cat);
         }
     }
     closeList();
@@ -224,9 +224,9 @@ function deleteTag(e, cat) {
             // on vide le dom car le tableau est vide
             recipeSection.innerHTML="";
             // on lance l'affichage des recettes en prenant en paramètre 1er tableau filtré
-            displayData(filteredArr);
+            displayData(recipesCardFiltered);
         } else {
-            searchByTag(filteredArr, tagsSelected, cat)
+            searchByTag(recipesCardFiltered, tagsSelected, cat)
         }
     }
 }
