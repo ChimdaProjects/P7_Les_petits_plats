@@ -39,9 +39,12 @@
         <div id="dropdown-section">
             <!--Select ingredients-->
             <div class="dropbtn">
-                <button id="btn-ingredients" class="dropbtn btn-container" value="btn-ing"  onclick="displayList(event)" ondblclick="displayInputSearch(event)">
+                <button id="btn-ingredients" class="dropbtn btn-container" data-value="btn-ing"  ondblclick="displayInputSearch(event)">
                     Ingrédients
-                        <i class="fa-solid fa-angle-down ingredients" onclick="displayList(event)"></i>
+                    <div class="ing"  onclick="displayList(event)">
+                        <i class="fa-solid fa-angle-down ingredients" ></i>
+                    </div>
+                        
                 </button>
                 <div class="list-ingr format-1  ing" >
                     <div class="cont-input ing">
@@ -56,9 +59,11 @@
             </div>
             <!--Select appliances-->
             <div  class="dropbtn">
-                <button id="btn-appareils" class="dropbtn btn-container" value="btn-app" onclick="displayList(event)" ondblclick="displayInputSearch(event)">
+                <button id="btn-appareils" class="dropbtn btn-container" data-value="btn-app"  ondblclick="displayInputSearch(event)">
                     Appareils
-                    <i class="fa-solid fa-angle-down appareils" ></i>
+                    <div class ="app"  onclick="displayList(event)">
+                        <i class="fa-solid fa-angle-down appareils" ></i>
+                    </div>
                 </button> 
                 <div class="list-appl format-1 app" >
                     <div class="cont-input app">
@@ -74,9 +79,11 @@
             </div>
             <!--Select ustensils-->
             <div class="dropbtn">
-                <button id="btn-ustensils" class="dropbtn btn-container" value="btn-ust" onclick="displayList(event)" ondblclick="displayInputSearch(event)">
+                <button id="btn-ustensils" class="dropbtn btn-container" data-value="btn-ust"  ondblclick="displayInputSearch(event)">
                     Ustensils
-                    <i class="fa-solid fa-angle-down ustensils" ></i>
+                    <div class="ust" onclick="displayList(event)">
+                        <i class="fa-solid fa-angle-down ustensils" ></i>
+                    </div>
                 </button>   
                 <div class="list-uste format-1 ust">
                     <div class="cont-input ust">
@@ -100,9 +107,9 @@
 
     <footer>
     </footer>
-<script src="scripts/factories/recipe.js"></script>
-<script src="scripts/pages/index.js"></script>    
-<script src="scripts/pages/search.js"></script>
-<script src="scripts/pages/searchByTags.js"></script>
+    <script src="scripts/factories/recipe.js"></script>
+    <script src="scripts/pages/index.js"></script>    
+    <script src="scripts/pages/search.js"></script>
+    <script src="scripts/pages/searchByTags.js"></script>
 </body>
 </html>
