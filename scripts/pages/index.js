@@ -102,8 +102,9 @@ const iconDownCont = document.querySelector(".icon-down");
  */
 function displayList(event) {
     
-    let value = event.target.value;
-
+    let btn = event.target.closest(".btn-container");
+    let value = btn.dataset.value;
+   
     switch (value) {
         case "btn-ing":
             inputSelectIng.focus();
