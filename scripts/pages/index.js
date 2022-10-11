@@ -159,9 +159,6 @@ function displayList(event) {
     
 }
 
-console.log("openListIng", openedListIng)
-console.log("openListApp", openedListApp)
-console.log("openListUst",openedListUst)
 
 /**
  * This function displays tag selected by the user for the research

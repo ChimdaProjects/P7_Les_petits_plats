@@ -80,7 +80,6 @@ function searchByTag(arrFiltered, tagArr, cat) {
 
     // suppression doublon
     let arrByTags = Array.from([...new Set(recipesByTag)]).sort();
-    console.log("arrbytags sans doublon", arrByTags);
     
     if (arrByTags.length == 0) {
         displayData(recipesArray);

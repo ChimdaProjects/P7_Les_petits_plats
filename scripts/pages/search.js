@@ -39,7 +39,6 @@ function mainSearch(value, arr) {
             el.description.toLowerCase().includes(value) || 
             el.ingredients.forEach(element => {
             let ingr = element.ingredient.toLowerCase().includes(value);
-            //console.log("ingr", ingr);
         });  
         return valueFiltered;
     });
