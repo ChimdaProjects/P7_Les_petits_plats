@@ -1,7 +1,6 @@
 function recipeFactory (data, element) {
     const {appliance, description, name, ingredients, time} = data;
     const elt = element;
-    //console.log("data", data);
    
     function getRecipeCardDOM () {
         let cardsSection = document.querySelector("#list-recipes");
@@ -20,7 +19,7 @@ function recipeFactory (data, element) {
         divHeader.innerHTML=`
         <h1 class="recipe-title">${name}</h1>
         <p class="recipe-time">
-            <i class="fa-solid fa-clock"></i>
+            <img class="icon-time" src="../../assets/icons/time.svg">
             ${time} min
         </p>
         `
@@ -65,10 +64,13 @@ function recipeFactory (data, element) {
          */
         function getList() {
             // create element DOM
-            const menuContainer = document.querySelector(`.list-${elt}`);
+          
+            const listContainer = document.querySelector(`.list-${elt}`);
             const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
+         
+            listContainer.appendChild(divList);
             divList.setAttribute("class", `elt-${elt}`);
+            divList.classList.add("size1");
             divList.setAttribute("data-category", `${elt}`);
 
             // attribute value = data 
@@ -77,9 +79,7 @@ function recipeFactory (data, element) {
 
             // add event "onclick" on each element 
             const eltIng = document.querySelectorAll(`.elt-${elt}`);
-            //console.log("eltIng", eltIng)
-            eltIng.forEach(elt => elt.addEventListener("click", displayTag));
-            
+            eltIng.forEach(elt => elt.addEventListener("click", displayTagElt)); 
         }
 
         function displayTag() {
@@ -94,54 +94,11 @@ function recipeFactory (data, element) {
            
             <button class="tag btn-${elt}" >
                 ${data}
-                <img src="assets/icons/circle-xmark-regular.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" onclick="deleteTag(event)" >
+                <img src="assets/icons/close.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" data-category="${elt}" onclick="deleteTag(event)" >
             </button>
             <div>
             </div>
             `  
         }
-
-      
     return { getRecipeCardDOM, displayTag, getList }
 }
-
-        /*
-        function getListOfIngredients () {
-            // create element DOM
-            const menuContainer = document.querySelector(".list-ing");
-            const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
-            divList.setAttribute("class", "elt-ing");
-
-            // attribute value = data 
-            divList.value = data;
-            divList.textContent = data;
-
-            // add event "click" on each ingredient 
-            const eltIng = document.querySelectorAll(".elt-ing");
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
-
-            
-    }
-        function getListOfAppliances () {
-            const menuContainer = document.querySelector(".list-app");
-            const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
-            divList.setAttribute("class", "elt-app");
-            divList.value = data;
-            divList.textContent=data;
-            const eltIng = document.querySelectorAll(".elt-app");
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
-        }
-
-        function getListOfUstensils() {
-            const menuContainer = document.querySelector(".list-ust");
-            const divList = document.createElement("div");
-            menuContainer.appendChild(divList);
-            divList.setAttribute("class", "elt-ust");
-            divList.value = data;
-            divList.textContent=data;
-            const eltIng = document.querySelectorAll(".elt-ust");
-            eltIng.forEach(elt => elt.addEventListener("click", displayTagIng)); 
-        }
-        */
