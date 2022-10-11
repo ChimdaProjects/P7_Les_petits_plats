@@ -425,7 +425,7 @@ input:focus {
     
     background-color: #E7E7E7;
     height: 100px;
-    text-overflow: "...";
+    text-overflow: ellipsis;
 }
 .recipe-content {
     display: flex;
