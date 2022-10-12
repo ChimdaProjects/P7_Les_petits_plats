@@ -11,7 +11,7 @@ const searchBar = document.querySelector("#search-input");
 const cardCont = document.querySelector("#list-recipes");
 
 let recipeCard = cardCont.children;
-console.log("recipeCard", recipeCard);
+
 // EVENTS
 searchBar.addEventListener("keyup", recipesFiltered);
 
