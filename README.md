@@ -81,7 +81,7 @@ champs de recherche avancée
 <img src="assets/images/les_petits_plats_maquettes.svg"
  alt="img maquette figma"/>
  
- *******************************
- branch main => pour la recherche principale : solution retenue les méthodes de l'objet Array. (équivalent branch searchV2)
- branch searchV1 => pour la recherche principale : utilisation des boucles natives (FOR);
- branch searchV2 => pour la recherche principale : utilisation des méthodes de l'objet Array (FOREACH & FILTER)
+ ******************************* <br>
+ **branch main** => pour la recherche principale : solution retenue les **méthodes de l'objet Array**. (équivalent branch searchV2). <br>
+ **branch searchV1** => pour la recherche principale : utilisation des **boucles native** (FOR). <br>
+ **branch searchV2** => pour la recherche principale : utilisation des **méthodes de l'objet Array** (FOREACH & FILTER). <br>
