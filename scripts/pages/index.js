@@ -96,6 +96,9 @@ const btnAppliance = document.querySelector("#btn-appareils");
 const btnUstensil = document.querySelector("#btn-ustensils");
 const iconDownCont = document.querySelector(".icon-down");
 
+//add event to select icon down
+const btnOpenList = document.querySelectorAll(".btn-open-list");
+btnOpenList.forEach(elt => elt.addEventListener("click", displayList));
 /**
  * This function displays the list of ingredients, appliances or ustensils
  * @param {Event} event 
