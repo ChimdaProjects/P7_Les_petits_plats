@@ -9,97 +9,118 @@
     <link rel="icon" href="assets/favicon.ico" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Schoolbell&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/1d32f00048.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
     <title>Les petits plats</title>
 </head>
 <body>
     <header id="header">
         <a href="index.html">
-            <img src="assets/images/logo.svg" alt="Logo Les petits plats" id="logo">
+            <img src="assets/images/logo_petits_plats.svg" alt="Logo Les petits plats" id="logo">
         </a>
+        <div id="cta">
+            <p>Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</p>
+           
+        </div>
+             <!--SEARCH BAR -->
+             <div id="search-bar" class="inputData" data-error="Votre recherche doit contenir au moins 3 caractères">
+                <label for="search-input" class="hidden">Search the site:</label>
+                <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette (3 caractères minimum)">
+                <div class=" search-img">
+                    <img src="assets/images/loop_icon.svg" class="search-img-icon"/>
+                </div>
+                
+            </div>
     </header>
 
     <main id="main">
-        <!--SEARCH BAR -->
-        <div id="search-bar" class="inputData" data-error="Votre recherche doit contenir au moins 3 caractères">
-            <label for="search-input" class="hidden">Search the site:</label>
-            <input type="search" id="search-input" name="input-search" placeholder="Rechercher une recette (3 caractères minimum)">
-            <div class=" search-img">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            
-        </div>
-        <!--TAGS -->
-        <div id="tags-section">
-        </div>     
+       
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
-            <!--Select ingredients-->
-            <div class="dropbtn">
-                <button id="btn-ingredients" class="dropbtn btn-container" data-value="btn-ing"  ondblclick="displayInputSearch(event)">
-                    Ingrédients
-                    <span class="ing btn-open-list">
-                        <i class="fa-solid fa-angle-down ingredients" ></i>
-                    </span>
-                        
-                </button>
-                <div class="list-ingr format-1  ing" >
-                    <div class="cont-input ing">
-                        <input type="text" placeholder="Rechercher un ingredient" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)" >
-                        <div class="icon-up ing"  onclick="closeList()">
-                            <i class="fa-solid fa-angle-up ing" ></i>
+            <div class="dropdown-btn">
+                <!--Select ingredients-->
+                <div class="dropbtn">
+                    <button id="btn-ingredients" class="dropbtn btn-container" data-value="btn-ing"  onclick="displayInputSearch(event)">
+                        Ingrédients
+                        <span class="btn-open-list">
+                            <img src="assets/images/chevron-down.svg" >
+                        </span> 
+                    </button>
+                    <div class="list-ingr hidden">
+                        <div class="drop-select ">
+                            <p class="drop-text">Ingrédients</p>
+                            <div class="icon-up"  onclick="closeList()">
+                                <img src="assets/images/close-icon-drop.svg" class="btn-img">
+                            </div>
                         </div>
-                    </div>
-                    <div class="list-ing list-format-1 ing" > 
-                    </div> 
-                </div>
-            </div>
-            <!--Select appliances-->
-            <div  class="dropbtn">
-                <button id="btn-appareils" class="dropbtn btn-container" data-value="btn-app"  ondblclick="displayInputSearch(event)">
-                    Appareils
-                    <span class ="app btn-open-list">
-                        <i class="fa-solid fa-angle-down appareils" ></i>
-                    </span>
-                </button> 
-                <div class="list-appl format-1 app" >
-                    <div class="cont-input app">
-                        <input type="text" placeholder="Rechercher un appareil" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
-                        >
-                        <div class="icon-up app"  onclick="closeList(event)">
-                            <i class="fa-solid fa-angle-up app" ></i>
+                        <div class="cont-input">
+                            <input type="text" placeholder="" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)" > 
+                            <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
                         </div>
-                    </div>
-                    <div class="list-app list-format-1 app">
+                        <!-- list of ingredients-->
+                        <div class="list-ing" > 
+                        </div> 
                     </div>
                 </div>
-            </div>
-            <!--Select ustensils-->
-            <div class="dropbtn">
-                <button id="btn-ustensils" class="dropbtn btn-container" data-value="btn-ust"  ondblclick="displayInputSearch(event)">
-                    Ustensils
-                    <span class="ust btn-open-list">
-                        <i class="fa-solid fa-angle-down ustensils" ></i>
-                    </span>
-                </button>   
-                <div class="list-uste format-1 ust">
-                    <div class="cont-input ust">
-                        <input type="text" placeholder="Rechercher un ustensil" id="myInput-ust2" class="ust" onkeyup="searchInputSelect(event)" onclick="changeDisplay(event)"
-                        >
-                        <div class="icon-up ust" onclick="closeList(event)">
-                            <i class="fa-solid fa-angle-up ust" ></i>
-                        </div>
-                    </div>
-                    <div class="list-ust list-format-1 ust">
 
+                <!--Select appliances-->
+                <div  class="dropbtn">
+                    <button id="btn-appareils" class="dropbtn btn-container" data-value="btn-app">
+                        Appareils
+                        <span class ="btn-open-list">
+                            <img src="assets/images/chevron-down.svg">
+                        </span>
+                    </button> 
+                    <div class="list-appl hidden">
+                        <div class="drop-select">
+                            <p class="drop-text">Appareils</p>
+                            <div class="icon-up"  onclick="closeList(event)">
+                                <img src="assets/images/close-icon-drop.svg" class="btn-img">
+                            </div>
+                        </div>
+                        <div class="cont-input">
+                            <input type="text" placeholder="" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)"
+                            >
+                            <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
+                            
+                        </div>
+                        <div class="list-app">
+                        </div>
                     </div>
-                  
+                </div>
+
+                <!--Select ustensils-->
+                <div class="dropbtn">
+                    <button id="btn-ustensils" class="dropbtn btn-container" data-value="btn-ust">
+                        Ustensiles
+                        <span class="btn-open-list">
+                            <img src="assets/images/chevron-down.svg">
+                        </span>
+                    </button>   
+                    <div class="list-uste hidden">
+                        <div class="drop-select">
+                            <p class="drop-text">Ustensiles</p>
+                            <div class="icon-up" onclick="closeList(event)">
+                                <img src="assets/images/close-icon-drop.svg" class="btn-img">
+                            </div>
+                        </div>
+                        <div class="cont-input">
+                            <input type="text" placeholder="" id="myInput-ust2"  onkeyup="searchInputSelect(event)"
+                            >
+                            <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
+                        </div>
+                        <div class="list-ust">
+                        </div>
+                    
+                    </div>
                 </div>
             </div>
+            
+             <!--TAGS -->
+            <div id="tags-section">
+            </div>     
         </div>
         <!--CARDS OF RECIPES -->
         <div id="list-recipes">

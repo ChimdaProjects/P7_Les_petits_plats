@@ -1,63 +1,87 @@
 function recipeFactory (data, element) {
-    const {appliance, description, name, ingredients, time} = data;
+    const {appliance, description, name, ingredients, time, image} = data;
+    //console.log("data", data);
     const elt = element;
    
     function getRecipeCardDOM () {
+        // creation section of recipe's list
         let cardsSection = document.querySelector("#list-recipes");
         const cardContainer = document.createElement("article");
         cardContainer.setAttribute("class", "card-recipe");
+        cardsSection.appendChild(cardContainer); // l'article enfant de la liste
+
         // elements DOM img
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("class", "recipe-img");
         const img = document.createElement("img");
         cardContainer.appendChild(imgContainer);
-        imgContainer.appendChild(img);
-        // elements DOM Header
+        imgContainer.innerHTML=`
+        <img src="./assets/images/recipes/${image}" 
+        alt="illustration of recipe of ${name}"
+        />
+        `
+
+        // elements DOM Header (title and duration)
         const divHeader = document.createElement("div");
         divHeader.setAttribute("class", "card-header");
         cardContainer.appendChild(divHeader);
         divHeader.innerHTML=`
         <h1 class="recipe-title">${name}</h1>
         <p class="recipe-time">
-            <img class="icon-time" src="../../assets/icons/time.svg">
             ${time} min
         </p>
         `
+        
+        // Dom Elements description of recipe 
+        const divContent = document.createElement("div");
+        divContent.className = "recipe-content";
+        divContent.innerHTML = `
+        <div class="recipe-description">
+        <h2 class="recipe-subtitle">Recette</h2>
+        <p class="recipe-description-content">${description}</p 
+        <div>
+        `
+        cardContainer.appendChild(divContent); // div recette enfant de l'article
+
         // DOM elements : list of ingredients
         const ingContainer = document.createElement("div");
-        ingContainer.setAttribute("class", "recipe-ingr")
-        cardContainer.appendChild(ingContainer);
+        ingContainer.setAttribute("class", "recipe-ingr");
+        
+        ingContainer.innerHTML='<h2 class="recipe-subtitle">Ingrédients</h2>'
         let ul = document.createElement("ul");
-        ingContainer.appendChild(ul);
+        ul.setAttribute("class","recipe-ing")
+        
+        console.log(`ingredient ${name}`, ingredients)
         ingredients.forEach((elt)=> {
-            if(!elt.quantity) {
-                return ul.innerHTML+= `${elt.ingredient} </br>`
+            //console.log("elt", elt)
+           if(!elt.quantity) {
+                return ul.innerHTML+= `
+                <li class="recipe-ingredient">
+                    <p class="recipe-ing-name">${elt.ingredient}</p>
+                </li>`
             }
 
             if (!elt.unit) {
-                return ul.innerHTML+= `${elt.ingredient}: ${elt.quantity}  </br>`
+                return ul.innerHTML+= `
+                <li class="recipe-ingredient">
+                    <p class="recipe-ing-name">${elt.ingredient}</p>
+                    <p class="recipe-ing-quantity">${elt.quantity}</p>
+                </li>`
             }  
 
             if ( elt.ingredient && elt.quantity && elt.unit) {
-                return (ul.innerHTML+= `${elt.ingredient}: ${elt.quantity} ${elt.unit} </br>`)
-            }
-             
-        })
-        // Dom Elements description
-        const descriptionContainer = document.createElement("div");
-        descriptionContainer.className = "recipe-description";
-        cardContainer.appendChild(descriptionContainer);
-        descriptionContainer.innerHTML = `
-        <p class="recipe-description-content">${description}</p 
-        `
+                return ul.innerHTML+= `
+                    <li class="recipe-ingredient">
+                        <p class="recipe-ing-name">${elt.ingredient}</p>
+                        <p class="recipe-ing-quantity">${elt.quantity} ${elt.unit}</p>
+                    </li>`
+                
+            } 
         
-        const divContent = document.createElement("div");
-        cardContainer.appendChild(divContent);
-        divContent.className = "recipe-content";
+          
+        })
+        ingContainer.appendChild(ul);
         divContent.appendChild(ingContainer);
-        divContent.appendChild(descriptionContainer);
-       
-        cardsSection.appendChild(cardContainer);
     }
         /**
          * This function creates each element of the list of ingredients, appliances or ustensils
@@ -70,7 +94,6 @@ function recipeFactory (data, element) {
          
             listContainer.appendChild(divList);
             divList.setAttribute("class", `elt-${elt}`);
-            divList.classList.add("size1");
             divList.setAttribute("data-category", `${elt}`);
 
             // attribute value = data 
@@ -94,7 +117,7 @@ function recipeFactory (data, element) {
            
             <button class="tag btn-${elt}" >
                 ${data}
-                <img src="assets/icons/close.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" data-category="${elt}" onclick="deleteTag(event)" >
+                <img src="assets/images/close_icon.svg" alt="icon close tag" class="close-icon" id="${dataReplace}" data-category="${elt}" onclick="deleteTag(event)" >
             </button>
             <div>
             </div>

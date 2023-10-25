@@ -111,7 +111,7 @@ function searchInputSelect (event, arr, cat) {
             
         }
     }
-   
+    
     cat = event.target.id;
     let newArrayTags = [];
     let valueInput;
@@ -131,7 +131,7 @@ function searchInputSelect (event, arr, cat) {
                     updateList(newArrayTagsFiltered, "ing");
                 });
                 if (newArrayTags.length == 0) {
-                    listIng.textContent = "Aucun ingrédient trouvé" 
+                    listIng.innerHTML= "<p>Aucun ingrédient trouvé<p>" 
                 };   
             break;
 
@@ -148,7 +148,7 @@ function searchInputSelect (event, arr, cat) {
             updateList(newArrayTags, "app");
             });
             if ( newArrayTags.length == 0 ) {
-                listApp.textContent = "Aucun appareil trouvé"
+                listApp.innerHTML = "<p>Aucun appareil trouvé</p>"
             };   
             break;
 
@@ -164,7 +164,7 @@ function searchInputSelect (event, arr, cat) {
                 updateList(newArrayTags, "ust");
             });
             if (newArrayTags.length == 0) {
-                listUst.textContent = "Aucun ustensil trouvé"
+                listUst.innerHTML = "<p>Aucun ustensile trouvé</p>"
             }    
             break;
 

@@ -106,9 +106,7 @@ btnOpenList.forEach(elt => elt.addEventListener("click", displayList));
 function displayList(event) {
 
     let btn = event.target.closest(".btn-container");
-    console.log("btn", btn)
     let value = btn.dataset.value;
-    console.log("value", value)
     switch (value) {
         case "btn-ing":
             inputSelectIng.focus();
@@ -118,8 +116,6 @@ function displayList(event) {
 
             if (openedListIng) {
                 menuContainerIng.style.display="block";
-                btnAppliance.style.margin = "0 500px";
-                btnUstensil.style.margin = "0 500px";
                 menuContainerApp.style.display="none";
                 menuContainerUst.style.display="none"; 
             } 
@@ -135,7 +131,6 @@ function displayList(event) {
          
             if (openedListApp) {
                 menuContainerApp.style.display="block"
-                btnUstensil.style.margin = "0 500px";
                 menuContainerIng.style.display="none";
                 menuContainerUst.style.display="none"
             }
@@ -306,56 +301,15 @@ function displayInputSearch(event) {
  * This function close the list of the ingredients
  */
 function closeList() {
-    menuContainerIng.style.display ="";
-    menuContainerApp.style.display ="";
-    menuContainerUst.style.display ="";
+    menuContainerIng.style.display ="none";
+    menuContainerApp.style.display ="none";
+    menuContainerUst.style.display ="none";
     //on vide la valeur de l'input
     inputSelectIng.value="";
     inputSelectApp.value="";
     inputSelectUst.value="";
     btnAppliance.style.margin="";
     btnUstensil.style.margin="";
-   backInitialDisplay();
-}
-
-/**
- * This function resets the applied style to the initial
- */
-function backInitialDisplay() {
-    // ingredients
-    menuContainerIng.classList.remove("format-2");
-    menuContainerIng.classList.add("format-1");
-    listIng.classList.remove("list-format-2");
-    listIng.classList.add("list-format-1");
-    const eltIng = document.getElementsByClassName("elt-ing");
-    
-    for( item of eltIng) {
-        item.classList.remove("size2");
-        item.classList.add("size1");
-    }
-
-    // appliances
-    menuContainerApp.classList.remove("format-2");
-    menuContainerApp.classList.add("format-1");
-    listApp.classList.remove("list-format-2");
-    listApp.classList.add("list-format-1");
-    const eltApp = document.getElementsByClassName("elt-app");
-
-    for( item of eltApp) {
-        item.classList.remove("size2");
-        item.classList.add("size1");
-    }
-    //ustensils
-    menuContainerUst.classList.remove("format-2");
-    menuContainerUst.classList.add("format-1");
-    listUst.classList.remove("list-format-2");
-    listUst.classList.add("list-format-1");
-    const eltUst = document.getElementsByClassName("elt-ust");
-
-    for( item of eltUst){
-        item.classList.remove("size2");
-        item.classList.add("size1");
-    }
 
 }
 
