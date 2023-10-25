@@ -39,82 +39,87 @@
        
          <!--DROPDOWN BUTTONS / SEARCH -->      
         <div id="dropdown-section">
-            <div class="dropdown-btn">
-                <!--Select ingredients-->
-                <div class="dropbtn">
-                    <button id="btn-ingredients" class="dropbtn btn-container" data-value="btn-ing"  onclick="displayInputSearch(event)">
-                        Ingrédients
-                        <span class="btn-open-list">
-                            <img src="assets/images/chevron-down.svg" >
-                        </span> 
-                    </button>
-                    <div class="list-ingr hidden">
-                        <div class="drop-select ">
-                            <p class="drop-text">Ingrédients</p>
-                            <div class="icon-up"  onclick="closeList()">
-                                <img src="assets/images/close-icon-drop.svg" class="btn-img">
+            <div class="section">
+                <div class="dropdown-btn">
+                    <!--Select ingredients-->
+                    <div class="dropbtn">
+                        <button id="btn-ingredients" class="dropbtn btn-container" data-value="btn-ing">
+                            Ingrédients
+                            <span class="btn-open-list">
+                                <img src="assets/images/chevron-down.svg" >
+                            </span> 
+                        </button>
+                        <div class="list-ingr hidden">
+                            <div class="drop-select ">
+                                <p class="drop-text">Ingrédients</p>
+                                <div class="icon-up"  onclick="closeList()">
+                                    <img src="assets/images/close-icon-drop.svg" class="btn-img">
+                                </div>
+                            </div>
+                            <div class="cont-input">
+                                <input type="text" placeholder="" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)" > 
+                                <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
+                            </div>
+                            <!-- list of ingredients-->
+                            <div class="list-ing" > 
+                            </div> 
+                        </div>
+                    </div>
+    
+                    <!--Select appliances-->
+                    <div  class="dropbtn">
+                        <button id="btn-appareils" class="dropbtn btn-container" data-value="btn-app">
+                            Appareils
+                            <span class ="btn-open-list">
+                                <img src="assets/images/chevron-down.svg">
+                            </span>
+                        </button> 
+                        <div class="list-appl hidden">
+                            <div class="drop-select">
+                                <p class="drop-text">Appareils</p>
+                                <div class="icon-up"  onclick="closeList(event)">
+                                    <img src="assets/images/close-icon-drop.svg" class="btn-img">
+                                </div>
+                            </div>
+                            <div class="cont-input">
+                                <input type="text" placeholder="" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)"
+                                >
+                                <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
+                                
+                            </div>
+                            <div class="list-app">
                             </div>
                         </div>
-                        <div class="cont-input">
-                            <input type="text" placeholder="" id="myInput-ing2" class="ing" onkeyup="searchInputSelect(event)" > 
-                            <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
+                    </div>
+    
+                    <!--Select ustensils-->
+                    <div class="dropbtn">
+                        <button id="btn-ustensils" class="dropbtn btn-container" data-value="btn-ust">
+                            Ustensiles
+                            <span class="btn-open-list">
+                                <img src="assets/images/chevron-down.svg">
+                            </span>
+                        </button>   
+                        <div class="list-uste hidden">
+                            <div class="drop-select">
+                                <p class="drop-text">Ustensiles</p>
+                                <div class="icon-up" onclick="closeList(event)">
+                                    <img src="assets/images/close-icon-drop.svg" class="btn-img">
+                                </div>
+                            </div>
+                            <div class="cont-input">
+                                <input type="text" placeholder="" id="myInput-ust2"  onkeyup="searchInputSelect(event)"
+                                >
+                                <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
+                            </div>
+                            <div class="list-ust">
+                            </div>
+                        
                         </div>
-                        <!-- list of ingredients-->
-                        <div class="list-ing" > 
-                        </div> 
                     </div>
                 </div>
-
-                <!--Select appliances-->
-                <div  class="dropbtn">
-                    <button id="btn-appareils" class="dropbtn btn-container" data-value="btn-app">
-                        Appareils
-                        <span class ="btn-open-list">
-                            <img src="assets/images/chevron-down.svg">
-                        </span>
-                    </button> 
-                    <div class="list-appl hidden">
-                        <div class="drop-select">
-                            <p class="drop-text">Appareils</p>
-                            <div class="icon-up"  onclick="closeList(event)">
-                                <img src="assets/images/close-icon-drop.svg" class="btn-img">
-                            </div>
-                        </div>
-                        <div class="cont-input">
-                            <input type="text" placeholder="" id="myInput-app2" class="app" onkeyup="searchInputSelect(event)"
-                            >
-                            <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
-                            
-                        </div>
-                        <div class="list-app">
-                        </div>
-                    </div>
-                </div>
-
-                <!--Select ustensils-->
-                <div class="dropbtn">
-                    <button id="btn-ustensils" class="dropbtn btn-container" data-value="btn-ust">
-                        Ustensiles
-                        <span class="btn-open-list">
-                            <img src="assets/images/chevron-down.svg">
-                        </span>
-                    </button>   
-                    <div class="list-uste hidden">
-                        <div class="drop-select">
-                            <p class="drop-text">Ustensiles</p>
-                            <div class="icon-up" onclick="closeList(event)">
-                                <img src="assets/images/close-icon-drop.svg" class="btn-img">
-                            </div>
-                        </div>
-                        <div class="cont-input">
-                            <input type="text" placeholder="" id="myInput-ust2"  onkeyup="searchInputSelect(event)"
-                            >
-                            <img src="assets/images/loop_icon_drop.svg" class="loop-drop" alt="loop icon to search input">
-                        </div>
-                        <div class="list-ust">
-                        </div>
-                    
-                    </div>
+                 <div class="recipe-total">
+                    50 recettes
                 </div>
             </div>
             
@@ -122,6 +127,7 @@
             <div id="tags-section">
             </div>     
         </div>
+       
         <!--CARDS OF RECIPES -->
         <div id="list-recipes">
         </div>

@@ -220,7 +220,9 @@ function deleteTag(e, cat) {
   
         if (tagsSelected.length == 0) {
             recipeSection.innerHTML="";
-            displayData(recipesArray);   
+            displayData(recipesArray); 
+            let total = recipesArray.length 
+            totalRecipes.innerHTML=`${total} recettes`
         } else {
             searchByTag(recipesArray, tagsSelected, cat);
         } 
@@ -236,67 +238,6 @@ function deleteTag(e, cat) {
     }
 }
 
-
-/**
- * This function allows the user to search from the input
- * @param {Event} event 
- */
-function displayInputSearch(event) {
-    let value = event.target.value;
-    switch (value) {
-        case "btn-ing" :
-            
-            menuContainerIng.style.display="block";
-            menuContainerIng.classList.remove("format-1");
-            menuContainerIng.classList.add("format-2");
-            listIng.style.display="none";
-            inputSelectIng.focus();
-            inputSelectIng.addEventListener("keyup",() => {
-                listIng.style.display="block"
-                listIng.classList.remove("list-format-1");
-                listIng.classList.add("list-format-2");
-                
-            });
-            menuContainerIng.style.display="block";
-            btnAppliance.style.margin = "0 50px";
-            btnUstensil.style.margin = "0 50px";
-            break;
-
-        case "btn-app" :
-            menuContainerApp.style.display="block";
-            menuContainerApp.classList.remove("format-1");
-            menuContainerApp.classList.add("format-2");
-            listApp.style.display="none";
-            inputSelectIng.focus();
-            inputSelectApp.addEventListener("keyup",() => {
-                listApp.style.display="block"
-                listApp.classList.remove("list-format-1");
-                listApp.classList.add("list-format-2");
-            });
-            menuContainerApp.style.display="block";
-            btnUstensil.style.margin = "0 50px";
-            break;
-
-        case "btn-ust" :
-            menuContainerUst.style.display="block";
-            menuContainerUst.classList.remove("format-1");
-            menuContainerUst.classList.add("format-2");
-    
-            inputSelectUst.focus();
-            inputSelectUst.addEventListener("keyup",() => {
-                listUst.style.display="block";
-                listUst.classList.remove("list-format-1");
-                listUst.classList.add("list-format-2");
-            });
-            menuContainerUst.style.display="block";
-            break;
-
-        default:
-            console.log("une erreur s'est produite.")
-
-    }
-   
-}
 /**
  * This function close the list of the ingredients
  */

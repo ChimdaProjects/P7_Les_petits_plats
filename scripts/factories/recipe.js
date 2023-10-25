@@ -1,6 +1,6 @@
 function recipeFactory (data, element) {
     const {appliance, description, name, ingredients, time, image} = data;
-    //console.log("data", data);
+
     const elt = element;
    
     function getRecipeCardDOM () {
@@ -51,9 +51,8 @@ function recipeFactory (data, element) {
         let ul = document.createElement("ul");
         ul.setAttribute("class","recipe-ing")
         
-        console.log(`ingredient ${name}`, ingredients)
         ingredients.forEach((elt)=> {
-            //console.log("elt", elt)
+           
            if(!elt.quantity) {
                 return ul.innerHTML+= `
                 <li class="recipe-ingredient">

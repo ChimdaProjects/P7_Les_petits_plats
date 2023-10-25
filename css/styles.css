@@ -1,3 +1,4 @@
+/* GENERAL */
 :root {
     --lightgrey: #EDEDED;
     --darkgrey:#7A7A7A;
@@ -10,6 +11,7 @@
     --fontsize-2:14px;
     --fontsize-3:12px
 }
+
 *, html, body {
     max-width: 1400px;
     margin: 0 auto;
@@ -20,12 +22,10 @@
 }
 
 
-
-
 /*LOGO*/
 header {
     width: 100%;
-    background-image: url("../assets/images/background_home.png");
+    background-image: url("../assets/images/background-home.webp");
     height: 667px;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,6 @@ header {
     margin: 0 auto;
     background-size: 1400px 667px;
 }
-
 
 #logo {
     color: white;
@@ -51,7 +50,6 @@ header {
     position: relative;
     top: 130px;
     margin:0 auto;
-   
 }
 
 #cta p {
@@ -64,7 +62,9 @@ header {
     text-align: center;
     letter-spacing: -1px;
 }
+
 /* SEARCH-BAR*/
+
 #search-bar {
     display: flex;
     align-items: center;
@@ -74,9 +74,8 @@ header {
     height: 72px;
     top: 150px;
     margin: 0 auto;
-
-    
 }
+
 #search-input {
     width: 954px;
     height: 72px;
@@ -85,6 +84,7 @@ header {
     position: relative;  
     border:1px solid black;
 }
+
 #search-bar input{
     width: 954px;
     height: 72px;
@@ -93,9 +93,7 @@ header {
     font-size: 16px;
     padding: 0 70px 0 35px;
     font-family: var(--font1);
-    cursor: pointer;
-    
-  
+    cursor: pointer;  
 }
 
 #search-bar input::-webkit-search-cancel-button {
@@ -105,12 +103,12 @@ header {
     background-size: 13px 13px;
     height: 13px;
     width: 13px;
-  }
+}
+
 #search-input::placeholder {
     padding-left: 0rem;
     color: #000000;
-    opacity: 0.25;
-    
+    opacity: 0.25;  
 }
 
 .search-img {
@@ -119,30 +117,34 @@ header {
     cursor: pointer;
 }
 
-.search-img-icon
-{
+.search-img-icon{
     width: 51px;
     height: 52px;
  
 }
+
+/* MAIN */ 
+
 main {
     background-color: var(--lightgrey) ;
-    height: 100vh;
-
+    padding:0 5rem
 }
 
-.header {
+.section {
     display: flex;
-    width: 1400px;
-    justify-content: space-between;
     align-items: center;
-    height: 150px;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    box-sizing: border-box;
-
+    justify-content: space-between;   
 }
 
+.recipe-total {
+    font-size: 21px;
+    font-family: var(--font2);
+    letter-spacing: -2px;
+    font-weight: 700;
+    padding-right: 17px;
+}
+
+/* DROPDOWN BUTTONS */
 #dropdown-section {
     width: 100%;
     display: flex;
@@ -154,7 +156,6 @@ main {
     width: 195px;
     height: 56px;
     display: flex;
-
     justify-content: space-between;
     align-items: center;
     padding: 17px;
@@ -162,25 +163,22 @@ main {
     border-radius: 11px;
     border:none;
     font-size: var(--fontsize-1);
-
 }
+
 .dropdown-btn {
     display: flex;
     flex-direction: row;
-    
 }
 
 #btn-ingredients,#btn-appareils, #btn-ustensils {
     background-color: white;
 }
+
 .drop-ing {
     width: 100%;
     display: flex;
-    
-
-   
-   
 }
+
 .btn {
     width: 195px;
     height: 100%;
@@ -258,10 +256,11 @@ main {
  
 }
 
-
 input:focus {
     outline: none;
 }
+
+/* LIST OF ING, APP, UST */
 
 .list-ingr , .list-appl, .list-uste {
     font-family: var(--font1);
@@ -273,33 +272,14 @@ input:focus {
     position: absolute;
     Top: 16px;
     z-index: 10;
-    /*display: none;*/
     overflow: scroll;
     scroll-behavior: smooth;
- 
 }
-
-
 
 .list-ing >p, .list-app>p, .list-ust>p {
     text-align: center;
 }
-.list-format-1 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-}
-.list-format-2 {
-    flex-direction: column;
-    margin-top: 1rem;
-}
 
-.list-select {
-    max-width: 667px;
-    display: block;
-}
 .drop-select {
     display: flex;
     justify-content: space-between;
@@ -328,25 +308,17 @@ input:focus {
     
 }
 
-
 .elt-ing:hover, .elt-app:hover, .elt-ust:hover {
-    background-color: #FFD15B;
- 
- 
-   
-   
+    background-color: var(--yellow);  
 }
 
 .elt-app::first-letter, .elt-ust::first-letter, .elt-ing::first-letter  {
     text-transform: capitalize;
 }
 
-
 /* CARD */
 
 #list-recipes {
-    padding-left: 5rem;
-    padding-right: 5rem;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
@@ -362,21 +334,13 @@ input:focus {
     margin: 1rem auto;
     border:none;
     cursor: pointer;
-    background-color: #fff;
-   
-   
+    background-color: #fff;   
 } 
-
-.card-recipe:hover {
-    transform: scale(1.05);
-    opacity: 0.7;
-}
 
 .recipe-img {
     height: 253px;
     width: 380px;
-    border-radius: 21px 21px 0 0;
-    
+    border-radius: 21px 21px 0 0;   
 }
 
 .recipe-img img {
@@ -402,12 +366,6 @@ input:focus {
     text-align: left;
 }
 
-.fa-clock {
-    height: 20px;
-    width: 20px;
-   
-}
-
 .recipe-time {
     line-height: 22px;
     position: relative;
@@ -424,14 +382,13 @@ input:focus {
 
 .card-header, .recipe-ingr, .recipe-description{
     padding: 0 18px;
-
 }
 
 .recipe-ingr {
     width: 380px;
     padding:  1rem;
-  
 }
+
 .recipe-subtitle {
     width: 100%;
     font-size: var(--fontsize-3);
@@ -453,8 +410,7 @@ input:focus {
     height: 107px;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: justify;
-    
+    text-align: justify;  
 }
 
 .recipe-description-content {
@@ -475,13 +431,12 @@ input:focus {
   grid-template-columns: 1fr 1fr;
   grid-template-rows:1fr 1fr 1fr ;
   gap:2rem 0;
-  
 }
 
 .recipe-ingredient {
     height: 30px;
-   
 }
+
 .recipe-ing-name, .recipe-ing-quantity {
     line-height: 18px;
     font-size: var(--fontsize-2);
@@ -493,32 +448,6 @@ input:focus {
 .recipe-ing-quantity {
     color:var(--darkgrey)
 }
-/* ERROR INPUT < 3 characters */
-/*.inputData[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: #e54858;
-    display: block;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    text-align: right;
-    line-height: 0.3;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .inputData[data-error-visible="true"]::after {
-    opacity: 1;
-  }
-
-  .inputData[data-error-visible="true"] {
-    border: 2px solid #e54858;
-  }
-  
-  input[data-error]::after {
-      content: attr(data-error);
-      font-size: 0.4em;
-      color: red;
-  } */
 
   /* TAGS*/
   #tags-section {
@@ -543,4 +472,130 @@ input:focus {
     text-transform: capitalize;
     margin-left: 17px;
     margin-bottom: 1rem;
+  }
+
+  /* RESPONSIVE */
+  @media screen and (min-width:0px) and (max-width:360px ) {
+    .search-img {
+        display: none;
+    } 
+    .recipe-description-content, .recipe-ingredient > * {
+        font-size: 11px;
+    }
+  }
+  @media screen and (min-width:361px) and (max-width:400px ) {
+    .recipe-description-content, .recipe-ingredient > * {
+        font-size: 11px;
+    } 
+  }
+  @media screen and (min-width:401px) and (max-width:500px ) {
+    .search-img {
+        display: none;
+    }
+    .recipe-description-content, .recipe-ingredient > * {
+        font-size: 11px;
+    }
+  }
+  @media screen and (min-width:0px) and (max-width:768px) {
+    header {
+        background-size: 100% 100%;
+        height: 400px;
+        object-fit: contain;
+    }
+    #cta {
+        top:0;
+        width: 100%;
+    }
+    #cta p {
+        width: 100%;
+        font-size: 20px;
+        line-height: 2rem;
+    }
+    #search-bar {
+        top:0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 1rem;
+    
+    }
+    #search-bar input {
+        width: 100%;
+        margin: 0;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .search-img-icon {
+        width: 25px;
+        height: 25px;
+    }
+    main {
+        padding: 0.5rem;
+    }
+    .section {
+        width: 100%;
+        flex-direction: column;
+    }
+    .recipe-total {
+        margin: 1rem auto; 
+    }
+    .dropdown-btn {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .dropbtn {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    #list-recipes {
+        width: 100%;
+    }
+
+    .card-recipe {
+        width: 100%;
+    }
+    .recipe-img {
+        width: 100%;
+    }
+   
+    .recipe-ingr {
+        width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1280px) {
+    #cta {
+        width: 100%;
+    }
+    #cta p {
+        font-size: 30px;
+    }
+
+    #search-bar {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+    
+    }
+    #search-bar input {
+        
+        width: 80%;
+        margin: 0;
+        height: 4rem;
+        font-size: 1rem;
+    }
+    .search-img {
+        display: none;
+    }
+    .search-img-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .dropbtn {
+        width: 160px;
+    }
+   
   }

@@ -5,7 +5,8 @@ let filteredArr;
 
 // DOM elements
 let searchBarInput = document.getElementById("search-input");
-
+searchBarInput.focus();
+const totalRecipes = document.querySelector(".recipe-total")
 // Events
 searchBarInput.addEventListener("keyup", searchBar);
 
@@ -24,7 +25,9 @@ function searchBar(e) {
         let cardsSection = document.querySelector("#list-recipes");
         cardsSection.innerHTML="";
         displayData(recipesArray);
+        totalRecipes.innerHTML="50 recettes"
     } 
+  
 }
 
 /**
@@ -56,10 +59,15 @@ function mainSearch(value, arr) {
         recipeSection.innerHTML = 
         `Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes",
         "poisson", etc...`
+        totalRecipes.innerHTML=`0 recettes`
     //sinon on affiche le resultat obtenu dans le tableau filteredArr
     } else {
         displayData(filteredArr);
+        let total = filteredArr.length;
+        totalRecipes.innerHTML=`${total} recettes`
     }
+
+    
 }
 
 

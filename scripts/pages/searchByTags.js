@@ -83,8 +83,12 @@ function searchByTag(arrFiltered, tagArr, cat) {
     
     if (arrByTags.length == 0) {
         displayData(recipesArray);
+        let total = arrByTags.length;
+        totalRecipes.innerHTML=`${total} recettes`
     } else {
         displayData(arrByTags);
+        let total = arrByTags.length;
+        totalRecipes.innerHTML=`${total} recettes`
     }
 }
 
@@ -173,57 +177,3 @@ function searchInputSelect (event, arr, cat) {
     }
       
 } 
-
-/**
- * This function changes the layout of the list  
- * @param {Event} event 
- */
-function changeDisplay(event) {
- let inputTarget = event.target.id;
-
- switch (inputTarget) {
-    case "myInput-ing2" :
-        menuContainerIng.classList.remove("format-1");
-        menuContainerIng.classList.add("format-2");
-        listIng.classList.remove("list-format-1");
-        listIng.classList.add("list-format-2");
-        const eltIng = document.getElementsByClassName("elt-ing");
-        
-        for( item of eltIng) {
-            item.classList.remove("size1");
-            item.classList.add("size2");
-        }
-        btnAppliance.style.margin = "0 50px";
-        btnUstensil.style.margin = "0 50px";
-        break;
-    case "myInput-app2" :
-        menuContainerApp.classList.remove("format-1");
-        menuContainerApp.classList.add("format-2");
-        listApp.classList.remove("list-format-1");
-        listApp.classList.add("list-format-2");
-        const eltApp = document.getElementsByClassName("elt-app");
-        
-        for( item of eltApp) {
-            item.classList.remove("size1");
-            item.classList.add("size2");
-        }
-
-        btnUstensil.style.margin = "0 50px";
-        break;
-
-    case "myInput-ust2" : 
-    menuContainerUst.classList.remove("format-1");
-    menuContainerUst.classList.add("format-2");
-    listUst.classList.remove("list-format-1");
-    listUst.classList.add("list-format-2");
-    const eltUst = document.getElementsByClassName("elt-ust");
-    for( item of eltUst){
-        item.classList.remove("size1");
-        item.classList.add("size2");
-    }
-    
-    break;
-    default:
-        console.log("une erreur s'est produite !");
- }
-}
